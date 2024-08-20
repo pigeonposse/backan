@@ -57,7 +57,7 @@
 		"workflow": "node .dev/workflow.mjs"
 	},
 	"devDependencies": {
-		"@backan/config": "workspace:",
+		"@backan/config": "workspace:*",
 		"@changesets/changelog-github": "0.5.0",
 		"@changesets/cli": "2.27.7",
 		"@commitlint/cli": "19.4.0",
@@ -183,9 +183,6 @@
 			},
 			{
 				"name": "package"
-			},
-			{
-				"name": "front"
 			},
 			{
 				"name": "all"
