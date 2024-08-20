@@ -29,7 +29,7 @@ await execProcess( {
 			selectedFile  : 'selectedFile',
 			showInConsole : 'showInConsole',
 		}
-		const cache          = initCache( {
+		const cache          = await initCache( {
 			id     : 'todo',
 			values : {
 				[data.selectedFile]  : fileNames[0],

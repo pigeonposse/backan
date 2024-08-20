@@ -23,7 +23,7 @@ await execProcess( {
 			origin   : 'origin',
 			workflow : 'workflow',
 		}
-		const cache = initCache( {
+		const cache = await initCache( {
 			id     : 'push',
 			values : {
 				[data.add]      : '.',

@@ -5,7 +5,7 @@ import {
 
 const workspaceDir     = pkg.dir
 const workspacePkg     = joinPath( workspaceDir, 'package.json' )
-const worksflowsDir    = joinPath( workspaceDir, '.github', 'workflows' )
+const workflowsDir    = joinPath( workspaceDir, '.github', 'workflows' )
 const packagesDir      = joinPath( workspaceDir, 'packages' )
 const tempDir          = joinPath( workspaceDir, '__temp__' )
 const documentationDir = joinPath( workspaceDir, 'docs' )
@@ -44,7 +44,7 @@ export const paths = {
 	workspaceDir,
 	workspacePkg,
 	packagesDir,
-	worksflowsDir,
+	workflowsDir,
 	documentationDir,
 	todoDir,
 	devDir,

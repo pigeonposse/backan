@@ -1,11 +1,20 @@
 // @ts-nocheck
 import Conf from 'conf'
+import { paths } from './const.mjs'
+import { readJSON } from './fs.mjs'
 
-export const initCache = ( { id, values, cached = true } ) => {
+export const initCache = async ( { id, values, cached = true } ) => {
+	const getAppName = async () => {
 
+		const packageJsonPath = paths.libPkg
+		const packageJson     = await readJSON( packageJsonPath )
+		return packageJson.name
+	
+	}
+	const name = await getAppName()
 	// Crear una instancia de Conf, se utilizará id como clave de configuración base.
 	const config = new Conf( {
-		projectName : 'bepp-dev',
+		projectName : name+ '-dev',
 	} )
 
 	return {

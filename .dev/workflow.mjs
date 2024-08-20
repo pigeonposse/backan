@@ -17,7 +17,7 @@ import {
 
 const getAppVersion = async () => {
 
-	const packageJsonPath = paths.appPkg
+	const packageJsonPath = paths.libPkg
 	const packageJson     = await readJSON( packageJsonPath )
 	return packageJson.version
 
@@ -38,7 +38,7 @@ await execProcess( {
 	on   : async ( { log } ) => {
 
 		const fileNames = await getFilteredFileNames( {
-			path       : paths.worksflowsDir,
+			path       : paths.workflowsDir,
 			extensions : [
 				'.yml',
 			],
@@ -48,7 +48,7 @@ await execProcess( {
 			file   : 'file',
 			inputs : 'inputs',
 		}
-		const cache = initCache( {
+		const cache = await initCache( {
 			id     : 'workflow',
 			values : {
 				[data.file]   : fileNames[0],
