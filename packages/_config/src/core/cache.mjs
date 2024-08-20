@@ -12,6 +12,7 @@ export const initCache = async ( { id, values, cached = true } ) => {
 	
 	}
 	const name = await getAppName()
+
 	// Crear una instancia de Conf, se utilizará id como clave de configuración base.
 	const config = new Conf( {
 		projectName : name+ '-dev',

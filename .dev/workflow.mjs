@@ -72,19 +72,27 @@ await execProcess( {
 		] )
 		
 		let formattedInputs = ''
-		if ( answers.inputs ) {
+		if ( answers.inputs && !answers.inputs.split().includes( ' ' ) ) {
 
-			const inputsArray = answers.inputs.split( ',' ).map( input => input.trim() )
-			formattedInputs   = inputsArray
-				.map( input => {
+			try {
 
-					const [
-						key, value,
-					] = input.split( '=' )
-					return `-f ${key}=${value}`
+				const inputsArray = answers.inputs.split( ',' ).map( input => input.trim() )
+				formattedInputs   = inputsArray
+					.map( input => {
+
+						const [
+							key, value,
+						] = input.split( '=' )
+						return `-f ${key}=${value}`
 				
-				} )
-				.join( ' ' )
+					} )
+					.join( ' ' )
+			
+			}catch( e ){
+
+				formattedInputs = ''
+			
+			}
 		
 		}
 
