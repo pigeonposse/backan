@@ -12,7 +12,7 @@
 		"backan",
 		"@backan/core",
 		"@backan/server",
-		"@backan/create",
+		"@backan/builder",
 		"@backan/docs"
 	]
   ],
