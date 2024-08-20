@@ -1,0 +1,195 @@
+{
+	"private": true,
+	"name": "backan-monorepo",
+	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
+	"license": "GPL-3.0",
+	"workspaces": [
+		"packages/*"
+	],
+	"packageManager": "pnpm@9.7.0",
+	"engines": {
+		"node": ">=20.0.0",
+		"pnpm": ">=8.10.0"
+	},
+	"keywords": [
+		"backend",
+		"api",
+		"rest-api",
+		"openapi",
+		"library",
+		"node",
+		"js"
+	],
+	"scripts": {
+		"backan": "pnpm --filter backan $@",
+		"core": "pnpm --filter @backan/core $@",
+		"conf": "pnpm --filter @backan/config $@",
+		"builder": "pnpm --filter @backan/builder $@",
+		"serve": "pnpm --filter @backan/server $@",
+		"creator": "pnpm --filter create-backan $@",
+		"doc": "pnpm --filter @backan/docs $@",
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:core": "pnpm --filter @backan/core build",
+		"build:lib": "pnpm --filter backan build",
+		"build:builder": "pnpm --filter @backan/builder build",
+		"build:server": "pnpm --filter @backan/server build",
+		"build:docs": "pnpm --filter @backan/docs build",
+		"test": "pnpm run --sequential \"/^test:.*/\"",
+		"test:core": "pnpm --filter @backan/core test",
+		"test:lib": "pnpm --filter backan test",
+		"test:builder": "pnpm --filter @backan/builder test",
+		"test:server": "pnpm --filter @backan/server test",
+		"test:docs": "pnpm --filter @backan/docs test",
+		"test-file": "vitest run $@",
+		"lint": "pnpm eslint .",
+		"lint-fix": "pnpm eslint . --fix",
+		"prepare": "husky .dev/husky",
+		"cm": "cz",
+		"prepush": "pnpm readme && pnpm --filter core build:schema && pnpm --filter api build:schema",
+		"push": "node .dev/push.mjs",
+		"update-version": "changeset && changeset version && pnpm update-version-files",
+		"update-version-files": "node .dev/update-version/main.mjs",
+		"update-gh": "node .dev/update-gh.mjs",
+		"release": "changeset publish",
+		"get-release-body": "node .dev/release-body.mjs",
+		"todo": "node .dev/todo.mjs",
+		"readme": "node .dev/readme.mjs",
+		"workflow": "node .dev/workflow.mjs"
+	},
+	"devDependencies": {
+		"@backan/config": "workspace:",
+		"@changesets/changelog-github": "0.5.0",
+		"@changesets/cli": "2.27.7",
+		"@commitlint/cli": "19.4.0",
+		"@pigeon-posse/eslint-config": "1.0.1",
+		"@playwright/test": "1.46.1",
+		"@types/node": "22.3.0",
+		"@typescript-eslint/eslint-plugin": "8.1.0",
+		"@typescript-eslint/parser": "8.1.0",
+		"cli-markdown": "3.4.0",
+		"commitizen": "4.3.0",
+		"commitlint-config-gitmoji": "2.3.1",
+		"cz-customizable": "7.2.1",
+		"cz-emoji": "1.3.2-canary.2",
+		"eslint": "8.57.0",
+		"eslint-plugin-align-assignments": "1.1.2",
+		"eslint-plugin-align-import": "1.0.0",
+		"eslint-plugin-html": "8.1.1",
+		"eslint-plugin-import": "2.29.1",
+		"eslint-plugin-jsdoc": "50.2.2",
+		"eslint-plugin-json": "4.0.1",
+		"eslint-plugin-jsonc": "2.16.0",
+		"eslint-plugin-promise": "7.1.0",
+		"eslint-plugin-yml": "1.14.0",
+		"git-cz": "4.9.0",
+		"husky": "9.1.4",
+		"jsonc-eslint-parser": "2.4.0",
+		"lint-staged": "15.2.9",
+		"markdownlint": "0.34.0",
+		"rimraf": "6.0.1",
+		"terser": "5.31.6",
+		"ts-node": "10.9.2",
+		"tslib": "2.6.3",
+		"tsx": "^4.17.0",
+		"typescript": "5.5.4",
+		"vite": "5.4.1",
+		"vite-plugin-dts": "4.0.3",
+		"vitest": "2.0.5",
+		"yaml-eslint-parser": "1.2.3"
+	},
+	"commitlint": {
+		"extends": [
+			"gitmoji"
+		],
+		"rules": {
+			"header-max-length": [
+				0,
+				"always",
+				100
+			]
+		}
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": ".dev/cz-config.cjs"
+		}
+	},
+	"lint-staged": {
+		"*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}": "eslint"
+	},
+	"homepage": "https://backan.pigeonposse.com/",
+	"bugs": {
+		"url": "https://github.com/pigeonposse/backan/issues",
+		"email": "dev@pigeonposse.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan"
+	},
+	"funding": {
+		"type": "individual",
+		"url": "https://pigeonposse.com/?popup=donate"
+	},
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
+	"contributors": [
+	],
+	"extra": {
+		"productName": "backan",
+		"libraryUrl": "https://www.npmjs.com/package/backan",
+		"libraryId": "backan",
+		"rawRepoUrl": "https://raw.githubusercontent.com/pigeonposse/backan",
+		"docsUrl": "https://backan.pigeonposse.com",
+		"docsPath": {
+			"posts": "/posts/",
+			"todo": "/todo/",
+			"guide": "/guide/",
+			"core": "/guide/core/",
+			"server": "/guide/server",
+			"builder": "/guide/builder"
+		},
+		"collective": {
+			"id": "pigeonposse",
+			"name": "PigeonPosse",
+			"gh": "https://github.com/pigeonposse",
+			"about": "https://pigeonposse.com?popup=about",
+			"url": "https://pigeonposse.com",
+			"web": "https://pigeonposse.com",
+			"email": "dev@pigeonposse.com",
+			"social": {
+				"twitter": "https://twitter.com/pigeonposse_",
+				"instagram": "https://www.instagram.com/pigeon.posse/",
+				"medium": "https://medium.com/@pigeonposse"
+			}
+		},
+		"scopes": [
+			{
+				"name": "core"
+			},
+			{
+				"name": "docs"
+			},
+			{
+				"name": "server"
+			},
+			{
+				"name": "create"
+			},
+			{
+				"name": "package"
+			},
+			{
+				"name": "front"
+			},
+			{
+				"name": "all"
+			}
+		]
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"name": "@backan/builder",
+	"version": "0.0.1",
+	"type": "module",
+	"license": "GPL-3.0",
+	"homepage": "https://backan.pigeonposse.com/guide/api",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/builder"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"bin": {
+		"backan-builder": "dist/bin.js"
+	},
+	"files": [
+		"dist"
+	],
+	"module": "dist/main.js",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"exports": {
+		".": "./dist/main.js",
+		"./types": "./dist/main.d.ts"
+	},
+	"scripts": {
+		"dev": "tsx examples/main.ts",
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:rm": "rimraf dist && rimraf build",
+		"build:lib": "vite build",
+		"test": "pnpm run --sequential \"/^test:.*/\"",
+		"test:unit": "vitest run src --passWithNoTests",
+		"lint": "pnpm eslint src"
+	},
+	"devDependencies": {
+		"@backan/core": "workspace:",
+		"@types/archiver": "6.0.2"
+	},
+	"dependencies": {
+		"@vercel/ncc": "0.38.1",
+		"@yao-pkg/pkg": "5.12.1",
+		"archiver": "7.0.1",
+		"esbuild": "0.23.1"
+	}
+}

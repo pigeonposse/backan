@@ -1,0 +1,30 @@
+###############################################################################
+# FOR PIGEONPOSSE USAGE
+###############################################################################
+
+web:
+  - id: "backan"
+    name: "backan"
+    type: 
+      - library
+      - cli
+    subtypes:
+      - Chromiun
+      - Chrome
+      - Firefox
+      - Safari
+      - Edge
+      - Brave
+      - Opera
+      - OperaGX
+      - Yandex
+    version: "1.3.17"
+    description: "{{package.description}}"
+    homepage: "https://bepp.pigeonposse.com"
+    docs: "https://bepp.pigeonposse.com/guide/getting-started"
+    license: "https://raw.githubusercontent.com/pigeonposse/bepp/main/LICENSE"
+    logo: "https://raw.githubusercontent.com/pigeonposse/bepp/main/docs/public/logo.png"
+    banner: "https://raw.githubusercontent.com/pigeonposse/bepp/main/docs/public/banner.png"
+    status: "active"
+
+###############################################################################

@@ -1,0 +1,29 @@
+{
+	"private": true,
+	"name": "@backan/config",
+	"version": "0.0.1",
+	"description": "Configuration files for monorepo",
+	"type": "module",
+	"scripts": {
+		"test": "vitest run -r tests --passWithNoTests"
+	},
+	"dependencies": {
+		"@types/archiver": "6.0.2",
+		"@types/figlet": "^1.5.8",
+		"archiver": "7.0.1",
+		"boxen": "^8.0.1",
+		"conf": "^13.0.1",
+		"decompress": "4.2.1",
+		"decompress-targz": "4.1.1",
+		"figlet": "1.7.0",
+		"inquirer": "10.1.8",
+		"marked": "14.0.0",
+		"marked-terminal": "^7.1.0"
+	},
+	"exports": {
+		"./tsconfig.json": "./tsconfig.json",
+		"./tests": "./src/tests/main.ts",
+		"./core": "./src/core.mjs",
+		"./consts": "./src/const.mjs"
+	}
+}

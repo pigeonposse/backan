@@ -1,0 +1,42 @@
+{
+	"name": "create-backan",
+	"version": "0.0.1",
+	"type": "module",
+	"license": "GPL-3.0",
+	"homepage": "https://backan.pigeonposse.com/guide/api",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/create"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"bin": "bin/main.js",
+	"files": [
+		"dist"
+	],
+	"module": "dist/main.js",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"exports": {
+		".": "./dist/main.js",
+		"./types": "./dist/main.d.ts"
+	},
+	"scripts": {
+		"dev": "tsx src/bin.ts",
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:rm": "rimraf dist && rimraf build",
+		"build:lib": "vite build",
+		"test": "pnpm run --sequential \"/^test:.*/\"",
+		"test:unit": "vitest run src --passWithNoTests",
+		"lint": "pnpm eslint src"
+	},
+	"devDependencies": {
+		"@backan/config": "workspace:"
+	},
+	"dependencies": {
+		"@clack/prompts": "^0.7.0"
+	}
+}

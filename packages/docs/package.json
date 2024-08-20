@@ -1,0 +1,31 @@
+{
+	"private": true,
+	"name": "@backan/docs",
+	"version": "0.0.1",
+	"description": "Documentation for backan",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/backan"
+	},
+	"dependencies": {
+		"markdown-it-task-lists": "2.1.1"
+	},
+	"devDependencies": {
+		"@backan/config": "workspace:",
+		"medium-zoom": "1.1.0",
+		"openapi-to-md": "1.0.24",
+		"vitepress": "1.3.3",
+		"vue": "3.4.38"
+	},
+	"scripts": {
+		"dev": "vitepress dev src",
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:copy-docs": "node .dev/copy-docs.js",
+		"build:web": "vitepress build src --force",
+		"build:rm-docs": "node .dev/copy-docs.js --rm-dest",
+		"preview": "vitepress preview src",
+		"test": "playwright test"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"name": "@backan/core",
+	"version": "0.0.1",
+	"type": "module",
+	"license": "GPL-3.0",
+	"homepage": "https://backan.pigeonposse.com/guide/core",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/core"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"files": [
+		"dist"
+	],
+	"module": "dist/main.js",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"exports": {
+		".": "./dist/main.js",
+		"./stream": "./dist/stream.js"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"dev:node": "tsx examples/app.ts",
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:rm": "rimraf dist",
+		"build:lib": "vite build",
+		"test": "pnpm run --sequential \"/^test:.*/\"",
+		"test:unit": "vitest run src --passWithNoTests",
+		"test:e2e": "playwright test",
+		"lint": "pnpm eslint src"
+	},
+	"devDependencies": {
+		"@backan/core": "workspace:*",
+		"@hono/vite-dev-server": "0.14.0"
+	},
+	"dependencies": {
+		"@hono/swagger-ui": "0.4.0",
+		"@hono/zod-openapi": "0.15.3",
+		"hono": "4.5.5"
+	}
+}

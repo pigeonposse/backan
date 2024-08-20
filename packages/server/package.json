@@ -1,0 +1,42 @@
+{
+	"name": "@backan/server",
+	"version": "0.0.1",
+	"type": "module",
+	"license": "GPL-3.0",
+	"homepage": "https://backan.pigeonposse.com/guide/api",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/core"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"files": [
+		"dist"
+	],
+	"module": "dist/main.js",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"exports": {
+		".": "./dist/main.js",
+		"./types": "./dist/main.d.ts"
+	},
+	"scripts": {
+		"dev": "tsx examples/node.ts",
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:rm": "rimraf dist && rimraf build",
+		"build:lib": "vite build",
+		"build:types": "vite build",
+		"test": "pnpm run --sequential \"/^test:.*/\"",
+		"test:unit": "vitest run src --passWithNoTests",
+		"lint": "pnpm eslint src"
+	},
+	"devDependencies": {
+		"@backan/core": "workspace:"
+	},
+	"dependencies": {
+		"@hono/node-server": "1.12.0"
+	}
+}

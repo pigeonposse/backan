@@ -1,0 +1,36 @@
+{
+	"name": "backan",
+	"version": "0.0.1",
+	"type": "module",
+	"license": "GPL-3.0",
+	"homepage": "https://backan.pigeonposse.com/guide",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"files": [
+		"dist"
+	],
+	"module": "dist/main.js",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"exports": {
+		".": "./dist/main.js",
+		"./stream": "./dist/stream.js"
+	},
+	"scripts": {
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:rm": "rimraf dist && rimraf build",
+		"build:lib": "node .dev/main.js"
+	},
+	"devDependencies": {
+		"@backan/config": "workspace:"
+	},
+	"dependencies": {
+		"@backan/core": "workspace:"
+	}
+}
