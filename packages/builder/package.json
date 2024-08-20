@@ -1,6 +1,6 @@
 {
 	"name": "@backan/builder",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com/guide/api",
@@ -36,7 +36,7 @@
 		"lint": "pnpm eslint src"
 	},
 	"devDependencies": {
-		"@backan/core": "workspace:",
+		"@backan/core": "workspace:*",
 		"@types/archiver": "6.0.2"
 	},
 	"dependencies": {

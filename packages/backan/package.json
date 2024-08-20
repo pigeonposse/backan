@@ -1,6 +1,6 @@
 {
 	"name": "backan",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com/guide",
@@ -27,10 +27,7 @@
 		"build:rm": "rimraf dist && rimraf build",
 		"build:lib": "node .dev/main.js"
 	},
-	"devDependencies": {
-		"@backan/config": "workspace:"
-	},
 	"dependencies": {
-		"@backan/core": "workspace:"
+		"@backan/core": "workspace:*"
 	}
 }

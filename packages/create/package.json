@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com/guide/api",
@@ -32,9 +32,6 @@
 		"test": "pnpm run --sequential \"/^test:.*/\"",
 		"test:unit": "vitest run src --passWithNoTests",
 		"lint": "pnpm eslint src"
-	},
-	"devDependencies": {
-		"@backan/config": "workspace:"
 	},
 	"dependencies": {
 		"@clack/prompts": "^0.7.0"

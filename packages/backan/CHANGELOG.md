@@ -1,5 +1,14 @@
 # backan
 
+## 0.0.4
+
+### Patch Changes
+
+- Update version deps
+
+- Updated dependencies []:
+  - @backan/core@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
 	"name": "@backan/core",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com/guide/core",
@@ -35,7 +35,6 @@
 		"lint": "pnpm eslint src"
 	},
 	"devDependencies": {
-		"@backan/core": "workspace:*",
 		"@hono/vite-dev-server": "0.14.0"
 	},
 	"dependencies": {
