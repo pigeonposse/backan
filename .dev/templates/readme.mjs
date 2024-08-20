@@ -9,7 +9,7 @@ export const org = pkg => {
 	const fundingURL = pkg.data.funding.url
 	return `## 👨‍💻 Development
 
-**${pkg.data.name.toUpperCase()}** is an open-source project and its development is open to anyone who wants to participate.
+**${pkg.data.extra.productName.toUpperCase()}** is an open-source project and its development is open to anyone who wants to participate.
 
 [![Issues](https://img.shields.io/badge/Issues-grey?style=for-the-badge)](${joinUrl( pkg.data.repository.url, '/issues' )})
 [![Pull requests](https://img.shields.io/badge/Pulls-grey?style=for-the-badge)](${joinUrl( pkg.data.repository.url, '/pulls' )})

@@ -74,7 +74,7 @@ Create endpoints with type validations and OpenApi documentation, safely and qui
 <!-- PIGEONPOSSE START ORG -->
 ## 👨‍💻 Development
 
-**BACKAN-MONOREPO** is an open-source project and its development is open to anyone who wants to participate.
+**BACKAN** is an open-source project and its development is open to anyone who wants to participate.
 
 [![Issues](https://img.shields.io/badge/Issues-grey?style=for-the-badge)](https://github.com/pigeonposse/backan/issues)
 [![Pull requests](https://img.shields.io/badge/Pulls-grey?style=for-the-badge)](https://github.com/pigeonposse/backan/pulls)
