@@ -61,7 +61,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          projectName: "backam"
+          projectName: "backan"
           directory: 'packages/docs/dist'
           wranglerVersion: '3'
 
