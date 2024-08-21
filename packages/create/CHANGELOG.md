@@ -1,5 +1,11 @@
 # create-backan
 
+## 0.0.6
+
+### Patch Changes
+
+- fix build cmd
+
 ## 0.0.5
 
 ### Patch Changes

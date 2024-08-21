@@ -33,6 +33,7 @@
 		"build:lib": "pnpm --filter backan build",
 		"build:builder": "pnpm --filter @backan/builder build",
 		"build:server": "pnpm --filter @backan/server build",
+		"build:create": "pnpm --filter create-backan build",
 		"build:docs": "pnpm --filter @backan/docs build",
 		"test": "pnpm run --sequential \"/^test:.*/\"",
 		"test:core": "pnpm --filter @backan/core test",
