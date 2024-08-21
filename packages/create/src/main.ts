@@ -180,7 +180,7 @@ export const create = async ( {
 			}
 
 			// if( initcmd ) note( `${initcmd}`, titleInit )
-			
+
 			log.step( '' )
 			outro( `🔥 Let's work with ${green( 'backan' )} 🔥` )
 			process.exit( 0 )
@@ -220,7 +220,7 @@ export const create = async ( {
 
 			// @ts-ignore
 			if( debug ) cancel( `Debug error: ${JSON.stringify( error, null, 2 )}` )
-			else cancel( `Error: ${error.title}\n\n   You can debug error with ${italic( '--debug' )} flag\n   Or contact with developers in: ${link( bugsUrl )}` )
+			else cancel( `Error: ${error.title}\n\n   You can debug the error with the ${italic( '--debug' )} flag\n   Or contact developers at: ${link( bugsUrl )}` )
 			
 			process.exit( 0 )
 		

@@ -93,7 +93,7 @@ await group( {
 				const inputDir    = resolvePath( v )
 				const existsInput = existsPathSync( inputDir )
 
-				if ( existsInput ) return `The project name "${n}" already exists. Please choose a different name.`
+				if ( existsInput ) return `The project name "${v}" already exists. Please choose a different name.`
 			
 			},
 		} ) 
