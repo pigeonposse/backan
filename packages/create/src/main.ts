@@ -6,27 +6,40 @@
 
 import {
 	cancel,
-	log, note,
+	log, 
+	note,
 	outro,
 	spinner, 
 }        from '@clack/prompts'
-import { CreateError }      from './error'
+import { CreateError } from './error'
 import {
-	ERROR_ID, OPTS_DEFAULT, 
+	ERROR_ID, 
+	OPTS_DEFAULT, 
+	bugsUrl,
 } from './const'
 import {
-	exec, execBoolChildCMD, execCMD, 
+	exec, 
+	execBoolChildCMD, 
+	execCMD, 
 }     from './exec'
 import {
 	changeJSONvalues,
 	copyDir,
-	existsPath, resolvePath, 
+	existsPath, 
+	resolvePath, 
 } from './fs'
 import type {
 	CreateErrorData, 
 	CreateParams, 
 } from './types'
-import { green } from './color'
+import {
+	green, 
+	italic, 
+	link, 
+} from './color'
+import { existsFlag } from './flags'
+
+const debug = existsFlag( 'debug' )
 
 export const create = async ( {
 	name = OPTS_DEFAULT.NAME,
@@ -60,6 +73,7 @@ export const create = async ( {
 			if( existsInput ) throw new CreateError( ERROR_ID.EXIST_INPUT_DIR, data )
 		
 			// EXISTS TEMPLATE
+			const __dirname      = new URL( '.', import.meta.url ).pathname
 			const templateDir    = resolvePath( __dirname, '..','templates', template )
 			const existsTemplate = await existsPath( templateDir )
 			data.templateDir     = templateDir
@@ -116,7 +130,7 @@ export const create = async ( {
 			
 				}catch( _e ){
 
-					console.error( _e )
+					if( debug ) log.warn( `Dependency installation error: ${_e}` )
 					failedInstallation = true
 			
 				}
@@ -132,6 +146,7 @@ export const create = async ( {
 			
 				}catch( _e ){
 
+					if( debug ) log.warn( `Error opening in [${open}]: ${_e}` )
 					failedOpen = true
 		
 				}
@@ -140,7 +155,7 @@ export const create = async ( {
 
 			// IF fails
 			const titleInit = 'Init commands'
-			const initcmd   = install ? install + ' dev' : ''
+			const initcmd   = install ? install + ' dev' : 'npm dev'
 			if( failedOpen && failedInstallation ) {
 
 				log.step( '' )
@@ -163,7 +178,10 @@ export const create = async ( {
 				note( `${install} install\n${initcmd}`,titleInit )
 		
 			}
-			note( `${initcmd}`,titleInit )
+
+			// if( initcmd ) note( `${initcmd}`, titleInit )
+			
+			log.step( '' )
 			outro( `🔥 Let's work with ${green( 'backan' )} 🔥` )
 			process.exit( 0 )
 	
@@ -177,40 +195,33 @@ export const create = async ( {
 		},
 		onError : async e => {
 
-			let erorData: Record<string, string | unknown> 
-			if( !( e instanceof CreateError ) || e.message === ERROR_ID.UNEXPECTED ) erorData = {
-				message : 'Unexpected error',
-				data    : e,
+			const error = { 
+				title : 'Unexpected error',
+				error : {
+					message : e instanceof Error ? e.message : 'Unknown error',
+					name    : e instanceof Error ? e.name : 'Error',
+					stack   : e instanceof Error ? e.stack?.split( '\n' ) : [
+						'No stack available',
+					],
+				},
+				opts : e instanceof CreateError && 'data' in e ? e.data : 'No opts available',
 			}
-			else if( e.message === ERROR_ID.NAME_UNDEFINED ) erorData = {
-				message : 'name option must exists',
-				// @ts-ignore
-				data    : e.data || e,
-			} 
-			else if( e.message === ERROR_ID.EXIST_INPUT_DIR ) erorData =  {
+			if( !( e instanceof CreateError ) || e.message === ERROR_ID.UNEXPECTED ) error.title =  'Unexpected error'
+			else if( e.message === ERROR_ID.NAME_UNDEFINED ) error.title =  'name option must exists'
 			// @ts-ignore
-				message : `Can not create project. Input dir [${e.data.inputDir}] already exists`,
-				// @ts-ignore
-				data    : e.data || e,
-			} 
-			else if( e.message === ERROR_ID.TEMPLATE_NO_EXIST ) erorData = {
-				// @ts-ignore
-				message : `Template path [${e.data.templateDir}] does not exists`,
-				// @ts-ignore
-				data    : e.data || e,
-			}
-			else erorData =  {
-				message : e.message,
-				// @ts-ignore
-				data    : e.data || e,
-			} 
+			else if( e.message === ERROR_ID.EXIST_INPUT_DIR ) error.title =  `Can not create project. Input dir [${e.data.inputDir}] already exists`
+			// @ts-ignore
+			else if( e.message === ERROR_ID.TEMPLATE_NO_EXIST ) error.title = `Template path [${e.data.templateDir}] does not exists`
+			else error.title = e.message
 
-			// s.stop( JSON.stringify( erorData ), 1 )
 			s.stop( 'Process closed 💔', 1 )
-			//@ts-ignore
-			// cancel( 'Error: ' + object2string( erorData ) )
-			log.step()
-			cancel( 'Error: ' + erorData.message )
+
+			log.step( '' )
+
+			// @ts-ignore
+			if( debug ) cancel( `Debug error: ${JSON.stringify( error, null, 2 )}` )
+			else cancel( `Error: ${error.title}\n\n   You can debug error with ${italic( '--debug' )} flag\n   Or contact with developers in: ${link( bugsUrl )}` )
+			
 			process.exit( 0 )
 		
 		},

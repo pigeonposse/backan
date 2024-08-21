@@ -1,5 +1,11 @@
 # create-backan
 
+## 0.0.7
+
+### Patch Changes
+
+- Fix beta. Now it is ready to be used
+
 ## 0.0.6
 
 ### Patch Changes

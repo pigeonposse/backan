@@ -35,7 +35,7 @@ import {
 	version,
 } from '../package.json'
 import {
-	existsPath, resolvePath, 
+	existsPathSync, resolvePath, 
 } from './fs'
 
 const flags = {
@@ -69,56 +69,81 @@ await group( {
 
 	[OPTS.NAME] : async () => {
 
-		let projectName = flags[OPTS.NAME],
-			validName   = false
+		const defaultName = name.toLowerCase() + '-project'
+		const flag        = flags[OPTS.NAME]
+		const existsFlag  = flag !== undefined && existsPathSync( resolvePath( flag ) )
 
-		try{
+		if( existsFlag ) 
+			log.warn( 'Input flag exists' )
+		else if ( flag !== undefined && !existsFlag ) {
 
-			while ( !validName ) {
-
-				if ( projectName !== undefined ) {
-
-					log.success( `Name of project: ${gray( projectName )}` )
-					break
-			
-				}
-
-				projectName = await text( {
-					message     : 'What is the name of the project?', 
-					placeholder : name.toLowerCase() + '-project',
-				} ) as string
- 
-				if ( typeof projectName === 'string' ) {
-
-					if ( !isValidProjectName( projectName ) ) {
-
-						log.error( 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.' )
-						projectName = undefined // Reset to ask again
-						continue
-				
-					}
-
-					const inputDir    = resolvePath( projectName )
-					const existsInput = await existsPath( inputDir )
-
-					if ( existsInput ) {
-
-						log.error( `The project name "${projectName}" already exists. Please choose a different name.` )
-						projectName = undefined // Reset to ask again
-				
-					} else validName = true
-			
-				}
-		
-			}
-		
-		}catch( _e ){
-
-			cancelRes( )
+			log.success( `Name of project: ${gray( flag )}` )
+			return flag
 		
 		}
 
-		return projectName
+		return await text( {
+			message      : 'What is the name of the project?', 
+			placeholder  : defaultName,
+			initialValue : defaultName,
+			validate     : v => {
+
+				const n = isValidProjectName( v )
+				if( !n ) return 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.'
+				const inputDir    = resolvePath( v )
+				const existsInput = existsPathSync( inputDir )
+
+				if ( existsInput ) return `The project name "${n}" already exists. Please choose a different name.`
+			
+			},
+		} ) 
+		// try{
+
+		// 	while ( !validName ) {
+
+		// 		if ( projectName !== undefined ) {
+
+		// 			log.success( `Name of project: ${gray( projectName )}` )
+		// 			break
+			
+		// 		}
+
+		// 		projectName = await text( {
+		// 			message     : 'What is the name of the project?', 
+		// 			placeholder : name.toLowerCase() + '-project',
+		// 		} ) as string
+ 
+		// 		if ( typeof projectName === 'string' ) {
+
+		// 			if ( !isValidProjectName( projectName ) ) {
+
+		// 				log.error( 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.' )
+		// 				projectName = undefined // Reset to ask again
+		// 				continue
+				
+		// 			}
+
+		// 			const inputDir    = resolvePath( projectName )
+		// 			const existsInput = await existsPath( inputDir )
+
+		// 			if ( existsInput ) {
+
+		// 				log.error( `The project name "${projectName}" already exists. Please choose a different name.` )
+		// 				projectName = undefined // Reset to ask again
+				
+		// 			} else validName = true
+			
+		// 		}
+		
+		// 	}
+		
+		// }catch( _e ){
+
+		// 	cancelRes( )
+		
+		// }
+
+		// return projectName
 	
 	},
 

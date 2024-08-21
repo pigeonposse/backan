@@ -1,8 +1,10 @@
 /**
  * CONSTANTS.
  */ 
+import { bugs } from '../package.json'
 
 export const name = 'BACKAN' as const
+export const bugsUrl = bugs.url
 export const ERROR_ID = {
 	NAME_UNDEFINED          : 'NAME_UNDEFINED',
 	UNEXPECTED              : 'UNEXPECTED',

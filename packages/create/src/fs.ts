@@ -1,4 +1,5 @@
 
+import { accessSync }       from 'node:fs'
 import {
 	mkdir, 
 	writeFile as fsWriteFile, 
@@ -87,6 +88,20 @@ export const existsPath = async ( path: string ) =>{
 	try {
 
 		await access( path )
+		return true
+	
+	} catch ( _e ) {
+
+		return false
+	
+	}
+
+}
+export const existsPathSync = ( path: string ): boolean => {
+
+	try {
+
+		accessSync( path )
 		return true
 	
 	} catch ( _e ) {
