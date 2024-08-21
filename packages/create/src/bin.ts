@@ -1,4 +1,4 @@
-
+#!/usr/bin/env node
 import {
 	text,
 	select,
@@ -52,9 +52,16 @@ const isValidProjectName = ( name: string ): boolean => {
 	return regex.test( name )
 
 }
+const cancelRes = () => {
+
+	cancel( 'Hasta la vista. 👋' )
+	process.exit( 0 )
+
+}
 await group( {
 	'intro' : async () =>{
- 
+
+		console.log()
 		await intro( '🔥 ' + name ) 
 		await note( `Create Backan template project.\n\nVersion:       ${green( italic( version ) )}\nDocumentation: ${blue( link( homepage ) )}` )
 	
@@ -65,45 +72,49 @@ await group( {
 		let projectName = flags[OPTS.NAME],
 			validName   = false
 
-		while ( !validName ) {
+		try{
 
-			if ( projectName !== undefined ) {
+			while ( !validName ) {
 
-				log.success( `Name of project: ${gray( projectName )}` )
-				break
+				if ( projectName !== undefined ) {
+
+					log.success( `Name of project: ${gray( projectName )}` )
+					break
 			
-			}
+				}
 
-			projectName = await text( {
-				message     : 'What is the name of the project?', 
-				placeholder : name.toLowerCase() + '-project',
-			} ) as string
+				projectName = await text( {
+					message     : 'What is the name of the project?', 
+					placeholder : name.toLowerCase() + '-project',
+				} ) as string
  
-			if ( typeof projectName === 'string' ) {
+				if ( typeof projectName === 'string' ) {
 
-				if ( !isValidProjectName( projectName ) ) {
+					if ( !isValidProjectName( projectName ) ) {
 
-					log.error( 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.' )
-					projectName = undefined // Reset to ask again
-					continue
+						log.error( 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.' )
+						projectName = undefined // Reset to ask again
+						continue
 				
-				}
+					}
 
-				const inputDir    = resolvePath( projectName )
-				const existsInput = await existsPath( inputDir )
+					const inputDir    = resolvePath( projectName )
+					const existsInput = await existsPath( inputDir )
 
-				if ( existsInput ) {
+					if ( existsInput ) {
 
-					log.error( `The project name "${projectName}" already exists. Please choose a different name.` )
-					projectName = undefined // Reset to ask again
+						log.error( `The project name "${projectName}" already exists. Please choose a different name.` )
+						projectName = undefined // Reset to ask again
 				
-				} else {
-
-					validName = true
-				
-				}
+					} else validName = true
 			
+				}
+		
 			}
+		
+		}catch( _e ){
+
+			cancelRes( )
 		
 		}
 
@@ -229,8 +240,8 @@ await group( {
 },{
 	onCancel : ( ) => {
 
-		cancel( 'Hasta la vista. 👋' )
-		process.exit( 0 )
+		cancelRes()
 		
 	},
 } )
+

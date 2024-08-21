@@ -28,6 +28,7 @@ export default defineConfig( {
 		lib : {
 			entry : [
 				'src/main.ts',
+				'src/bin.ts',
 			],  
 			formats : [
 				'es', 
