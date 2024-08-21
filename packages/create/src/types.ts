@@ -1,4 +1,5 @@
 import type {
+	ERROR_ID,
 	INSTALL_OPTS,
 	OPEN_OPTS, 
 	TEMPLATES, 
@@ -33,3 +34,8 @@ export type CreateParams = {
      */
 	open?: typeof OPEN_OPTS[keyof typeof OPEN_OPTS]
 }
+
+export type CreateErrorID = typeof ERROR_ID[keyof typeof ERROR_ID]
+export type CreateErrorData = {
+	opts: CreateParams
+} & Record<string, unknown>

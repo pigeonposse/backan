@@ -1,10 +1,6 @@
-import type { ERROR_ID }     from './const'
-import type { CreateParams } from './types'
-
-type CreateErrorID = typeof ERROR_ID[keyof typeof ERROR_ID]
-type CreateErrorData = {
-	opts: CreateParams
-} & Record<string, unknown>
+import type {
+	CreateErrorData, CreateErrorID, 
+} from './types'
 
 export class CreateError extends Error {
 

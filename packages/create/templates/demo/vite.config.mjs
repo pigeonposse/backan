@@ -6,6 +6,7 @@
  */
 import { defineConfig } from 'vite'
 import dts              from 'vite-plugin-dts'
+import devServer        from '@hono/vite-dev-server'
 
 const target = 'node20'
 export const port = 1312
@@ -39,5 +40,8 @@ export default defineConfig( {
 		dts( {
 			rollupTypes : true,
 		} ),
+		devServer({
+			entry: 'src/app.ts', // The file path of your application.
+		}),
 	],
 } )

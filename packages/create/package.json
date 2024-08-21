@@ -3,7 +3,7 @@
 	"version": "0.0.3",
 	"type": "module",
 	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com/guide/api",
+	"homepage": "https://backan.pigeonposse.com",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/pigeonposse/backan",
@@ -34,6 +34,7 @@
 		"lint": "pnpm eslint src"
 	},
 	"dependencies": {
-		"@clack/prompts": "^0.7.0"
+		"@clack/prompts": "^0.7.0",
+		"picocolors": "^1.0.1"
 	}
 }

@@ -6,10 +6,10 @@ import {
 	intro,
 	outro,
 	cancel, 
-	spinner,
 	note,
 	log,
 } from '@clack/prompts'
+
 import { 
 	existsSpecificFlag, 
 	getFlagValue, 
@@ -22,7 +22,21 @@ import {
 	OPTS_DEFAULT,
 	TEMPLATES, 
 } from './const'
+import {
+	link, 
+	green, 
+	italic, 
+	blue,
+	gray, 
+} from './color'
 import { create } from './main'
+import {
+	homepage, 
+	version,
+} from '../package.json'
+import {
+	existsPath, resolvePath, 
+} from './fs'
 
 const flags = {
 	[OPTS.NAME]     : getFlagValue( OPTS.NAME ), 
@@ -31,28 +45,70 @@ const flags = {
 	[OPTS.OPEN]     : existsSpecificFlag( OPTS.OPEN, OPEN_OPTS ),
 }
 
+const isValidProjectName = ( name: string ): boolean => {
+
+	// Solo permite letras, números, guiones y guiones bajos
+	const regex = /^[a-zA-Z0-9_-]+$/
+	return regex.test( name )
+
+}
 await group( {
 	'intro' : async () =>{
  
 		await intro( '🔥 ' + name ) 
-		await note( 'Create template project' )
+		await note( `Create Backan template project.\n\nVersion:       ${green( italic( version ) )}\nDocumentation: ${blue( link( homepage ) )}` )
 	
 	},
 
 	[OPTS.NAME] : async () => {
 
-		const flag = flags[OPTS.NAME]
-		if( flag !== undefined ) {
+		let projectName = flags[OPTS.NAME],
+			validName   = false
 
-			log.success( `Name of project: ${flag}` )
-			return flag
+		while ( !validName ) {
+
+			if ( projectName !== undefined ) {
+
+				log.success( `Name of project: ${gray( projectName )}` )
+				break
+			
+			}
+
+			projectName = await text( {
+				message     : 'What is the name of the project?', 
+				placeholder : name.toLowerCase() + '-project',
+			} ) as string
+ 
+			if ( typeof projectName === 'string' ) {
+
+				if ( !isValidProjectName( projectName ) ) {
+
+					log.error( 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.' )
+					projectName = undefined // Reset to ask again
+					continue
+				
+				}
+
+				const inputDir    = resolvePath( projectName )
+				const existsInput = await existsPath( inputDir )
+
+				if ( existsInput ) {
+
+					log.error( `The project name "${projectName}" already exists. Please choose a different name.` )
+					projectName = undefined // Reset to ask again
+				
+				} else {
+
+					validName = true
+				
+				}
+			
+			}
 		
 		}
-		return await text( {
-			message     : 'What is the name of the project?', 
-			placeholder : name.toLowerCase() + '-project',
-		} )
-		
+
+		return projectName
+	
 	},
 
 	[OPTS.TEMPLATE] : async () => {
@@ -60,7 +116,7 @@ await group( {
 		const flag = flags[OPTS.TEMPLATE]
 		if( flag !== undefined ) {
 
-			log.success( `Template selected: ${flag}` )
+			log.success( `Template selected: ${gray( flag )}` )
 			return flag
 		
 		}
@@ -84,9 +140,9 @@ await group( {
 	[OPTS.INSTALL] : async () => {
 
 		const flag = flags[OPTS.INSTALL]
-		if( flag !== undefined ) {
+		if( flag ) {
 
-			log.success( `Install project: ${flag}` )
+			log.success( `Project installation with: ${gray( flag )}` )
 			return flag
 		
 		}
@@ -124,7 +180,7 @@ await group( {
 		const flag = flags[OPTS.OPEN]
 		if( flag !== undefined ) {
 
-			log.success( `Open  project in an IDE or text editor: ${flag}` )
+			log.success( `Open project in an IDE or text editor: ${flag}` )
 			return flag
 		
 		}
@@ -158,28 +214,22 @@ await group( {
 	},
 
 	'process' : async ( { results } ) =>{
-
-		const s = spinner()
-
-		s.start( 'Creating processs' )
 	
 		await create( {
-			name     : results.name || name,
+			name     : results.name || name.toLowerCase(),
 			template : results.template,
 			install  : results.install,
 			open     : results.open,
 		} )
-
-		s.stop( 'Installed via pnpm' )
 		
 	},
-
-	'outro' : () => outro( 'Successfully !' ),
+	
+	'outro' : () => outro( 'Perfectly created project! ✨' ),
 
 },{
 	onCancel : ( ) => {
 
-		cancel( 'Operation cancelled.' )
+		cancel( 'Hasta la vista. 👋' )
 		process.exit( 0 )
 		
 	},

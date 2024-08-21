@@ -15,7 +15,7 @@ import {
 	version, 
 	name, 
 } from '../package.json'
-import { port } from '../vite.config'
+import { port } from '../vite.config.mjs'
 
 const app = new App( {
 	version,
@@ -28,4 +28,4 @@ app.addRoute( getRoute )
 app.addRoute( postRoute )
 app.addRoute( streamRoute )
 
-export { app }
+export default app
