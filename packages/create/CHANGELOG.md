@@ -1,5 +1,11 @@
 # create-backan
 
+## 0.0.5
+
+### Patch Changes
+
+- fix issues and styles
+
 ## 0.0.4
 
 ### Patch Changes
