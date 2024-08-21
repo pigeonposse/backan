@@ -54,4 +54,4 @@ yarn.lock
 **/__cache__
 .DS_Store
 **/.DS_Store
-packages/_config/exts-examples/**
+packages/create/templates/**

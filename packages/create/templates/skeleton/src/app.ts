@@ -5,11 +5,7 @@
  * @see https://backan.pigeonposse.com/guide/server
  */
 
-import { App } from '@backan/core'
-
-import getRoute    from './routes/get'
-import postRoute   from './routes/post'
-import streamRoute from './routes/stream'
+import { App } from 'backan'
 
 import {
 	version, 
@@ -23,9 +19,5 @@ const app = new App( {
 	description : `${name} API documentation`,
 	port,
 } )
-
-app.addRoute( getRoute )
-app.addRoute( postRoute )
-app.addRoute( streamRoute )
 
 export default app

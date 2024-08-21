@@ -5,7 +5,7 @@
  * @see https://backan.pigeonposse.com/guide/server
  */
 
-import { App } from '@backan/core'
+import { App } from 'backan'
 
 import getRoute    from './routes/get'
 import postRoute   from './routes/post'

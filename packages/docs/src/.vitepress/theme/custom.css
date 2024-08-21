@@ -3,6 +3,8 @@
     --pp-brand-2: #f3b31d;
 	--pp-brand-3: #ff6801;
     --pp-brand-4: #3b1e12;
+	--pp-brand-shadow: #f3b31d0d;
+	--pp-radius: 15px;
     --vp-c-brand-1: var(--pp-brand-2);
     --vp-c-brand-2: var(--pp-brand-1);
     --vp-c-brand-3: var(--pp-brand-3);
@@ -30,9 +32,10 @@
 	background-color: var(--vp-c-divider) !important;
 }
 
-img, video {
-	border-radius: 15px;
+img, video, .vp-code-group {
+	border-radius: var(--pp-radius);
 }
+
 .medium-zoom-overlay {
 	z-index: 20;
   }
@@ -76,6 +79,18 @@ img, video {
 	border-color: var(--vp-c-divider) !important;
 	backdrop-filter: blur(50px);
 }
+@media (max-width: 640px) {
+	.VPHome .vp-doc > div{
+		padding: 25px;
+	}
+}
+
 /* .tagline {
 	text-align: center;
 } */
+
+.VPHome .VPFeature, 
+.VPHome .card,
+.vp-code-group {
+	box-shadow: 0 0 20px 10px var(--pp-brand-shadow);
+}

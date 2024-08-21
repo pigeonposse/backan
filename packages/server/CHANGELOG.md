@@ -1,5 +1,11 @@
 # @backan/server
 
+## 0.0.5
+
+### Patch Changes
+
+- Fix general issues
+
 ## 0.0.4
 
 ### Patch Changes

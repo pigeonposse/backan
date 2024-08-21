@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@backan/config':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:packages/_config
       '@changesets/changelog-github':
         specifier: 0.5.0
@@ -165,7 +165,7 @@ importers:
   packages/backan:
     dependencies:
       '@backan/core':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../core
 
   packages/builder:
@@ -184,7 +184,7 @@ importers:
         version: 0.23.1
     devDependencies:
       '@backan/core':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../core
       '@types/archiver':
         specifier: 6.0.2
@@ -202,9 +202,6 @@ importers:
         specifier: 4.5.5
         version: 4.5.5
     devDependencies:
-      '@backan/core':
-        specifier: workspace:*
-        version: 'link:'
       '@hono/vite-dev-server':
         specifier: 0.14.0
         version: 0.14.0(hono@4.5.5)
@@ -214,10 +211,9 @@ importers:
       '@clack/prompts':
         specifier: ^0.7.0
         version: 0.7.0
-    devDependencies:
-      '@backan/config':
-        specifier: 'workspace:'
-        version: link:../_config
+      picocolors:
+        specifier: ^1.0.1
+        version: 1.0.1
 
   packages/docs:
     dependencies:
@@ -225,9 +221,6 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
     devDependencies:
-      '@backan/config':
-        specifier: 'workspace:'
-        version: link:../_config
       medium-zoom:
         specifier: 1.1.0
         version: 1.1.0
@@ -248,7 +241,7 @@ importers:
         version: 1.12.0
     devDependencies:
       '@backan/core':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../core
 
 packages:

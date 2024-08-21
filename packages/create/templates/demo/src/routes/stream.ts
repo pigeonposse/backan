@@ -4,8 +4,8 @@
  * @see https://backan.pigeonposse.com/guide/core/route/stream
  */
 
-import { Route }  from '@backan/core'
-import { stream } from '@backan/core/stream'
+import { Route }  from 'backan'
+import { stream } from 'backan/stream'
 
 import { getRandomFact } from './_utils'
 const id    = 'stream-example'

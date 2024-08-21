@@ -20,11 +20,11 @@ features:
 
   - title: Get started
     icon: 👋
-    details: Get started now with BACKAN
+    details: Start your project now
     link: guide/
   - title: Library
     icon: 📚
-    details: Learn and consult the BACKAN documentation.
+    details: Learn and check the documentation.
     link: guide/core
   - title: Server
     icon: 🗄️
@@ -36,3 +36,15 @@ features:
     link: guide/builder
 
 ---
+
+::: code-group
+```bash [npm]
+npm install backan
+```
+```bash [pnpm]
+pnpm install backan
+```
+```bash [yarn]
+yarn add backan
+```
+:::

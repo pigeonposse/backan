@@ -7,6 +7,13 @@
 import ncc                 from '@vercel/ncc'
 import { exec as execPkg } from '@yao-pkg/pkg'
 import esbuild             from 'esbuild'
+import {
+	ERROR_ID, 
+	target, 
+	name,
+	BUILDER_TYPE,
+	ARCH,
+} from './const'
 
 import {
 	deleteFile,
@@ -21,55 +28,10 @@ import {
 	writeFile,
 } from './utils'
 import { zipFilesInDirectory } from './compress'
-
-/**
- * CONSTANTS.
- */
-const target   = 'node20'
-const name     = 'BACKAN-BUILDER'
-const ERROR_ID = {
-	NO_INPUT        : 'NO_INPUT',
-	PLATFORM_UNKWON : 'PLATFORM_UNKWON',
-	ON_ESBUILD      : 'ON_ESBUILD',
-	ON_NCC          : 'ON_NCC',
-	ON_PKG          : 'ON_PKG',
-	UNEXPECTED      : 'UNEXPECTED',
-} as const
-
-/**
- * TYPES.
- */
-
-export type BuilderProps = {
-	/**
-	 * The input file for the build process.
-	 */
-	input: string, 
-	/**
-	 *
-	 */
-	name?: string,
-	/**
-	 * Directory for the output build.
-	 *
-	 * @default './build'
-	 */
-	outDir?: string, 
-	/**
-	 * Build only binary for your current OS.
-	 *
-	 * @default false
-	 */
-	onlyOs?: boolean
-	/**
-	 * The build type Result [all|cjs|bin].
-	 *
-	 * @default 'all'
-	 */
-	type?: 'all'|'cjs'|'bin'
-}
-
-export type BuilderErrors = typeof ERROR_ID[keyof typeof ERROR_ID]
+import type {
+	BuilderErrors, 
+	BuilderProps, 
+} from './types'
 
 /**
  * FUNCTIONS.
@@ -118,7 +80,7 @@ export const buildConstructor = async ( {
 	name, 
 	outDir = resolvePath( 'build' ),
 	onlyOs = false,
-	type = 'all', 
+	type = BUILDER_TYPE.ALL, 
 }: BuilderProps ) => {
 
 	const arch         = await getArch()
@@ -162,7 +124,7 @@ export const buildConstructor = async ( {
 
 	if( plat === 'unknown' ) throw new BuildError( ERROR_ID.PLATFORM_UNKWON, data )
 
-	const getTargets = ( arch: 'arm64' | 'x64' ) => ( onlyOs ? [
+	const getTargets = ( arch: typeof ARCH[keyof typeof ARCH] ) => ( onlyOs ? [
 		`${target}-${plat}-${arch}`,	
 	] : [
 		`${target}-alpine-${arch}`,
@@ -172,12 +134,12 @@ export const buildConstructor = async ( {
 		`${target}-win-${arch}`,
 	] )
 	
-	const targets = arch === 'arm64' ? 
+	const targets = arch === ARCH.ARM64 ? 
 		[
-			...getTargets( 'arm64' ),
-			...getTargets( 'x64' ),
+			...getTargets( ARCH.ARM64 ),
+			...getTargets( ARCH.X64 ),
 		] : 
-		getTargets( 'x64' )
+		getTargets( ARCH.X64 )
 	
 	/**
 	 * ESBUILD BUILD.
@@ -231,7 +193,7 @@ export const buildConstructor = async ( {
 	await writeFile( projectBuildIndexFile, code )
 	await deleteFile( projectBuildCjsFile )
 
-	if ( type === 'cjs' ) return
+	if ( type === BUILDER_TYPE.CJS ) return
 
 	/**
 	 * PKG BUILD.
@@ -256,7 +218,7 @@ export const buildConstructor = async ( {
 	
 	} )
 	console.groupEnd( )
-	if ( type === 'bin' ) return
+	if ( type === BUILDER_TYPE.BIN ) return
 
 	// ZIP
 	log.debug( 'Creating zips...' )

@@ -1,5 +1,5 @@
 import { build } from './main'
 
-await build( {
+build( {
 	input : '',
 } )

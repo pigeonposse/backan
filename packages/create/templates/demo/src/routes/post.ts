@@ -4,7 +4,7 @@
  * @see https://backan.pigeonposse.com/guide/core/route/post
  */
 
-import { Route }         from '@backan/core'
+import { Route }         from 'backan'
 import { getRandomFact } from './_utils'
 
 const id    = 'post-example'
