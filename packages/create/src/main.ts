@@ -26,6 +26,7 @@ import {
 	changeJSONvalues,
 	copyDir,
 	existsPath, 
+	joinPath,
 	resolvePath, 
 } from './fs'
 import type {
@@ -41,8 +42,18 @@ import { existsFlag } from './flags'
 
 const debug = existsFlag( 'debug' )
 
+/* eslint-disable jsdoc/require-param */
+/* eslint-disable jsdoc/check-param-names */
+/**
+ * Create BACKAN template project.
+ *
+ * @param {object} opts - Options for create template project.
+ * @see https://backan.pigeonposse.com/guide/create
+ */
 export const create = async ( {
+
 	name = OPTS_DEFAULT.NAME,
+	input = OPTS_DEFAULT.INPUT,
 	install = OPTS_DEFAULT.INSTALL,
 	template = OPTS_DEFAULT.TEMPLATE,
 	open = OPTS_DEFAULT.OPEN,
@@ -54,6 +65,7 @@ export const create = async ( {
 
 			const data: CreateErrorData = {
 				opts : {
+					input,
 					name,
 					install,
 					template,
@@ -67,7 +79,7 @@ export const create = async ( {
 			if( !name ) throw new CreateError( ERROR_ID.NAME_UNDEFINED, data )
 
 			// EXISTS INPUT DIR
-			const inputDir    = resolvePath( name )
+			const inputDir    = resolvePath( input ? joinPath( input, name ) : name )
 			const existsInput = await existsPath( inputDir )
 			data.inputDir     = inputDir
 			if( existsInput ) throw new CreateError( ERROR_ID.EXIST_INPUT_DIR, data )

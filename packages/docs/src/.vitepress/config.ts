@@ -42,30 +42,48 @@ const sidebar = [
 					link: joinPath(extra.docsPath.core, 'route') 
 				},
 				{
-					text: 'Endpoint - GET',
-					link: joinPath(extra.docsPath.core, 'get') 
+					text: 'Endpoints',
+					collapsed: true,
+					items: [
+						{
+							text: 'GET',
+							link: joinPath(extra.docsPath.core, 'get') 
+						},
+						{
+							text: 'POST',
+							link: joinPath(extra.docsPath.core, 'post') 
+						},
+						{
+							text: 'STREAM',
+							link: joinPath(extra.docsPath.core, 'stream') 
+						},
+						{
+							text: 'PUT',
+							link: joinPath(extra.docsPath.core, 'put') 
+						},
+						{
+							text: 'DELETE',
+							link: joinPath(extra.docsPath.core, 'delete') 
+						},
+						{
+							text: 'PATCH',
+							link: joinPath(extra.docsPath.core, 'patch') 
+						},
+					]
 				},
-				{
-					text: 'Endpoint - POST',
-					link: joinPath(extra.docsPath.core, 'post') 
-				},
-				{
-					text: 'Endpoint - STREAM',
-					link: joinPath(extra.docsPath.core, 'stream') 
-				},
-				// {
-				// 	text: 'Endpoint - OTRHERS',
-				// 	link: joinPath(extra.docsPath.core, 'more') 
-				// },
 			]
 		},
 		{ 
+			text: '🎉 Create (setup)', 
+			link: joinPath(extra.docsPath.create, 'index.md') 
+		},
+		{ 
 			text: '🗄️ Server', 
-			link: joinPath(extra.docsPath.server) 
+			link: joinPath(extra.docsPath.server, 'index.md') 
 		},
 		{ 
 			text: '📦 Builder', 
-			link: joinPath(extra.docsPath.builder) 
+			link: joinPath(extra.docsPath.builder, 'index.md') 
 		},
 	  ]
 	},

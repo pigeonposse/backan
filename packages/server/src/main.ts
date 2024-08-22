@@ -113,7 +113,7 @@ export const server = async <Env extends object>( opts: ServerOpts<Env> ) => {
 	const portFlag     = allowFlags ? Number( getFlagValue( 'port' ) ) : undefined
 	
 	const hostname   = hostnameFlag || opts.hostname || 'localhost'
-	const defautPort = portFlag || opts.port || opts.app.port || 80
+	const defautPort = portFlag || opts.port || 80
 	const autoPort   = autoPortFlag || opts.autoPort || false
 	const protocol   = protocolFlag || opts.protocol || getProtocol( defautPort )
 	
@@ -122,10 +122,6 @@ export const server = async <Env extends object>( opts: ServerOpts<Env> ) => {
 		hostname,
 		port : defautPort,
 	}
-	
-	// TODO Change hostname and port in app class
-	// opts.app.hostname = hostname
-	// opts.app.protocol = protocol
 	
 	const serverData = {
 		...data,

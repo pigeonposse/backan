@@ -1,9 +1,9 @@
 {
 	"name": "@backan/builder",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"type": "module",
 	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com/guide/api",
+	"homepage": "https://backan.pigeonposse.com/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/pigeonposse/backan",
@@ -23,11 +23,11 @@
 	"main": "dist/main.js",
 	"types": "dist/main.d.ts",
 	"exports": {
-		".": "./dist/main.js",
-		"./types": "./dist/main.d.ts"
+		".": "./dist/main.js"
 	},
 	"scripts": {
-		"dev": "tsx examples/main.ts",
+		"dev": "tsx examples/build.ts",
+		"preview": "node dist/bin.js --input=examples/server.ts",
 		"build": "pnpm run --sequential \"/^build:.*/\"",
 		"build:rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",
@@ -43,6 +43,8 @@
 		"@vercel/ncc": "0.38.1",
 		"@yao-pkg/pkg": "5.12.1",
 		"archiver": "7.0.1",
-		"esbuild": "0.23.1"
+		"esbuild": "0.23.1",
+		"openapi-to-md": "1.0.24",
+		"sucrase": "^3.35.0"
 	}
 }

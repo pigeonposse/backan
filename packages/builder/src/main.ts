@@ -6,7 +6,7 @@
 // @ts-ignore
 import ncc                 from '@vercel/ncc'
 import { exec as execPkg } from '@yao-pkg/pkg'
-import esbuild             from 'esbuild'
+
 import {
 	ERROR_ID, 
 	target, 
@@ -30,15 +30,29 @@ import {
 import { zipFilesInDirectory } from './compress'
 import type {
 	BuilderErrors, 
-	BuilderProps, 
+	BuilderParams, 
 } from './types'
+
+export { buildSchema } from './schema'
+export { buildMD } from './md'
+export type * from './types'
 
 /**
  * FUNCTIONS.
  */
+const isDebug = existsFlag( 'debug' )
+const log     = {
+	debug : ( data: object | string ) => isDebug && console.debug( '\n🔥⬛', data )
+	,
+	group : ( data: object | string ) => ( {
+		start : () => {
 
-const log = {
-	debug   : ( data: object | string ) => console.debug( `\n🔥⬛ [${name}]`, data ),
+			console.log( '\n🔥⬛', data )
+			console.group( )
+			
+		},
+		end : () => console.groupEnd( ),
+	} )	,
 	info    : ( data: object | string ) => console.log( `\n🔥🟦 [${name}]`, data ),
 	success : ( data: object | string ) => console.log( `\n🔥✅ [${name}]`, data ),
 	warn    : ( data: object | string ) => console.warn( `\n🔥🟡 [${name}]`, data ),
@@ -52,24 +66,18 @@ class BuildError extends Error {
 		data: {
 			platform: string
 			arch: string
-			opts: BuilderProps
+			opts: BuilderParams
 		} & Record<string, unknown>, 
 	) {
 
 		super( message )
 		this.name = this.constructor.name
 
-		// Añadir propiedades personalizadas
 		Object.assign( this, {
 			data,
 		} )
 
-		// Captura el stack trace (si está disponible)
-		if ( Error.captureStackTrace ) {
-
-			Error.captureStackTrace( this, this.constructor )
-		
-		}
+		if ( Error.captureStackTrace ) Error.captureStackTrace( this, this.constructor )
 	
 	}
 
@@ -81,49 +89,54 @@ export const buildConstructor = async ( {
 	outDir = resolvePath( 'build' ),
 	onlyOs = false,
 	type = BUILDER_TYPE.ALL, 
-}: BuilderProps ) => {
+}: BuilderParams ) => {
 
 	const arch         = await getArch()
 	const plat         = await getPlatform()
 	const projectBuild = outDir 
-
-	if( !name ) name = getFilename( input )
-
-	const flags = {
+	
+	const params =  Object.assign( {}, { 
+		input,
+		name, 
+		outDir,
+		onlyOs,
+		type, 
+	} )
+	const flags  = {
 		input  : getFlagValue( 'input' ), 
 		onlyOs : existsFlag( 'onlyOs' ),
 		outDir : getFlagValue( 'outDir' ),
-		type   : getFlagValue( 'type' ),
+		type   : getFlagValue( 'type' ) as typeof type,
+		name   : getFlagValue( 'name' ),
 	}
-
+	if( flags.name ) name = flags.name
 	if( flags.input ) input = flags.input
 	if( flags.onlyOs ) onlyOs = flags.onlyOs
 	if( flags.outDir ) outDir = flags.outDir
-	if( flags.type && type.includes( flags.type ) ) type = flags.type as typeof type
+	if( flags.type && Object.values( BUILDER_TYPE ).includes( flags.type ) ) type = flags.type 
+	
+	if( !name ) name = getFilename( input )
+		
+	const opts = {
+		input,
+		name, 
+		outDir,
+		onlyOs,
+		type, 
+	}
+	const data = {
+		platform : plat,
+		arch,
+		opts,
+	}
 
 	const projectBuildBin       = joinPath( projectBuild,'bin' )
 	const projectBuildZip       = joinPath( projectBuild,'zip' )
 	const projectBuildCjs       = joinPath( projectBuild,'cjs' )
 	const projectBuildCjsFile   = joinPath( projectBuildCjs,'node.cjs' )
 	const projectBuildIndexFile = joinPath( projectBuildCjs,'index.cjs' )
-	const data                  = {
-		platform : plat,
-		arch,
-		opts     : {
-			input,
-			name, 
-			outDir,
-			onlyOs,
-			type, 
-		},
-	}
 
-	const endpoint = input 
-	const exists   = await existsPath( endpoint )
-	if( !exists ) throw new BuildError( ERROR_ID.NO_INPUT, data )
-
-	if( plat === 'unknown' ) throw new BuildError( ERROR_ID.PLATFORM_UNKWON, data )
-
+	// GET TARGETS
 	const getTargets = ( arch: typeof ARCH[keyof typeof ARCH] ) => ( onlyOs ? [
 		`${target}-${plat}-${arch}`,	
 	] : [
@@ -141,17 +154,36 @@ export const buildConstructor = async ( {
 		] : 
 		getTargets( ARCH.X64 )
 	
+	log.debug( JSON.stringify( {
+		message : 'Init data: function params, process flags, final options..',
+		data    : {
+			params, 
+			flags,
+			...data, 
+			targets,
+		},
+	}, null, 2 ) )
+
+	// EXIST INPUT
+	const exists = await existsPath( input )
+	if( !exists ) throw new BuildError( ERROR_ID.NO_INPUT, data )
+
+	if( plat === 'unknown' ) throw new BuildError( ERROR_ID.PLATFORM_UNKWON, data )
+		
 	/**
 	 * ESBUILD BUILD.
 	 *
 	 * @see https://esbuild.github.io/api/#build
 	 */
-	log.debug( 'Building cjs file...' )
-	console.group( )
-	await esbuild.build( {
+	const esbuildLog = log.group( 'Building cjs file...' )
+	esbuildLog.start()
+	const { build } = await import( 'esbuild' )
+	await build( {
 		entryPoints : [
-			endpoint,
+			input,
 		],
+		// TODO FIX: This cause unexpected error in production
+		minify   : true,
 		bundle   : true,
 		format   : 'cjs',
 		platform : 'node',
@@ -159,36 +191,69 @@ export const buildConstructor = async ( {
 		outfile  : projectBuildCjsFile,
 	} ).catch( err => {
 
-		console.groupEnd()
+		esbuildLog.end()
 		throw new BuildError( ERROR_ID.ON_ESBUILD,{
 			...data, 
 			error : err,
 		} )
 	
 	} )
-	console.groupEnd()
+	esbuildLog.end()
 	
+	/**
+	 * SUCRASE BUILD.
+	 *
+	 * @see https://sucrase.io/
+	 */
+	// const sucraseLog = log.group( 'Building cjs file...' )
+	// sucraseLog.start()
+
+	// try {
+
+	// 	const { code } = transform( input, {
+	// 		transforms : [
+	// 			'imports',
+	// 		],
+	// 		production : true, // optimiza el código para producción si es posible
+	// 		filePath   : input,
+	// 	} )
+
+	// 	await writeFile( projectBuildIndexFile, code )
+
+	// 	sucraseLog.end()
+
+	// } catch ( err ) {
+
+	// 	sucraseLog.end()
+	// 	throw new BuildError( ERROR_ID.ON_SUCRASE, {
+	// 		...data,
+	// 		error : err,
+	// 	} )
+
+	// }
+
 	/**
 	 * NCC BUILD.
 	 *
 	 * @see https://github.com/vercel/ncc?tab=readme-ov-file#programmatically-from-nodejs
 	 */
-	log.debug( 'Converting cjs file in a single file...' )
-	console.group( )
+
+	const nccLog = log.group( 'Converting cjs file in a single file...' )
+	nccLog.start()
 	const { code } = await ncc( projectBuildCjsFile, {
 		minify : true,
 		cache  : false,
 		// target,
 	} ).catch( ( error: unknown ) => {
 
-		console.groupEnd()
+		nccLog.end()
 		throw new BuildError( ERROR_ID.ON_NCC,{
 			...data, 
 			error,
 		} )
 	
 	} )
-	console.groupEnd()
+	nccLog.end()
 
 	await writeFile( projectBuildIndexFile, code )
 	await deleteFile( projectBuildCjsFile )
@@ -200,8 +265,10 @@ export const buildConstructor = async ( {
 	 *
 	 * @see https://www.npmjs.com/package/@yao-pkg/pkg
 	 */
-	log.debug( 'Creating binaries...' )
-	console.group( )
+
+	const pkgLog = log.group( 'Creating binaries...' )
+	pkgLog.start()
+
 	await execPkg( [
 		projectBuildIndexFile,
 		'--targets', targets.join( ',' ),
@@ -210,14 +277,15 @@ export const buildConstructor = async ( {
 		// '--debug',
 	] ).catch( ( error: unknown ) => {
 
-		console.groupEnd( )
+		pkgLog.end( )
 		throw new BuildError( ERROR_ID.ON_PKG,{
 			...data, 
 			error,
 		} )
 	
 	} )
-	console.groupEnd( )
+	pkgLog.end( )
+
 	if ( type === BUILDER_TYPE.BIN ) return
 
 	// ZIP
@@ -233,14 +301,7 @@ export const buildConstructor = async ( {
 }
 
 /**
- * Package your backan App for different platforms based on the architecture.
- *
- * This function performs the following steps:
- * 1. Determines the architecture of the system.
- * 2. Builds the project using `esbuild`.
- * 3. Transpiles the build using `ncc`.
- * 4. Packages the transpiled output using `pkg`.
- * 5. Zips the final binaries.
+ * Package your `BACKAN` App for different platforms based on the architecture.
  *
  * @param   {object}            params        - The parameters for creating the binaries.
  * @param   {string}            params.name   - The name of the binary file to be created.
@@ -249,8 +310,9 @@ export const buildConstructor = async ( {
  * @param   {'all'|'cjs'|'bin'} params.type   - The build type Result [all|cjs|bin].
  * @param   {string}            params.onlyOs - Build only binary for your current OS.
  * @returns {Promise<void>}                   - A promise that resolves when the binary creation process is complete.
+ * @see https://backan.pigeonposse.com/guide/builder/
  */
-export const build = async ( params: BuilderProps ) =>{
+export const build = async ( params: BuilderParams ) =>{
 
 	// This is not recomended but is for not display `(node:31972) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.` message.
 	// @ts-ignore

@@ -4,6 +4,7 @@ export const ERROR_ID = {
 	NO_INPUT        : 'NO_INPUT',
 	PLATFORM_UNKWON : 'PLATFORM_UNKWON',
 	ON_ESBUILD      : 'ON_ESBUILD',
+	ON_SUCRASE      : 'ON_SUCRASE',
 	ON_NCC          : 'ON_NCC',
 	ON_PKG          : 'ON_PKG',
 	UNEXPECTED      : 'UNEXPECTED',

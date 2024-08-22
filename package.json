@@ -152,6 +152,7 @@
 			"guide": "/guide/",
 			"core": "/guide/core/",
 			"server": "/guide/server",
+			"create": "/guide/create",
 			"builder": "/guide/builder"
 		},
 		"collective": {

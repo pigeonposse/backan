@@ -16,7 +16,7 @@ yarn add @backan/server
 ```
 :::
 
-[npm](https://www.npmjs.com/package/@backan/server)
+[![NPM Version](https://img.shields.io/npm/v/@backan/server?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/server)
 
 ## 📈 usage
 

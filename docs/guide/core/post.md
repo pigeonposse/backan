@@ -1,3 +1,3 @@
 # Create `POST` *endpoint*
 
-> COMING SOON
+<!--@include: ../../partials/coming-soon.md-->

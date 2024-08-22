@@ -15,8 +15,10 @@ export const ERROR_ID = {
 	PKG_CHANGED_VALUES_FAIL : 'PKG_CHANGED_VALUES_FAIL',
 } as const
 export const TEMPLATES = {
-	DEMO     : 'demo',
-	SKELETON : 'skeleton',
+	DEMO        : 'demo',
+	SKELETON    : 'skeleton',
+	DEMO_TS     : 'demo-ts',
+	SKELETON_TS : 'skeleton-ts',
 } as const
 export const INSTALL_OPTS = {
 	NONE : false,
@@ -31,12 +33,14 @@ export const OPEN_OPTS = {
 	WEBSTORM : 'webstorm',
 } as const
 export const OPTS = {
+	INPUT    : 'input',
 	NAME     : 'name',
 	TEMPLATE : 'template',
 	INSTALL  : 'install',
 	OPEN     : 'open',
 } as const
 export const OPTS_DEFAULT = {
+	INPUT    : undefined,
 	NAME     : undefined,
 	TEMPLATE : TEMPLATES.DEMO,
 	INSTALL  : false,

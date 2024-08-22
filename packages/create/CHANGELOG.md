@@ -1,5 +1,11 @@
 # create-backan
 
+## 0.0.10
+
+### Patch Changes
+
+- Release new patch version
+
 ## 0.0.9
 
 ### Patch Changes

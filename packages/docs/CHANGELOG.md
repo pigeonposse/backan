@@ -1,5 +1,11 @@
 # @backan/docs
 
+## 0.0.6
+
+### Patch Changes
+
+- Release new patch version
+
 ## 0.0.5
 
 ### Patch Changes

@@ -1,9 +1,12 @@
 
+import { spawn } from 'node:child_process'
 import {
 	mkdir, 
 	writeFile as fsWriteFile, 
 	access,
 	unlink,
+	stat,
+	rm,
 } from 'node:fs/promises'
 import {
 	arch, platform, 
@@ -23,7 +26,7 @@ export const getFilename = ( path: string ) => {
 	return name.endsWith( '.' ) ? name.slice( 0, -1 ) : name
 
 }
-
+export const getDirname = dirname
 export const deleteFile = async( path: string ) => {
 
 	await unlink( path )
@@ -45,7 +48,7 @@ export const existsPath = async ( path: string ) =>{
 }
 export const writeFile = async ( path: string, data: string ) => {
 
-	const dir = dirname( path )
+	const dir = getDirname( path )
         
 	await mkdir( dir, {
 		recursive : true, 
@@ -105,3 +108,64 @@ export const getFlagValue = ( key: string ) =>{
 
 }
 export const existsFlag = ( v: string ) => process.argv.includes( `--${v}` )
+
+export const exec = async ( cmd: string ) => {
+ 
+	await new Promise<void>( ( resolve, reject ) => {
+
+		const childProcess = spawn( cmd, {
+			shell : true,
+			stdio : 'inherit',
+		} )
+
+		childProcess.on( 'close', code => {
+
+			if ( code === 0 ) resolve()
+			else {
+
+				const error = new Error( `Command failed with code ${code}` )
+				console.error( error )
+				reject( error )
+				
+			}
+			
+		} )
+		
+	} )
+
+}
+
+export const removePathIfExist = async ( path: string ) => {
+
+	try {
+
+		// Check if the path exists
+		const stats = await stat( path )
+		
+		if ( stats.isDirectory() ) {
+
+			// If it's a directory, delete it recursively
+			await rm( path, {
+				recursive : true, 
+				force     : true,
+			} )
+			// console.log( `Directory ${path} successfully deleted.` )
+		
+		} else if( stats.isFile() ){
+
+			// If it's a file, delete it
+			await unlink( path )
+			// console.log( `File ${path} successfully deleted.` )
+		
+		}
+	
+	} catch ( error ) {
+
+		// @ts-ignore
+		// `The directory or file ${path} does not exist.`
+		if ( error.code === 'ENOENT' ) return
+		else console.error( `Error deleting ${path}:`, error )
+	
+	}
+
+}

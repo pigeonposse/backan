@@ -4,9 +4,16 @@ import type {
 	OPEN_OPTS, 
 	TEMPLATES, 
 } from './const'
+
 export type CreateParams = {
     /**
-     * The name of the project and the directory to build.
+     * Directory to build.
+     *
+     * @default .
+     */
+	input?: string
+    /**
+     * The name of the project.
      */
 	name?: string
     /**

@@ -164,9 +164,19 @@ await group( {
 					value : TEMPLATES.DEMO, 
 				},
 				{
+					label : 'Demo (Typescriot)', 
+					// @ts-ignore
+					value : TEMPLATES.DEMO_TS, 
+				},
+				{
 					label : 'Skeleton', 
 					// @ts-ignore
 					value : TEMPLATES.SKELETON, 
+				},
+				{
+					label : 'Skeleton (Typescriot)', 
+					// @ts-ignore
+					value : TEMPLATES.SKELETON_TS, 
 				},
 			],
 			initialValue : OPTS_DEFAULT.TEMPLATE, 

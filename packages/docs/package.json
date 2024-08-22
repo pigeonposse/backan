@@ -1,14 +1,17 @@
 {
 	"private": true,
 	"name": "@backan/docs",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Documentation for backan",
 	"type": "module",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/backan"
+		"directory": "packages/docs"
 	},
+	"files": [
+		"dist"
+	],
 	"dependencies": {
 		"markdown-it-task-lists": "2.1.1"
 	},

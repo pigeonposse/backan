@@ -11,13 +11,11 @@ import {
 	version, 
 	name, 
 } from '../package.json'
-import { port } from '../vite.config.mjs'
 
 const app = new App( {
 	version,
 	title       : name,
 	description : `${name} API documentation`,
-	port,
 } )
 
 export default app

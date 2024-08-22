@@ -35,6 +35,6 @@
 	},
 	"include": [
 		"./src/",
-		"./package.json",
+		"./package.json"
 	]
 }

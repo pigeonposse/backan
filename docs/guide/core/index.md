@@ -16,11 +16,27 @@ yarn add backan
 ```
 :::
 
-[npm](https://www.npmjs.com/package/backan)
+[![NPM Version](https://img.shields.io/npm/v/backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/backan)
+
+
+### Install only `core`
+
+::: code-group
+```bash [npm]
+npm install @backan/core
+```
+```bash [pnpm]
+pnpm i @backan/core
+```
+```bash [yarn]
+yarn add @backan/core
+```
+:::
+
+[![NPM Version](https://img.shields.io/npm/v/%40backan%2Fcore?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/core)
+
 
 ## Setup
-
-> Coming soon!
 
 You can automatically create a `backan` template with:
 
@@ -36,6 +52,10 @@ yarn create backan
 ```
 :::
 
+
+<video src="/backan-create.webm" controls/>
+
+[Read more](../create/index.md)
 
 ## Create `App` instace
 

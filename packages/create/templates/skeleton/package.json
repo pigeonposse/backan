@@ -5,9 +5,9 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
-		"dev-server": "tsx src/server.ts",
+		"dev-server": "node src/server.js",
 		"build": "vite build",
-		"build-bin": "backan-builder --input=src/server.ts",
+		"build-bin": "backan-builder --input=src/server.js",
 		"test:unit": "vitest run src --passWithNoTests",
 		"test:e2e": "playwright test",
 		"lint": "eslint src"
@@ -20,9 +20,6 @@
 		"@playwright/test": "1.46.1",
 		"@types/eslint__js": "^8.42.3",
 		"eslint": "^9.9.0",
-		"tsx": "^4.17.0",
-		"typescript": "5.4.2",
-		"typescript-eslint": "^8.2.0",
 		"vite": "5.4.2",
 		"vite-plugin-dts": "4.0.3",
 		"vitest": "2.0.5"

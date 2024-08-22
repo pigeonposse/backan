@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com",
@@ -30,6 +30,7 @@
 	},
 	"scripts": {
 		"dev": "tsx src/bin.ts",
+		"example": "tsx examples/main.ts",
 		"build": "pnpm run --sequential \"/^build:.*/\"",
 		"build:rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",

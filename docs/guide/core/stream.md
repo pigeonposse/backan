@@ -1,3 +1,3 @@
 # Create `STREAM` *endpoint*
 
-> COMING SOON
+<!--@include: ../../partials/coming-soon.md-->

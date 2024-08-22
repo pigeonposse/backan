@@ -91,6 +91,7 @@ img, video, .vp-code-group {
 
 .VPHome .VPFeature, 
 .VPHome .card,
-.vp-code-group {
+.vp-code-group,
+div:not(.vp-code-group) > div >.vp-adaptive-theme:has(> .vp-code.github-dark ){
 	box-shadow: 0 0 20px 10px var(--pp-brand-shadow);
 }
