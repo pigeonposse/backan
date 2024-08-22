@@ -30,7 +30,7 @@ const sidebar = [
 			collapsed: false,
 			items: [
 				{
-					text: 'Get started',
+					text: '🏁 Get started',
 					link: joinPath(extra.docsPath.core) 
 				},
 				{

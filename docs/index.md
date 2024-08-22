@@ -32,7 +32,7 @@ features:
     link: guide/server
   - title: Builder
     icon: 🔢
-    details: Create a binary of your BACKAN server for multiple platforms instantly.
+    details: Create binaries, JSON openapi schema and markdown documentation of your BACKAN application.
     link: guide/builder
 
 ---
