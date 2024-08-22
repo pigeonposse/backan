@@ -1,5 +1,11 @@
 # @backan/builder
 
+## 0.0.12
+
+### Patch Changes
+
+- Add package keywords
+
 ## 0.0.11
 
 ### Patch Changes

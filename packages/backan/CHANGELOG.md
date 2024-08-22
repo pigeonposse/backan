@@ -1,5 +1,14 @@
 # backan
 
+## 0.0.12
+
+### Patch Changes
+
+- Add package keywords
+
+- Updated dependencies []:
+  - @backan/core@0.0.12
+
 ## 0.0.11
 
 ### Patch Changes

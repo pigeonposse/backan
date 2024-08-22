@@ -34,9 +34,15 @@ await execProcess( {
 
 			const cmds = [
 				`gh repo edit ${pkg.repository.url} -d "${pkg.description}" -h "${pkg.homepage}"`,
-				`gh api -X PUT /repos/${ pkg.extra.collective.id}/${pkg.name}/topics --input '${tempFilePath}'`,
+				`gh api -X PUT /repos/${pkg.extra.collective.id}/${pkg.extra.repoId}/topics --input '${tempFilePath}'`,
 			]
-
+			log.info( `data: ${object2string( {
+				repoId   : `${pkg.extra.collective.id}/${pkg.extra.repoId}`,
+				repoUrl  : pkg.repository.url,
+				desc     : pkg.description,
+				homepage : pkg.homepage,
+				topics   : topicData,
+			} )}` )
 			for ( const cmd of cmds ) {
 
 				try {

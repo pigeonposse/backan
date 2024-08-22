@@ -15,10 +15,13 @@
 		"backend",
 		"api",
 		"rest-api",
+		"api-rest",
 		"openapi",
 		"library",
 		"node",
-		"js"
+		"server",
+		"js",
+		"ts"
 	],
 	"scripts": {
 		"backan": "pnpm --filter backan $@",
@@ -144,6 +147,7 @@
 		"productName": "backan",
 		"libraryUrl": "https://www.npmjs.com/package/backan",
 		"libraryId": "backan",
+		"repoId": "backan",
 		"rawRepoUrl": "https://raw.githubusercontent.com/pigeonposse/backan",
 		"docsUrl": "https://backan.pigeonposse.com",
 		"docsPath": {

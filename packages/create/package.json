@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com",
@@ -28,6 +28,16 @@
 		".": "./dist/main.js",
 		"./types": "./dist/main.d.ts"
 	},
+	"keywords": [
+		"backend",
+		"api",
+		"rest-api",
+		"openapi",
+		"library",
+		"bin",
+		"create",
+		"creator"
+	],
 	"scripts": {
 		"dev": "tsx src/bin.ts",
 		"example": "tsx examples/main.ts",
