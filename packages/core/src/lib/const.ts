@@ -1,4 +1,3 @@
-export const defaultPort = 80
 /**
  * Response messages used throughout the application for various HTTP responses.
  *
@@ -35,7 +34,7 @@ export const RESPONSE_MESSAGES = {
 	/**
 	 * Message indicating a 404 Page Not Found error.
 	 */
-	ERROR_PAGE_NOT_FOUND : 'Page not found.',
+	ERROR_PAGE_NOT_FOUND : 'Page not found',
 	/**
 	 * Message indicating a validation error.
 	 */

@@ -7,10 +7,8 @@ import type { Context }       from 'hono'
 import { getHealthRoute }     from './health/main'
 import type { AppParameters } from './types'
 import { AppSuper }           from './super'
-import { defaultPort }        from './const'
 
 type OpenApiObject<Env extends object> = ReturnType<App<Env>['app']['getOpenAPIDocument']>
-
 /**
  * Represents an application with configuration options and methods
  * for managing routes, OpenAPI documentation, and error handling.
@@ -20,20 +18,15 @@ type OpenApiObject<Env extends object> = ReturnType<App<Env>['app']['getOpenAPID
  *   version: '1.0.0',
  *   title: 'BACKAN Example app',
  *   description: 'API documentation for BACKAN Example',
- *   port: 1312,
  *   cors: {
  *     origin: '*',
  *     allowMethods: ['GET'],
  *   },
  * });
- * @see https://backan.pigeonposse.com/guide/lib/app
+ * @see https://backan.pigeonposse.com/guide/core/app
  */
 export class App<Env extends object> extends AppSuper<Env>{
 
-	/**
-	 * The port on which the application will listen. Defaults to 80.
-	 */
-	port = defaultPort
 	/**
 	 * The version of the application.
 	 */
@@ -100,7 +93,7 @@ export class App<Env extends object> extends AppSuper<Env>{
 		if( !this.#health.path || !this.#health.active ) return
 		const route = getHealthRoute( this.#health.path, this.#health.opts )
 		// @ts-ignore
-		this.app.route( route.path, route.app )
+		this.addRoute( route )
 	
 	}
 
@@ -112,19 +105,20 @@ export class App<Env extends object> extends AppSuper<Env>{
 		description, 
 		docs,
 		health,
-		port, 
 		contact,
 	}: AppParameters ){
 
 		super()
 		
 		if( jsonResponse ) this.#jsonResponse = jsonResponse
-		if( port ) this.port = port
+
 		if( version ) this.version = version
 		if( title ) this.title = title
 		if( contact ) this.contact = contact
 		if( description ) this.description = description
-		if( this.#jsonResponse ) this.app.use( prettyJSON() )
+		if( this.#jsonResponse ) this.app.use( prettyJSON( {
+			space : 4, 
+		} ) )
 		if( cors ) this.app.use( '*', corsFunction( cors ) )
 		
 		if( docs?.active || docs?.active == false ) this.#docs.active = docs.active
@@ -136,8 +130,6 @@ export class App<Env extends object> extends AppSuper<Env>{
 			...this.#health.opts,
 			...health.opts,
 		}
-	
-		// if( msg?.error400 ) this.error400Msg = msg?.error400 
 
 		this.#openApiConfig = {
 			openapi : '3.0.0',
@@ -188,7 +180,6 @@ export class App<Env extends object> extends AppSuper<Env>{
 	 */
 	getOpenApiObject(): OpenApiObject<Env>{
 
-		// @ts-ignore
 		return this.app.getOpenAPIDocument( this.#openApiConfig )
 	
 	}

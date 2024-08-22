@@ -10,9 +10,7 @@ import {
 
 export class AppSuper<Env extends object> {
 
-	constructor(){
-	
-	}
+	constructor(){}
 	
 	/**
 	 * Validation option works with zod library.
@@ -82,6 +80,7 @@ export class AppSuper<Env extends object> {
 		
 		},
 	} )
+	
 	/**
 	 * Logs a string of data, determining if it's JSON and formatting accordingly.
 	 * This method can be overridden to customize how logging is handled within the application.

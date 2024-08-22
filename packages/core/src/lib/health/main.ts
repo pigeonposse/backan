@@ -9,7 +9,7 @@ export const getHealthRoute = ( path: string, opts: HealthRouteOptions = {} ) =>
 		additionalResponseValues,
 		summary,
 		description,
-	}:HealthRouteOptions = {
+	}: HealthRouteOptions = {
 		...defaultHOpts,
 		...opts,
 	}
@@ -21,7 +21,7 @@ export const getHealthRoute = ( path: string, opts: HealthRouteOptions = {} ) =>
 		path,
 	} )
 	
-	if( error400 )healthRoute.RESPONSE_MESSAGES.ERROR_400 = error400
+	if( error400 ) healthRoute.RESPONSE_MESSAGES.ERROR_400 = error400
 	
 	const getValidationSuccessParams = () => {
 

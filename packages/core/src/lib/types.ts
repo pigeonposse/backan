@@ -23,13 +23,6 @@ export type AppParameters = {
 		mail?: string;
 	};
 
-	/**
-	 * The port on which the application should run. 
-	 *
-	 * Note: This cannot modify the server port. The use of this variable is to establish more precise user information. It is recommended to set it.
-	 */
-	port?: number;
-
 	/** Whether to format JSON responses prettily. */
 	jsonResponse?: boolean;
 
@@ -52,14 +45,14 @@ export type AppParameters = {
 		/**
 		 * The path where documentation is served.
 		 *
-		 * @default '/dcos'
+		 * @default '/docs'
 		 */
 		path?: string;
 
 		/**
 		 * Whether the documentation is active. 
 		 *
-		 *  @default true
+		 * @default true
 		 */
 		active?: boolean;
 	};
@@ -75,10 +68,24 @@ export type AppParameters = {
 		/** Additional options for the health route. */
 		opts?: HealthRouteOptions;
 	};
+}
 
-	/** Custom error messages for the application. */
-	msg?: {
-		/** Custom message for a 400 Bad Request error. */
-		error400?: string;
-	}
+export type RouteParams<Path extends string> = {
+	/**
+	 * The path of the route.
+	 *
+	 * @example 'users'
+	 */
+	path: Path
+	// /**
+	//  * Optional custom messages.
+	//  */
+	// msg?: {
+	// 	/**
+	// 	 * Custom message for 400 Bad Request errors.
+	// 	 *
+	// 	 * @example 'Invalid request parameters'
+	// 	 */
+	// 	error400?: string
+	// }
 }

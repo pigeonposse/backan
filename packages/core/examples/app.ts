@@ -1,15 +1,16 @@
 
-import { Route }   from '../src/lib/route'
-import { App }     from '../src/lib/app'
+// import { Route } from '../src/lib/route'
+// import { App }   from '../src/lib/app'
+import {
+	Route, App, 
+} from '../dist/main'
 import { bugs }    from '../../../package.json'
 import { version } from '../package.json'
-import { port }    from '../vite.config'
 
 const app = new App( {
 	version,
 	title       : 'BACKAN Example app',
 	description : 'API documentation for BACKAN Example',
-	port        : port,
 	cors        : {
 		origin       : '*',
 		allowMethods : [
@@ -101,7 +102,7 @@ childRoute.add(
 	{
 		method  : 'get',
 		path    : '/',
-		summary : 'Test route with response json',
+		summary : 'Test route with JSON response',
 		request : {
 			query : route.validation.object( {
 				value : route.validation.string( ),
