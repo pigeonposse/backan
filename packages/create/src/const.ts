@@ -1,8 +1,15 @@
 /**
  * CONSTANTS.
  */ 
-import { bugs } from '../package.json'
-
+import {
+	bugs, 
+	version, 
+	homepage,
+} from '../package.json'
+export {
+	version,
+	homepage,
+}
 export const name = 'BACKAN' as const
 export const bugsUrl = bugs.url
 export const ERROR_ID = {

@@ -65,7 +65,7 @@ ${
 	imgUrl( {
 		name  : 'License', 
 		color : 'green', 
-		type  : `github/license/${pkg.data.extra.collective.id}/${pkg.data.name}`,
+		type  : `github/license/${pkg.data.extra.collective.id}/${pkg.data.extra.productName}`,
 		url   : '/LICENSE',
 	} )
 }
@@ -81,9 +81,9 @@ const index = pkg => {
 
 	return `
 - [Documentation](${pkg.data.homepage})
-	- 📙 [Library](${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.core )})
+	- 📚 [Library](${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.core )})
 	- 🏁 [Create (setup)]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.create )} )
-	- 🖥️ [Server]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.server )} )
+	- 🗄️ [Server]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.server )} )
 	- 📦 [Builder]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.builder )} )
 - [Installation](${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.core, '#installation' )})`
 

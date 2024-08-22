@@ -1,4 +1,4 @@
-# 🔥 Backan - Core
+# 🔥 Backan 
 
 All in one web API builder.
 Create endpoints with type validations and OpenApi documentation, safely and quickly
@@ -15,7 +15,7 @@ Create endpoints with type validations and OpenApi documentation, safely and qui
 [![Instagram](https://img.shields.io/badge/Instagram-black?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/pigeon.posse/)
 [![Medium](https://img.shields.io/badge/Medium-black?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@pigeonposse)
 
-[![License](https://img.shields.io/github/license/pigeonposse/backan-monorepo?color=green&style=for-the-badge&logoColor=white)](/LICENSE)
+[![License](https://img.shields.io/github/license/pigeonposse/backan?color=green&style=for-the-badge&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/backan?color=blue&style=for-the-badge&label=Version)](https://www.npmjs.com/package/backan)
 
 Create endpoints with type validations and OpenApi documentation, safely and quickly.
@@ -26,9 +26,9 @@ Create endpoints with type validations and OpenApi documentation, safely and qui
 <!-- PIGEONPOSSE START INDEX -->
 
 - [Documentation](https://backan.pigeonposse.com/)
-	- 📙 [Library](https://backan.pigeonposse.com/guide/core)
+	- 📚 [Library](https://backan.pigeonposse.com/guide/core)
 	- 🏁 [Create (setup)]( https://backan.pigeonposse.com/guide/create )
-	- 🖥️ [Server]( https://backan.pigeonposse.com/guide/server )
+	- 🗄️ [Server]( https://backan.pigeonposse.com/guide/server )
 	- 📦 [Builder]( https://backan.pigeonposse.com/guide/builder )
 - [Installation](https://backan.pigeonposse.com/guide/core/#installation)
 <!-- PIGEONPOSSE END INDEX -->

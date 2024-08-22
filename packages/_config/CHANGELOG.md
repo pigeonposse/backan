@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.0.5
+
+### Patch Changes
+
+- Update create package, update readmes
+
 ## 0.0.4
 
 ### Patch Changes

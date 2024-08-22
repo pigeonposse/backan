@@ -15,12 +15,14 @@ import {
 	getFlagValue, 
 } from './flags'
 import {
+	homepage,
 	INSTALL_OPTS,
 	name,
 	OPEN_OPTS, 
 	OPTS,
 	OPTS_DEFAULT,
-	TEMPLATES, 
+	TEMPLATES,
+	version, 
 } from './const'
 import {
 	link, 
@@ -30,12 +32,10 @@ import {
 	gray, 
 } from './color'
 import { create } from './main'
+
 import {
-	homepage, 
-	version,
-} from '../package.json'
-import {
-	existsPathSync, resolvePath, 
+	existsPathSync, 
+	resolvePath, 
 } from './fs'
 
 const flags = {

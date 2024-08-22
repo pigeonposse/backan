@@ -16,6 +16,7 @@ import {
 	ERROR_ID, 
 	OPTS_DEFAULT, 
 	bugsUrl,
+	version,
 } from './const'
 import {
 	exec, 
@@ -51,7 +52,6 @@ const debug = existsFlag( 'debug' )
  * @see https://backan.pigeonposse.com/guide/create
  */
 export const create = async ( {
-
 	name = OPTS_DEFAULT.NAME,
 	input = OPTS_DEFAULT.INPUT,
 	install = OPTS_DEFAULT.INSTALL,
@@ -114,6 +114,13 @@ export const create = async ( {
 
 				await changeJSONvalues( inputPackagePath, {
 					name,
+					devDependencies : {
+						'@backan/builder' : `^${version}`,
+						'@backan/server'  : `^${version}`,
+					},
+					dependencies : {
+						backan : `^${version}`,
+					},
 				} )
 			
 			}catch( e ){

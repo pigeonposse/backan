@@ -10,6 +10,7 @@
   "fixed": [
 	[
 		"backan",
+		"create-backan",
 		"@backan/core",
 		"@backan/server",
 		"@backan/builder",

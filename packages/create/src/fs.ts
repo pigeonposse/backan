@@ -19,18 +19,34 @@ import {
 export const readJSON =  async ( path: string ) => JSON.parse( await readFilke( path ) )
 export const readFilke = async ( path: string ) => await fsReadFile( path, 'utf8' )
 export const object2string = ( data: string ) => JSON.stringify( data, null, '\t' ) + '\n'
+
 export const changeJSONvalues = async ( 
 	path: string, 
-	newValues: Record<string,string>, 
+	newValues: Record<string, string | Record<string, string>>,
 ) => {
 
 	const data = await readJSON( path )
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const updateValues = ( target: any, source: Record<string, any> ) => {
 
-	Object.keys( newValues ).forEach( key => {
+		Object.keys( source ).forEach( key => {
 
-		if ( data[key] !== undefined ) data[key] = newValues[key]
+			if ( target[key] !== undefined ) {
+
+				if ( typeof source[key] === 'object' && !Array.isArray( source[key] ) ) {
+
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					updateValues( target[key], source[key] as Record<string, any> )
+				
+				} else target[key] = source[key]
+			
+			}
+		
+		} )
 	
-	} )
+	}
+
+	updateValues( data, newValues )
 
 	await writeFile( path, object2string( data ) )
 

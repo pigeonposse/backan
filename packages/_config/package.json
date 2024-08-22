@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "@backan/config",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Configuration files for monorepo",
 	"type": "module",
 	"scripts": {
