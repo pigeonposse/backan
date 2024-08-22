@@ -1,7 +1,6 @@
-# 🔥 Backan - Core
+# Backan - Config
 
-All in one web API builder.
-Create endpoints with type validations and OpenApi documentation, safely and quickly
+> This package contains **_BACKAN_** config for monorepo
 
 <!-- PIGEONPOSSE START HEADER -->
 
