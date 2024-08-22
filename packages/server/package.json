@@ -3,11 +3,11 @@
 	"version": "0.0.5",
 	"type": "module",
 	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com/guide/api",
+	"homepage": "https://backan.pigeonposse.com",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/core"
+		"directory": "packages/server"
 	},
 	"publishConfig": {
 		"access": "public",

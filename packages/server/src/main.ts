@@ -54,7 +54,7 @@ const tryServe = async <Env extends object>(
 
 		serve( {
 			hostname,
-			fetch : opts.fetch,
+			fetch : opts.app.fetch,
 			port  : port,
 		}, async info => {
 
@@ -63,8 +63,9 @@ const tryServe = async <Env extends object>(
 				hostname,
 				port : info.port,
 			}
-	
-			const url = getUrl( data )
+
+			opts.app.port = info.port
+			const url     = getUrl( data )
 			
 			if ( opts.onSuccess ) 
 				await opts.onSuccess( {
@@ -94,11 +95,12 @@ const tryServe = async <Env extends object>(
  * @template Env - The environment type.
  * @param   {ServerOpts<Env>} opts - The server options.
  * @returns {Promise<void>}        - Resolves when the server starts successfully, or rejects if an error occurs.
- * @see https://backan.pigeonposse.com/guide/node-server
+ * @see https://backan.pigeonposse.com/guide/server
  * @example 
+ * import app from './backan-app.js'
  * server({
- *     fetch: app.fetch,
- *     port: 3000, // default 80
+ *     app: app,
+ *     port: 3000, // default app.port || 80
  * });
  */
 export const server = async <Env extends object>( opts: ServerOpts<Env> ) => {
@@ -112,15 +114,19 @@ export const server = async <Env extends object>( opts: ServerOpts<Env> ) => {
 	const portFlag     = allowFlags ? Number( getFlagValue( 'port' ) ) : undefined
 	
 	const hostname   = hostnameFlag || opts.hostname || 'localhost'
-	const defautPort = portFlag || opts.port || 80
+	const defautPort = portFlag || opts.port || opts.app.port || 80
 	const autoPort   = autoPortFlag || opts.autoPort || false
 	const protocol   = protocolFlag || opts.protocol || getProtocol( defautPort )
 	
-	const data       = {
+	const data = {
 		protocol,
 		hostname,
 		port : defautPort,
 	}
+	// TODO Change hostname and port in app class
+	// opts.app.hostname = hostname
+	// opts.app.protocol = protocol
+	
 	const serverData = {
 		...data,
 		url : getUrl( data ),
