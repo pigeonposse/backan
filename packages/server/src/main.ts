@@ -64,8 +64,7 @@ const tryServe = async <Env extends object>(
 				port : info.port,
 			}
 
-			opts.app.port = info.port
-			const url     = getUrl( data )
+			const url = getUrl( data )
 			
 			if ( opts.onSuccess ) 
 				await opts.onSuccess( {
@@ -123,6 +122,7 @@ export const server = async <Env extends object>( opts: ServerOpts<Env> ) => {
 		hostname,
 		port : defautPort,
 	}
+	
 	// TODO Change hostname and port in app class
 	// opts.app.hostname = hostname
 	// opts.app.protocol = protocol

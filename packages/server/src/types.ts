@@ -38,7 +38,7 @@ export type ServerOpts<Env extends object> = {
 	/**
 	 * The port to start the server on.
 	 *
-	 * @default app.port || 80
+	 * @default 80
 	 */
 	port?: number
 	/**
