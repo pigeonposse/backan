@@ -1,5 +1,7 @@
 # Backan - Builder
 
+Compile your `backan` server into multiple __binaries__, available for each _platform_ and _architecture_.
+
 <!-- PIGEONPOSSE START HEADER -->
 
 [![HEADER](https://raw.githubusercontent.com/pigeonposse/backan/main/docs/public/banner.png)](https://backan.pigeonposse.com/)
@@ -26,7 +28,7 @@ Create endpoints with type validations and OpenApi documentation, safely and qui
 
 - [Documentation](https://backan.pigeonposse.com/)
 	- 📙 [Library](https://backan.pigeonposse.com/guide/core)
-	- 🏁 [Create]( https://backan.pigeonposse.com/guide/create )
+	- 🏁 [Create (setup)]( https://backan.pigeonposse.com/guide/create )
 	- 🖥️ [Server]( https://backan.pigeonposse.com/guide/server )
 	- 📦 [Builder]( https://backan.pigeonposse.com/guide/builder )
 - [Installation](https://backan.pigeonposse.com/guide/core/#installation)

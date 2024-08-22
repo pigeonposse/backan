@@ -82,7 +82,7 @@ const index = pkg => {
 	return `
 - [Documentation](${pkg.data.homepage})
 	- 📙 [Library](${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.core )})
-	- 🏁 [Create]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.create )} )
+	- 🏁 [Create (setup)]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.create )} )
 	- 🖥️ [Server]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.server )} )
 	- 📦 [Builder]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.builder )} )
 - [Installation](${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.core, '#installation' )})`

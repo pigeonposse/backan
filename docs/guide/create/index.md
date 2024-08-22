@@ -49,7 +49,6 @@ export type CreateParams = {
 	name?: string
     /**
      * The template to use for the project.
-     * Can be either 'demo' for a demonstration project or 'skeleton' for a basic setup.
      *
      * @default demo
      */
