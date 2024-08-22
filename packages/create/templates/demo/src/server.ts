@@ -8,7 +8,4 @@
 import { server } from '@backan/server'
 import app    from './app'
 
-server( {
-	fetch : app.fetch,
-	port  : app.port,
-} )
+server( { app } )
