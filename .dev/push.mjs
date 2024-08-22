@@ -18,14 +18,17 @@ await execProcess( {
 	name : 'PUSH REPO',
 	on   : async ( { log } ) => {
 
-		const data  = {
+		const data = {
+			update   : 'update',
 			add      : 'add',
 			origin   : 'origin',
 			workflow : 'workflow',
 		}
+
 		const cache = await initCache( {
 			id     : 'push',
 			values : {
+				[data.update]   : false,
 				[data.add]      : '.',
 				[data.origin]   : 'main',
 				[data.workflow] : false,
@@ -39,6 +42,17 @@ await execProcess( {
 			return joinUrl( packageJson.repository.url )
 		
 		}
+		const preAnswer = await prompt( [
+			{
+				type    : 'confirm',
+				name    : data.update,
+				default : cache.get( data.update ),
+				message : 'Do yo want update version?',
+			},
+		] )
+		
+		if( preAnswer.update ) await import( './update-version.mjs' )
+
 		const answers = await prompt( [
 			{
 				type    : 'input',

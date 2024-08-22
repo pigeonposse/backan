@@ -21,10 +21,10 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-/build
+build
 *.local
 **/__temp__
-/__cache__
+__cache__
 **/__cache__
 **/*.timestamp-*
 
@@ -42,6 +42,6 @@ dist-ssr
 *.sw?
 
 # playwright 
-/test-results
+test-results
 **/test-results
 
