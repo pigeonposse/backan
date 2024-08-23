@@ -35,7 +35,8 @@
 	"include": [
 		"./src/*.vue",
 		"./node_modules/*.json",
-		"../../package.json"
+		"../../package.json",
+		"../../.dev"
 	]
 }
   

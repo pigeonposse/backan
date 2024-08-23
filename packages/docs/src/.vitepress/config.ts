@@ -7,120 +7,16 @@
  */
 
 import { defineConfig } from 'vitepress'
-import {  description, funding, extra, repository, bugs, license} from "../../../../package.json"
-import { joinPath, joinUrl } from '@backan/config/core'
+import { description, extra, repository, license} from "../../../../package.json"
+import { joinUrl } from '@backan/config/core'
 import MarkdownItTaskList from 'markdown-it-task-lists'
 import {srcDir,npmSVG } from './const'
+import { sidebar, nav } from '../../../../.dev/docs.mjs'
 
 const name = extra.productName
-const repoUrl = repository.url.endsWith('/') ? repository.url : repository.url +'/' ;
-
-const sidebar = [
-	{
-	  text: 'Introduction',
-	  items: [
-		{ text: 'What is BACKAN?', link: joinPath(extra.docsPath.guide,'/') },
-	  ]
-	},
-	{
-	  text: 'Reference',
-	  items: [
-		{ 
-			text: '📚 Library', 
-			collapsed: false,
-			items: [
-				{
-					text: '🏁 Get started',
-					link: joinPath(extra.docsPath.core) 
-				},
-				{
-					text: 'App',
-					link: joinPath(extra.docsPath.core, 'app') 
-				},
-				{
-					text: 'Route',
-					link: joinPath(extra.docsPath.core, 'route') 
-				},
-				{
-					text: 'Endpoints',
-					collapsed: true,
-					items: [
-						{
-							text: 'GET',
-							link: joinPath(extra.docsPath.core, 'get') 
-						},
-						{
-							text: 'POST',
-							link: joinPath(extra.docsPath.core, 'post') 
-						},
-						{
-							text: 'STREAM',
-							link: joinPath(extra.docsPath.core, 'stream') 
-						},
-						{
-							text: 'PUT',
-							link: joinPath(extra.docsPath.core, 'put') 
-						},
-						{
-							text: 'DELETE',
-							link: joinPath(extra.docsPath.core, 'delete') 
-						},
-						{
-							text: 'PATCH',
-							link: joinPath(extra.docsPath.core, 'patch') 
-						},
-					]
-				},
-			]
-		},
-		{ 
-			text: '🎉 Create (setup)', 
-			link: joinPath(extra.docsPath.create, 'index.md') 
-		},
-		{ 
-			text: '🗄️ Server', 
-			link: joinPath(extra.docsPath.server, 'index.md') 
-		},
-		{ 
-			text: '📦 Builder', 
-			link: joinPath(extra.docsPath.builder, 'index.md') 
-		},
-	  ]
-	},
-	{
-	  text: 'Contribute',
-	  items: [
-		{ text: 'Report issues', link: bugs.url },
-		{ text: 'Todo', link: joinPath(extra.docsPath.todo,'/v1') },
-	  ]
-	},
-	{
-	  text: 'About',
-	  items: [
-		{ text: 'License', link: repoUrl+ 'blob/main/LICENSE'},
-		{ text: 'More projects', link: extra.collective.web },
-	  ]
-	}
-  ]
-const nav =  [
-	{ 
-	  text: 'Home',
-	  link: '/' 
-	},
-	{ 
-	  text: 'Guide', 
-	  activeMatch: '/^\/guide\//',
-	  link:  joinPath(extra.docsPath.guide),
-	},
-	{ 
-	  text: 'Donate', 
-	  link: funding.url 
-	},
-  ]
 
 export default defineConfig({
-
-  title: `${name} - A Cross-Browser Extension Builder`,
+  title: `${name} - ${extra.shortDesc}`,
   titleTemplate: `:title - ${name} Documentation`,
   description,
   lang: 'en',
@@ -149,15 +45,11 @@ export default defineConfig({
       provider: 'local'
     },
 	editLink: {
-		pattern: joinUrl(repoUrl, 'edit/main/docs/:path'),
+		pattern: joinUrl(repository.url, 'edit/main/docs/:path'),
 	},
 	outline: 'deep',
     nav,
-    sidebar: { 
-		'/guide/': sidebar,
-		'/todo/': sidebar,
-	},
-    // socialLinks: extra.socialLinks as DefaultTheme.SocialLink[],
+    sidebar,
     socialLinks: [
 		{ 
 			icon: {svg: npmSVG}, 

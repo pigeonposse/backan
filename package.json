@@ -31,6 +31,7 @@
 		"serve": "pnpm --filter @backan/server $@",
 		"creator": "pnpm --filter create-backan $@",
 		"doc": "pnpm --filter @backan/docs $@",
+		
 		"build": "pnpm run --sequential \"/^build:.*/\"",
 		"build:core": "pnpm --filter @backan/core build",
 		"build:lib": "pnpm --filter backan build",
@@ -47,6 +48,7 @@
 		"test-file": "vitest run $@",
 		"lint": "pnpm eslint .",
 		"lint-fix": "pnpm eslint . --fix",
+
 		"prepare": "husky .dev/husky",
 		"cm": "cz",
 		"prepush": "pnpm readme && pnpm --filter core build:schema && pnpm --filter api build:schema",
@@ -144,6 +146,7 @@
 	"contributors": [
 	],
 	"extra": {
+		"shortDesc": "All in one web API builder",
 		"productName": "backan",
 		"libraryUrl": "https://www.npmjs.com/package/backan",
 		"libraryId": "backan",

@@ -5,7 +5,7 @@
  */
 
 import {
-	initCache ,
+	initCache,
 	execChild, 
 	execProcess, 
 	getFilteredFileNames, 
