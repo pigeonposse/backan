@@ -2,7 +2,7 @@
 
 ![HEADER](/banner.png)
 
-**`BACKAN`** is a library designed to build **REST API** applications quickly and easily. 
+**`BACKAN`** is a library designed to build **REST API** applications quickly and easily.
 
 > [!IMPORTANT]
 > Currently in phase `Beta`
@@ -41,7 +41,6 @@ Our library is built under the `hono` framework, which is why you will see refer
 
 You want to build an apirest quickly and safely and without thinking about third-party implementations, well here we propose our [alternative](./core/index.md).
 
-
 ## 🏁 Get started with `Backan`
 
 Start building your restAPI app now 🌈.
@@ -54,8 +53,8 @@ Start building your restAPI app now 🌈.
 
 ## 📦 Build your project
 
-- Build your app documentation in a `markdown file`. 
+- Build your app documentation in a `markdown file`.
 - Export to `openapi schema` to a `json file`.
-- Build `binaries` of your project for all __systems__ and __architectures__.
+- Build `binaries` of your project for all **systems** and **architectures**.
 
 [Read more](./builder/index.md)
