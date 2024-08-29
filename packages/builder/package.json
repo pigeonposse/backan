@@ -1,6 +1,6 @@
 {
 	"name": "@backan/builder",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com/",
@@ -17,7 +17,8 @@
 		"backan-builder": "dist/bin.js"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"tsconfig.builder.json"
 	],
 	"module": "dist/main.js",
 	"main": "dist/main.js",
@@ -49,6 +50,7 @@
 	},
 	"devDependencies": {
 		"@backan/core": "workspace:*",
+		"@backan/server": "workspace:*",
 		"@types/archiver": "6.0.2"
 	},
 	"dependencies": {

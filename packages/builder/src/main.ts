@@ -24,14 +24,14 @@ import {
 	getFlagValue, 
 	getPlatform, 
 	joinPath,
+	packageDir,
 	resolvePath,
 	writeFile,
 } from './utils'
 import { zipFilesInDirectory } from './compress'
-import type {
-	BuilderErrors, 
-	BuilderParams, 
-} from './types'
+import type { BuilderParams }  from './types'
+import { logger }              from './logger'
+import { BuildError }          from './error'
 
 export { buildSchema } from './schema'
 export { buildMD } from './md'
@@ -41,47 +41,10 @@ export type * from './types'
  * FUNCTIONS.
  */
 const isDebug = existsFlag( 'debug' )
-const log     = {
-	debug : ( data: object | string ) => isDebug && console.debug( '\n🔥⬛', data )
-	,
-	group : ( data: object | string ) => ( {
-		start : () => {
-
-			console.log( '\n🔥⬛', data )
-			console.group( )
-			
-		},
-		end : () => console.groupEnd( ),
-	} )	,
-	info    : ( data: object | string ) => console.log( `\n🔥🟦 [${name}]`, data ),
-	success : ( data: object | string ) => console.log( `\n🔥✅ [${name}]`, data ),
-	warn    : ( data: object | string ) => console.warn( `\n🔥🟡 [${name}]`, data ),
-	error   : ( data: object | string ) => console.error( `\n🔥❌ [${name}]`, data ),
-}
-
-class BuildError extends Error {
-
-	constructor( 
-		message: BuilderErrors, 
-		data: {
-			platform: string
-			arch: string
-			opts: BuilderParams
-		} & Record<string, unknown>, 
-	) {
-
-		super( message )
-		this.name = this.constructor.name
-
-		Object.assign( this, {
-			data,
-		} )
-
-		if ( Error.captureStackTrace ) Error.captureStackTrace( this, this.constructor )
-	
-	}
-
-}
+const log     = logger( {
+	name,
+	isDebug,
+} )
 
 export const buildConstructor = async ( { 
 	input,
@@ -178,17 +141,27 @@ export const buildConstructor = async ( {
 	const esbuildLog = log.group( 'Building cjs file...' )
 	esbuildLog.start()
 	const { build } = await import( 'esbuild' )
+
+	const getTsConfig = async () =>{
+
+		const userTs      = resolvePath( 'tsconfig.json' )
+		const existUserTs = await existsPath( userTs )
+		if( existUserTs ) return userTs
+		return joinPath( packageDir, 'tsconfig.builder.json' )
+	
+	}
+
 	await build( {
 		entryPoints : [
 			input,
 		],
-		// TODO FIX: This cause unexpected error in production
 		minify   : true,
 		bundle   : true,
 		format   : 'cjs',
 		platform : 'node',
 		target,
 		outfile  : projectBuildCjsFile,
+		tsconfig : await getTsConfig(),
 	} ).catch( err => {
 
 		esbuildLog.end()

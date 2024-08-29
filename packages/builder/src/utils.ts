@@ -17,6 +17,9 @@ import {
 	join, 
 	resolve, 
 } from 'node:path'
+import * as url from 'node:url'
+
+export const packageDir = url.fileURLToPath( new URL( '..', import.meta.url ) )
 
 export const joinPath = join
 export const resolvePath = resolve

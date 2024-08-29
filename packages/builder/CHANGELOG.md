@@ -1,5 +1,11 @@
 # @backan/builder
 
+## 0.0.13
+
+### Patch Changes
+
+- Update esbuild config
+
 ## 0.0.12
 
 ### Patch Changes

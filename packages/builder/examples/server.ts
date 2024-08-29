@@ -1,5 +1,5 @@
 import { App }    from '@backan/core'
-import { server } from '../../server/dist/main.js'
+import { server } from '@backan/server'
 
 export const app = new App( {
 	version     : '1.0.0',
