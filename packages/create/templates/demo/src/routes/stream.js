@@ -53,7 +53,7 @@ route.add(
 
 			return await stream( c, async stream => {
 
-				const write = async ( data: string | object, success:boolean = true ) =>{
+				const write = async ( data, success = true ) =>{
 
 					await stream.writeln( JSON.stringify( {
 						success, 

@@ -1,4 +1,4 @@
-export const getRandomFact = async ( lang: 'de' | 'en' = 'en' ) => {
+export const getRandomFact = async ( lang = 'en' ) => {
 
 	try {
 

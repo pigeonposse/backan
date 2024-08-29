@@ -164,7 +164,7 @@ await group( {
 					value : TEMPLATES.DEMO, 
 				},
 				{
-					label : 'Demo (Typescriot)', 
+					label : 'Demo (TypeScript)', 
 					// @ts-ignore
 					value : TEMPLATES.DEMO_TS, 
 				},
@@ -174,7 +174,7 @@ await group( {
 					value : TEMPLATES.SKELETON, 
 				},
 				{
-					label : 'Skeleton (Typescriot)', 
+					label : 'Skeleton (TypeScript)', 
 					// @ts-ignore
 					value : TEMPLATES.SKELETON_TS, 
 				},

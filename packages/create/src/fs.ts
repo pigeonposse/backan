@@ -16,8 +16,8 @@ import {
 	resolve, 
 } from 'node:path'
 
-export const readJSON =  async ( path: string ) => JSON.parse( await readFilke( path ) )
-export const readFilke = async ( path: string ) => await fsReadFile( path, 'utf8' )
+export const readJSON =  async ( path: string ) => JSON.parse( await readFile( path ) )
+export const readFile = async ( path: string ) => await fsReadFile( path, 'utf8' )
 export const object2string = ( data: string ) => JSON.stringify( data, null, '\t' ) + '\n'
 
 export const changeJSONvalues = async ( 

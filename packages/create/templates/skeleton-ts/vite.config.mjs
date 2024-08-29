@@ -4,6 +4,7 @@
  * @description Vite config.
  * @see https://vitejs.dev/guide
  */
+
 import { defineConfig } from 'vite'
 import dts              from 'vite-plugin-dts'
 import devServer        from '@hono/vite-dev-server'
@@ -28,8 +29,8 @@ export default defineConfig( {
 		target,
 		lib : {
 			entry : [
-				'src/app.ts', // build app only
-				'src/server.ts', // build server
+				'src/app', // build app only
+				'src/server', // build server
 			],  
 			formats : [
 				'es', 
@@ -41,7 +42,7 @@ export default defineConfig( {
 			rollupTypes : true,
 		} ),
 		devServer({
-			entry: 'src/app.ts', // The file path of your application.
+			entry: 'src/app', // The file path of your application.
 		}),
 	],
 } )
