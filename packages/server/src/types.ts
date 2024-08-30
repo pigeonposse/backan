@@ -34,7 +34,7 @@ export type ServerOpts<Env extends object> = {
 	 * The fetch handler for the server.
 	 *
 	 */
-	app: App<Env>,
+	app: InstanceType<typeof App> | App<Env>,
 	/**
 	 * The port to start the server on.
 	 *

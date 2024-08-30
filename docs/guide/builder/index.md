@@ -57,7 +57,10 @@ All of these options are available with the `backan-builder` command by adding t
 ```ts
 type BuilderParams = {
  /**
-  * The input file for the build process.
+  * The app server input file.
+  *
+  * The input can be provided without an extension. 
+  * If the extension is omitted, the system will automatically look for the following extensions: `.ts`, `.js`, `.mjs`, `.mts`.
   */
  input: string, 
  /**
@@ -104,7 +107,7 @@ export type BuilderSchemaParams = {
  /**
   * The instance of the Backan application used to generate the OpenAPI schema.
   */
- app: App<object>,
+ app: App<Env>,
  /**
   * The path where the resulting `json` file will be saved.
   */
@@ -131,7 +134,7 @@ type BuilderMDParams = {
  /**
   * The instance of the Backan application used to generate the OpenAPI schema.
   */
- app: App<object>,
+ app: App<Env>,
  /**
   * The path where the resulting `Markdown` file will be saved.
   */

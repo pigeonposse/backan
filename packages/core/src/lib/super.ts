@@ -66,6 +66,7 @@ export class AppSuper<Env extends object> {
 			
 		},
 	}
+	
 	protected app = new OpenAPIHono<Env>( {
 		defaultHook : ( res, c ) => {
 

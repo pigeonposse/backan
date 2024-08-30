@@ -12,7 +12,7 @@ import type { BuilderSchemaParams } from './types'
  * @throws {Error} Throws an error if there is a problem during the file writing operation.
  * @see https://backan.pigeonposse.com/guide/builder/
  */
-export const buildSchema = async ( { app, output }: BuilderSchemaParams ) => {
+export const buildSchema = async <Env extends object> ( { app, output }: BuilderSchemaParams<Env> ) => {
 
 	try{
 

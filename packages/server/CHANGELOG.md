@@ -1,5 +1,11 @@
 # @backan/server
 
+## 0.0.15
+
+### Patch Changes
+
+- fix issues and update builder for detect input without extensions
+
 ## 0.0.14
 
 ### Patch Changes

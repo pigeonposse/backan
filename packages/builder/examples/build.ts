@@ -1,9 +1,8 @@
-import { resolve } from 'node:path'
-import { build }   from '../src/main'
+import { build } from '../src/main'
 // import { build } from '../dist/main'
 
 build( {
-	input : resolve( 'examples/server.ts' ),
+	input : 'examples/server',
 	// name   : 'backan',
 	// outDir : resolve( 'build' ),
 	// type   : 'all',

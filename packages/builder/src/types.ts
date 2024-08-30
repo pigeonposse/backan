@@ -4,31 +4,35 @@ import type {
 	ERROR_ID, 
 } from './const'
 
-export type BuilderMDParams = {
+export type BuilderMDParams<Env extends object> = {
 	/**
 	 * The instance of the Backan application used to generate the OpenAPI schema.
 	 */
-	app: App<object>,
+	app: App<Env>,
 	/**
 	 * The path where the resulting `Markdown` file will be saved.
 	 */
 	output: string 
 }
-export type BuilderSchemaParams = {
+export type BuilderSchemaParams<Env extends object> = {
 	/**
 	 * The instance of the Backan application used to generate the OpenAPI schema.
 	 */
-	app: App<object>,
+	app: App<Env>,
 	/**
 	 * The path where the resulting `json` file will be saved.
 	 */
 	output: string 
 }
+
 export type BuilderParams = {
 	/**
-	 * The input file for the build process or app.
+	 * The app server input file.
+	 *
+	 * The input can be provided without an extension. 
+	 * If the extension is omitted, the system will automatically look for the following extensions: `.ts`, `.js`, `.mjs`, `.mts`.
 	 */
-	input: string , 
+	input: string, 
 	/**
 	 *
 	 */

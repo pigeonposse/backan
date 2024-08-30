@@ -18,7 +18,7 @@ import type { BuilderMDParams } from './types'
  * @throws {Error} Throws an error if any of the operations fail, including schema generation, file execution, or file removal.
  * @see https://backan.pigeonposse.com/guide/builder/
  */
-export const buildMD = async ( { app, output }: BuilderMDParams ) => {
+export const buildMD = async <Env extends object>( { app, output }: BuilderMDParams<Env> ) => {
 
 	try {
 

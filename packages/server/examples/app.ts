@@ -7,7 +7,8 @@ import {
 import { bugs }    from '../../../package.json'
 import { version } from '../package.json'
 
-const app = new App( {
+type AppEnv = {DB: object}
+const app = new App<AppEnv>( {
 	version,
 	title       : 'BACKAN Example app',
 	description : 'API documentation for BACKAN Example',
@@ -34,7 +35,7 @@ const app = new App( {
 } )
 
 const id                                = 'random'
-const healthRoute                       = new Route( {
+const healthRoute                       = new Route<AppEnv, typeof id>( {
 	path : id,
 } )
 healthRoute.RESPONSE_MESSAGES.ERROR_400 = 'Error getting random data'

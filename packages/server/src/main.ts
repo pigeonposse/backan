@@ -89,7 +89,7 @@ const tryServe = async <Env extends object>(
 }
 
 /**
- * Starts a node server with BACKAN.
+ * Start a server for BACKAN.
  *
  * @template Env - The environment type.
  * @param   {ServerOpts<Env>} opts - The server options.

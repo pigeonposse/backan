@@ -1,11 +1,6 @@
-import { App }    from '@backan/core'
-import { server } from '@backan/server'
 
-export const app = new App( {
-	version     : '1.0.0',
-	title       : 'BACKAN Example app',
-	description : 'API documentation for BACKAN Example',
-} )
+import { server } from '@backan/server'
+import { app }    from './app'
 
 server( {
 	app,

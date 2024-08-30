@@ -77,7 +77,7 @@ export const buildConstructor = async ( {
 	if( flags.onlyOs ) onlyOs = flags.onlyOs
 	if( flags.outDir ) outDir = flags.outDir
 	if( flags.type && Object.values( BUILDER_TYPE ).includes( flags.type ) ) type = flags.type 
-	
+
 	if( !name ) name = getFilename( input )
 		
 	const opts = {
@@ -128,8 +128,34 @@ export const buildConstructor = async ( {
 	}, null, 2 ) )
 
 	// EXIST INPUT
-	const exists = await existsPath( input )
+	const getInput = async ( path: string ) => {
+
+		const validExtensions = [
+			'.ts', '.js', '.mjs', '.mts',
+		]
+
+		if( !validExtensions.some( ext => path.endsWith( ext ) ) ){
+
+			for ( let index = 0; index < validExtensions.length; index++ ) {
+				
+				const input = path + validExtensions[index]
+
+				const exists = await existsPath( input )
+				if( exists ) return input
+			
+			}
+			return undefined
+		
+		}
+		const exists = await existsPath( path )
+		if( exists ) return path
+		return undefined
+	
+	}
+
+	const exists = await getInput( input )
 	if( !exists ) throw new BuildError( ERROR_ID.NO_INPUT, data )
+	else input = exists
 
 	if( plat === 'unknown' ) throw new BuildError( ERROR_ID.PLATFORM_UNKWON, data )
 		
