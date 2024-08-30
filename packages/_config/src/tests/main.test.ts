@@ -15,6 +15,7 @@ test( async ( { section } ) => {
 				
 				},
 			} )
+			
 			addBooleanTest( {
 				title    : 'boolean test',
 				expected : true,

@@ -6,13 +6,11 @@ import {
 
 import { bugs }    from '../../../package.json'
 import { version } from '../package.json'
-import { port }    from '../vite.config'
 
 const app = new App( {
 	version,
 	title       : 'BACKAN Example app',
 	description : 'API documentation for BACKAN Example',
-	port        : port,
 	cors        : {
 		origin       : '*',
 		allowMethods : [

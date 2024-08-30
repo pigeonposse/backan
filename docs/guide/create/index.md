@@ -4,6 +4,8 @@ A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project.
 
 [![NPM Version](https://img.shields.io/npm/v/create-backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/create-backan)
 
+<!-- ![backan-image](/backan-create.png) -->
+
 <video src="/backan-create.webm" controls autoplay />
 
 ## CLI

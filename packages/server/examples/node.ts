@@ -1,12 +1,13 @@
 
 import { server } from '../src/main'
 import app        from './app'
+import { port }   from '../vite.config'
 
 await server( {
-	fetch      : app.fetch,
+	app        : app,
 	hostname   : 'localhost',
 	protocol   : 'http',
-	port       : app.port,
+	port       : port,
 	autoPort   : true,
 	allowFlags : true,
 	onError    : async ( { id, error } ) => {

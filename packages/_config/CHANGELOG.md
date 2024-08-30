@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.0.6
+
+### Patch Changes
+
+- Update create repo and fix server repo
+
 ## 0.0.5
 
 ### Patch Changes

@@ -48,8 +48,7 @@ export const test = ( fn: ( args: TestParams ) => Promise<void> ) => {
 
 					const vifn = vi.fn( async () => {
 
-						// eslint-disable-next-line no-async-promise-executor
-						return new Promise( async ( resolve, reject ) => {
+						return new Promise<boolean>( async ( resolve, reject ) => {
 
 							try {
 
@@ -68,6 +67,7 @@ export const test = ( fn: ( args: TestParams ) => Promise<void> ) => {
 						} ) 
 
 					} )
+
 					const res = await vifn()
 					expect( res ).toBe( expected )
 				

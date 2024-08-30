@@ -39,20 +39,20 @@ Using  *Backan* `Builder` is simple and will work in most cases, but that may no
 import {build} from '@backan/builder'
 
 await build( {
- input  : 'src/server.ts', // JS or TS file
- name   : 'my-app-name', // default is input filename
+ input  : 'src/server.js', // JS or TS file
+ name   : 'app-name', // default is input filename
 } )
 ```
 
 ```bash
-backan-builder --input=src/server.ts --name=backan
+backan-builder --input=src/server.js --name=app-name
 ```
 
 :::
 
 ### ⚙️ Configuration
 
-Todas estas opciones estan disponibles con el comando `backan-builder` añadiendole el sufijo `--` y seguidos de un `=` y su valor. Por ejemplo:  `--input=src/server.ts --name=backan --onlyOs`
+All of these options are available with the `backan-builder` command by adding the suffix `--` and followed by an `=` and its value. 
 
 ```ts
 type BuilderParams = {
@@ -93,7 +93,7 @@ import {app} from './your-backan-app.js'
 
 buildSchema( {
  app    : app,
- output : 'example-openapi.json',
+ output : 'openapi-schema.json',
 } )
 ```
 
@@ -112,7 +112,7 @@ export type BuilderSchemaParams = {
 }
 ```
 
-## Build `markdown` documentation
+## Build `Markdown` documentation
 
 ```js
 import {buildMD} from '@backan/builder'
@@ -120,7 +120,7 @@ import {app} from './your-backan-app.js'
 
 buildMD( {
  app    : app,
- output : 'example-openapi.md',
+ output : 'api-documentation.md',
 } )
 ```
 

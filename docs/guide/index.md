@@ -53,8 +53,8 @@ Start building your restAPI app now 🌈.
 
 ## 📦 Build your project
 
-- Build your app documentation in a `markdown file`.
-- Export to `openapi schema` to a `json file`.
-- Build `binaries` of your project for all **systems** and **architectures**.
+- Create [`binaries`](./builder/index.md#build-binaries) of your project for all **systems** and **architectures** with zero config. 
+- Export the `OpenAPI schema` to a [`JSON file`](./builder/index.md#build-json-schema).
+- Build your application documentation in a [`Markdown file`](./builder/index.md#build-markdown-documentation).
 
 [Read more](./builder/index.md)

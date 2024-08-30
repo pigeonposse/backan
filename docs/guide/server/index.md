@@ -24,17 +24,14 @@ yarn add @backan/server
 import {server} from '@backan/server'
 import {App} from 'backan' 
 
-// create base backan app
+// create backan app
 const app = new App( {
 	version     : '1.0.0',
-	title       : 'BACKAN Example app',
-	port        : 1312,
+	title       : 'BACKAN sample application',
 })
 
 // create server for backan
-server({
-	fetch: app.fetch
-})
+server({ app })
 
 ```
 
@@ -51,10 +48,10 @@ Here is a list of the available options.
  */
 type ServerOpts = {
 	/**
-	 * The fetch handler for the server. 
+	 * The `backan` app instance. 
 	 *
 	 */
-	fetch: App<Env>['fetch'],
+	app: App<Env>,
 	/**
 	 * The port to start the server on.
 	 *
@@ -145,11 +142,27 @@ type ServerInfo = {
 
 ## 💡 Examples
 
+### Zero config
+
+```js
+/**
+ * Start a server with zero config for BACKAN
+ *
+ * @see https://backan.pigeonposse.com/guide/server
+ */
+
+import { server } from '@backan/server'
+import app        from './app.js' // your backan app
+
+await server({ app })
+
+```
+
 ### Fully customized
 
 ```js
 /**
- * Starts a node server with BACKAN Fully customized
+ * Start a fully customized server for BACKAN
  *
  * @see https://backan.pigeonposse.com/guide/server
  */
@@ -158,10 +171,10 @@ import { server } from '@backan/server'
 import app        from './app.js' // your backan app
 
 await server( {
-	fetch      : app.fetch,
+	app        : app,
 	hostname   : 'localhost',
 	protocol   : 'http',
-	port       : app.port,
+	port       : 1312,
 	autoPort   : true,
 	allowFlags : true,
 	onError    : async ( { id, error } ) => {

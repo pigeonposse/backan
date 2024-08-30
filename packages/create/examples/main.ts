@@ -5,7 +5,7 @@ import {
 import { create }    from '../src/main'
 import { TEMPLATES } from '../src/const'
 
-const input     = joinPath( paths.createDir, 'dist' )
+const input     = joinPath( paths.createDir, 'build' )
 const template  = TEMPLATES.DEMO_TS
 const name      = 'examples-' + template
 const inputPath = joinPath( input, name )

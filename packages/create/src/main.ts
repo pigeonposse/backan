@@ -202,7 +202,7 @@ export const create = async ( {
 
 			log.step( '' )
 			outro( `🔥 Let's work with ${green( 'backan' )} 🔥` )
-			process.exit( 0 )
+			// process.exit( 0 )
 	
 		},
 		onExit : async () => {

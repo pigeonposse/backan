@@ -10,7 +10,6 @@ import { App } from 'backan';
 const app = new App( {
 	version     : '1.0.0',
 	title       : 'BACKAN Example app',
-	port        : 1312,
 })
 
 export default app

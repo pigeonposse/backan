@@ -2,49 +2,45 @@ import { test }      from '@backan/config/tests'
 import { create }    from './main'
 import { TEMPLATES } from './const'
 
-test( async ( { section, utils } ) => {
-	
-	section( {
-		title : 'Create templates',
-		fn    : async ( { addBooleanTest } ) => {
+test( async ( { section, utils } ) => ( section( {
+	title : 'Create templates',
+	fn    : async ( { addBooleanTest } ) => {
 
-			addBooleanTest( {
-				title    : 'Create all templates in ./dist path',
-				expected : true,
-				fn       : async ( ) => {
+		await addBooleanTest( {
+			title    : 'Create all templates in ./dist path',
+			expected : true,
+			fn       : async ( ) => {
 
-					try{
+				try{
 
-						for ( const TEMPLATE of Object.values( TEMPLATES ) ) {
+					for ( const TEMPLATE of Object.values( TEMPLATES ) ) {
 
-							const input     = utils.joinPath( utils.paths.createDir, 'dist' )
-							const name      = 'test-' + TEMPLATE
-							const inputPath = utils.joinPath( input, name )
+						const input     = utils.joinPath( utils.paths.createDir, 'dist' )
+						const name      = 'test-' + TEMPLATE
+						const inputPath = utils.joinPath( input, name )
 							
-							await utils.removePathIfExist( inputPath )
+						await utils.removePathIfExist( inputPath )
 
-							await create( {
-								input,
-								name, 
-								install  : false, 
-								template : TEMPLATE, 
-							} )
+						await create( {
+							input,
+							name, 
+							install  : false, 
+							template : TEMPLATE, 
+						} )
 						
-						}
-
-						return true
-					
-					}catch( _e ){
-
-						console.log( _e )
-						return false
-					
 					}
-				
-				},
-			} )
-		
-		},
-	} )
 
-} )
+					return true
+					
+				}catch( _e ){
+
+					console.error( _e )
+					return false
+					
+				}
+				
+			},
+		} )
+		
+	},
+} ) ) )

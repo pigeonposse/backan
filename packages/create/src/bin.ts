@@ -97,54 +97,7 @@ await group( {
 			
 			},
 		} ) 
-		// try{
 
-		// 	while ( !validName ) {
-
-		// 		if ( projectName !== undefined ) {
-
-		// 			log.success( `Name of project: ${gray( projectName )}` )
-		// 			break
-			
-		// 		}
-
-		// 		projectName = await text( {
-		// 			message     : 'What is the name of the project?', 
-		// 			placeholder : name.toLowerCase() + '-project',
-		// 		} ) as string
- 
-		// 		if ( typeof projectName === 'string' ) {
-
-		// 			if ( !isValidProjectName( projectName ) ) {
-
-		// 				log.error( 'The project name contains invalid characters. Only letters, numbers, hyphens, and underscores are allowed.' )
-		// 				projectName = undefined // Reset to ask again
-		// 				continue
-				
-		// 			}
-
-		// 			const inputDir    = resolvePath( projectName )
-		// 			const existsInput = await existsPath( inputDir )
-
-		// 			if ( existsInput ) {
-
-		// 				log.error( `The project name "${projectName}" already exists. Please choose a different name.` )
-		// 				projectName = undefined // Reset to ask again
-				
-		// 			} else validName = true
-			
-		// 		}
-		
-		// 	}
-		
-		// }catch( _e ){
-
-		// 	cancelRes( )
-		
-		// }
-
-		// return projectName
-	
 	},
 
 	[OPTS.TEMPLATE] : async () => {
