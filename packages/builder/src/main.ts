@@ -131,7 +131,7 @@ export const buildConstructor = async ( {
 	const getInput = async ( path: string ) => {
 
 		const validExtensions = [
-			'.ts', '.js', '.mjs', '.mts',
+			'.ts', '.js', '.mjs', '.mts', '.cjs', '.cts',
 		]
 
 		if( !validExtensions.some( ext => path.endsWith( ext ) ) ){
