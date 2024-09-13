@@ -68,14 +68,14 @@ await execProcess( {
 					pkg.data.homepage, 
 					joinPath( 'guide', docsPathID ), 
 				)
-				
+
 				if( docsPathID === 'core' ) {
 
-					content = replaceRelativeUrls( 
+					content = content + '\n' + replaceRelativeUrls( 
 						getContent( await readFile( docsIndexPath ) ), 
 						pkg.data.homepage, 
 						joinPath( 'guide' ), 
-					) + '\n' + content
+					) 
 				
 				}
 				await addTextBetweenAMark( filePath, '<!-- PIGEONPOSSE START DOCS -->', '<!-- PIGEONPOSSE END DOCS -->', content )
