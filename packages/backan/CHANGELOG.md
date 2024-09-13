@@ -1,5 +1,14 @@
 # backan
 
+## 0.0.19
+
+### Patch Changes
+
+- update readmes
+
+- Updated dependencies []:
+  - @backan/core@0.0.19
+
 ## 0.0.18
 
 ### Patch Changes

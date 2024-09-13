@@ -23,6 +23,24 @@ All in one web API builder.
 <!-- PIGEONPOSSE END HEADER -->
 
 <!-- PIGEONPOSSE START DOCS -->
+## Table of Contents
+
+  - [🔑 Installation](#-installation)
+    - [Install only `core`](#install-only-core)
+  - [Setup](#setup)
+  - [Create `App` instace](#create-app-instace)
+  - [Create `Route`](#create-route)
+  - [Add `Endpoints`](#add-endpoints)
+  - [What is BACKAN?](#what-is-backan)
+  - [Project intention](#project-intention)
+  - [Contains](#contains)
+  - [Todo](#todo)
+  - [What is `backan` built with?](#what-is-backan-built-with)
+  - [🏁 Get started with `Backan`](#-get-started-with-backan)
+  - [🗄️ Get started with `Backan` server](#-get-started-with-backan-server)
+  - [📦 Build your project](#-build-your-project)
+
+
 Start building your restAPI app now 🌈.
 
 ## 🔑 Installation
@@ -87,6 +105,9 @@ yarn create backan
 - [GET](https://backan.pigeonposse.com/guide/core/get)
 - [POST](https://backan.pigeonposse.com/guide/core/post)
 - [STREAM](https://backan.pigeonposse.com/guide/core/stream)
+
+## What is BACKAN?
+
 ![HEADER](https://backan.pigeonposse.com/banner.png)
 
 **`BACKAN`** is a library designed to build **REST API** applications quickly and easily.

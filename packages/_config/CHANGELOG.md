@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.0.9
+
+### Patch Changes
+
+- update readmes
+
 ## 0.0.8
 
 ### Patch Changes

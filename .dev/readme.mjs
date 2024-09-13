@@ -4,7 +4,7 @@
  * @description Readme.
  */
 
-import { readme } from './templates/readme.mjs'
+import { readme }  from './templates/readme.mjs'
 import {
 	pkg, 
 	addTextBetweenAMark,
@@ -13,7 +13,8 @@ import {
 	existPath,
 	joinPath,
 	paths,
-	joinUrl, 
+	joinUrl,
+	createMDIndex, 
 } from '@backan/config/core'
 
 await execProcess( {
@@ -71,11 +72,12 @@ await execProcess( {
 
 				if( docsPathID === 'core' ) {
 
-					content = content + '\n' + replaceRelativeUrls( 
+					content = content + '\n\n## What is BACKAN?\n\n' + replaceRelativeUrls( 
 						getContent( await readFile( docsIndexPath ) ), 
 						pkg.data.homepage, 
 						joinPath( 'guide' ), 
 					) 
+					content =  createMDIndex( content ) + '\n\n' + content 
 				
 				}
 				await addTextBetweenAMark( filePath, '<!-- PIGEONPOSSE START DOCS -->', '<!-- PIGEONPOSSE END DOCS -->', content )

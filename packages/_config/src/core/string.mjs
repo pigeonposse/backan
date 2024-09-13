@@ -65,3 +65,33 @@ export const imgUrl = ( { name, color = 'black', url, logo = false, type = false
 }
 
 export const object2string = data => JSON.stringify( data, null, '\t' ) + '\n'
+
+export const createMDIndex = markdown => {
+
+    const headerRegex = /^(#{1,6})\s+(.*)$/gm;
+    
+    let match;
+    const index = [];
+    
+    // Iterar sobre todos los encabezados encontrados
+    while ((match = headerRegex.exec(markdown)) !== null) {
+        const level = match[1].length; // Número de # indica el nivel del encabezado
+        const title = match[2].trim();
+        const anchor = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, ''); // Crear anchor
+        
+        index.push({
+            level,
+            title,
+            anchor
+        });
+    }
+    
+    let indexMarkdown = '## Table of Contents\n\n';
+    
+    index.forEach(item => {
+        const indent = '  '.repeat(item.level - 1);
+        indexMarkdown += `${indent}- [${item.title}](#${item.anchor})\n`;
+    });
+    
+    return indexMarkdown;
+}
