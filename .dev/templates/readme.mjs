@@ -71,7 +71,7 @@ ${
 }
 [![Version](https://img.shields.io/npm/v/${pkg.data.extra.libraryId}?color=blue&style=for-the-badge&label=Version)](${pkg.data.extra.libraryUrl})
 
-Create endpoints with type validations and OpenApi documentation, safely and quickly.
+[**BACKAN**](${pkg.data.homepage}) Create endpoints with type validations and OpenApi documentation, safely and quickly.
 
 `
 
@@ -80,6 +80,8 @@ Create endpoints with type validations and OpenApi documentation, safely and qui
 const index = pkg => {
 
 	return `
+## More from Backan
+
 - [Documentation](${pkg.data.homepage})
 	- 📚 [Library](${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.core )})
 	- 🏁 [Create (setup)]( ${joinUrl( pkg.data.homepage, pkg.data.extra.docsPath.create )} )

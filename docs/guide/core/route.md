@@ -76,16 +76,5 @@ export type RouteParams<Path extends string> = {
 	 * @example 'users'
 	 */
 	path: Path
-	// /**
-	//  * Optional custom messages.
-	//  */
-	// msg?: {
-	// 	/**
-	// 	 * Custom message for 400 Bad Request errors.
-	// 	 *
-	// 	 * @example 'Invalid request parameters'
-	// 	 */
-	// 	error400?: string
-	// }
 }
 ```

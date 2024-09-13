@@ -183,5 +183,5 @@ export class App<Env extends object> extends AppSuper<Env>{
 		return this.app.getOpenAPIDocument( this.#openApiConfig )
 	
 	}
-
+	
 }

@@ -1,7 +1,5 @@
 # Create BACKAN project
 
-A CLI for creating new Backan project.
-
 <!-- PIGEONPOSSE START HEADER -->
 
 [![HEADER](https://raw.githubusercontent.com/pigeonposse/backan/main/docs/public/banner.png)](https://backan.pigeonposse.com/)
@@ -17,14 +15,107 @@ A CLI for creating new Backan project.
 [![License](https://img.shields.io/github/license/pigeonposse/backan?color=green&style=for-the-badge&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/backan?color=blue&style=for-the-badge&label=Version)](https://www.npmjs.com/package/backan)
 
-Create endpoints with type validations and OpenApi documentation, safely and quickly.
+[**BACKAN**](https://backan.pigeonposse.com/) Create endpoints with type validations and OpenApi documentation, safely and quickly.
 
 
 <!-- PIGEONPOSSE END HEADER -->
 
 > This package contains **_BACKAN_** Create library
 
+<!-- PIGEONPOSSE START DOCS -->
+A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project. 
+
+[![NPM Version](https://img.shields.io/npm/v/create-backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/create-backan)
+
+<!-- ![backan-image](https://backan.pigeonposse.com/backan-create.png) -->
+
+<video src="https://backan.pigeonposse.com/backan-create.webm" controls autoplay />
+
+## CLI
+
+```bash 
+# using NPM
+npm create backan@latest
+# using PNPM
+pnpm create backan@latest
+# using YARN
+yarn create backan@latest
+```
+
+## API
+
+You can also use `create-backan` programmatically
+
+```js
+import { create } from 'create-backan';
+
+await create( {
+	input    : '.',
+	name     : 'my-app-name',
+	template : 'demo', 
+	install  : false, 
+	open     : 'code',
+});
+```
+
+## Parameters
+
+```ts
+export type CreateParams = {
+    /**
+     * Directory to build.
+     *
+     * @default .
+     */
+	input?: string
+    /**
+     * The name of the project & dirmane.
+     */
+	name?: string
+    /**
+     * The template to use for the project.
+     *
+     * @default demo
+     */
+	template?: typeof TEMPLATES[keyof typeof TEMPLATES]
+    /**
+     * Whether to automatically install dependencies after creating the project.
+     *
+     * @default false
+     */
+	install?: typeof INSTALL_OPTS[keyof typeof INSTALL_OPTS]
+    /**
+     * Specifies whether to open the project in an IDE or text editor after creation.
+     * Can be `false` for no IDE, or specify an IDE/editor to open.
+     * Supported options include:
+     * - `'code'`: Visual Studio Code
+     * - `'subl'`: Sublime Text
+     * - `'webstorm'`: WebStorm.
+     *
+     * @default false
+     */
+	open?: typeof OPEN_OPTS[keyof typeof OPEN_OPTS]
+}
+```
+
+## Examples
+
+```bash
+npm create backan@latest --name=my-app-name --template='skeleton' --open='code' --install='npm'
+```
+
+```bash
+pnpm create backan@latest --name=my-app-name --template='skeleton' --open='code' --install='pnpm'
+```
+
+## library
+
+Now it's time to start with `backan`. [Read more](https://backan.pigeonposse.com/guide/core/app)
+<!-- PIGEONPOSSE END DOCS -->
+
 <!-- PIGEONPOSSE START INDEX -->
+
+## More from Backan
 
 - [Documentation](https://backan.pigeonposse.com/)
 	- 📚 [Library](https://backan.pigeonposse.com/guide/core)

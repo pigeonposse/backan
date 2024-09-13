@@ -1,7 +1,6 @@
 # 🔥 Backan - Core
 
 All in one web API builder.
-Create endpoints with type validations and OpenApi documentation, safely and quickly
 
 <!-- PIGEONPOSSE START HEADER -->
 
@@ -18,14 +17,83 @@ Create endpoints with type validations and OpenApi documentation, safely and qui
 [![License](https://img.shields.io/github/license/pigeonposse/backan?color=green&style=for-the-badge&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/backan?color=blue&style=for-the-badge&label=Version)](https://www.npmjs.com/package/backan)
 
-Create endpoints with type validations and OpenApi documentation, safely and quickly.
+[**BACKAN**](https://backan.pigeonposse.com/) Create endpoints with type validations and OpenApi documentation, safely and quickly.
 
 
 <!-- PIGEONPOSSE END HEADER -->
 
 > This package contains **_BACKAN_** Core library
 
+<!-- PIGEONPOSSE START DOCS -->
+Start building your restAPI app now 🌈.
+
+## 🔑 Installation
+
+```bash [npm]
+npm install backan
+```
+```bash [pnpm]
+pnpm i backan
+```
+```bash [yarn]
+yarn add backan
+```
+
+[![NPM Version](https://img.shields.io/npm/v/backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/backan)
+
+
+### Install only `core`
+
+```bash [npm]
+npm install @backan/core
+```
+```bash [pnpm]
+pnpm i @backan/core
+```
+```bash [yarn]
+yarn add @backan/core
+```
+
+[![NPM Version](https://img.shields.io/npm/v/%40backan%2Fcore?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/core)
+
+
+## Setup
+
+You can automatically create a `backan` template with:
+
+```bash [npm]
+npm create backan
+```
+```bash [pnpm]
+pnpm create backan
+```
+```bash [yarn]
+yarn create backan
+```
+
+
+<video src="https://backan.pigeonposse.com/backan-create.webm" controls/>
+
+[Read more](https://backan.pigeonposse.com/guide/create/index)
+
+## Create `App` instace
+
+[Read more](https://backan.pigeonposse.com/guide/core/app)
+
+## Create `Route` 
+
+[Read more](https://backan.pigeonposse.com/guide/core/route)
+
+## Add `Endpoints` 
+
+- [GET](https://backan.pigeonposse.com/guide/core/get)
+- [POST](https://backan.pigeonposse.com/guide/core/post)
+- [STREAM](https://backan.pigeonposse.com/guide/core/stream)
+<!-- PIGEONPOSSE END DOCS -->
+
 <!-- PIGEONPOSSE START INDEX -->
+
+## More from Backan
 
 - [Documentation](https://backan.pigeonposse.com/)
 	- 📚 [Library](https://backan.pigeonposse.com/guide/core)

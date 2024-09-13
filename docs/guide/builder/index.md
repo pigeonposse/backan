@@ -1,6 +1,12 @@
 # *Backan* `Builder`
 
-Compile your `backan` server into multiple binaries, available for each **platform** and **architecture**.
+The backan builder library allows you to build multiple things. Among others:
+
+- [**Executables / binaries**](#build-binaries)
+- [**client library**](#create-client) 
+- [**JSON schema file**](#build-json-types-schema)
+- [**TypeScript definitions file**](#build-json-types-schema)
+- [**Markdown documentation**](#build-markdown-documentation)
 
 ## 🔑 Installation
 
@@ -23,6 +29,8 @@ yarn add @backan/builder
 [![NPM Version](https://img.shields.io/npm/v/@backan/builder?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/builder)
 
 ## Build `binaries`
+
+Package your Node.js project into an executable that can be run even on devices without Node.js installed.
 
 The construction of the binary allows compilation on `arm` and `x64` architecture.
 > If you compile on an `x64` system it will not create the binaries for `arm`, but if you compile on `arm` it will create the binaries for both architectures.
@@ -64,7 +72,7 @@ type BuilderParams = {
   */
  input: string, 
  /**
-  *
+  * Binary name.
   */
  name?: string,
  /**
@@ -85,10 +93,11 @@ type BuilderParams = {
   * @default 'all'
   */
  type?: 'all'|'cjs'|'bin'
+ 
 }
 ```
 
-## Build `JSON` schema
+## Build `JSON` | `Types` schema
 
 ```js
 import {buildSchema} from '@backan/builder'
@@ -104,14 +113,20 @@ buildSchema( {
 
 ```ts
 export type BuilderSchemaParams = {
- /**
-  * The instance of the Backan application used to generate the OpenAPI schema.
-  */
- app: App<Env>,
- /**
-  * The path where the resulting `json` file will be saved.
-  */
- output: string 
+	/**
+	 * The instance of the Backan application used to generate the OpenAPI schema.
+	 */
+	app: App<Env>,
+	/**
+	 * The path where the resulting `json` file will be saved.
+	 */
+	output: string 
+	/**
+	 * Generate dts file.
+	 *
+	 * @default true
+	 */
+	dts?: boolean
 }
 ```
 
@@ -131,13 +146,43 @@ buildMD( {
 
 ```ts
 type BuilderMDParams = {
- /**
-  * The instance of the Backan application used to generate the OpenAPI schema.
-  */
- app: App<Env>,
- /**
-  * The path where the resulting `Markdown` file will be saved.
-  */
- output: string 
+	/**
+	 * The instance of the Backan application used to generate the OpenAPI schema.
+	 */
+	app: App<Env>,
+	/**
+	 * The path where the resulting `Markdown` file will be saved.
+	 */
+	output: string 
 }
+```
+
+## Create client
+
+Create a client for your `backan` API and make your frontend app able to access your API easily and with type. To achieve this, backan makes use of the [`openapi-featch`](https://openapi-ts.dev/openapi-fetch/) library.
+
+```ts
+import { createClient } from '@backan/builder'
+import type { paths }   from './openapi.d.ts' // Generate with buildSchema
+
+const client = createClient<paths>( {
+	baseUrl : 'http://localhost:1312/',
+} )
+
+export {client}
+
+```
+### Example of call
+
+```ts
+import {client} from './client'
+const response = await client.GET( '/random/child', {
+	params : {
+		query : {
+			value : 'myValue', 
+		}, 
+	},
+} )
+
+console.log( response ) 
 ```

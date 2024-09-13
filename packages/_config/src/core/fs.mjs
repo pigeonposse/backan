@@ -312,9 +312,8 @@ export const writeSync = ( projectPath, txt ) => {
 export const joinPath = path.join
 export const joinUrl = ( ...parts ) => {
 
-	// Eliminar barras inclinadas adicionales al principio y al final de cada parte
 	parts = parts.map( part => part.replace( /^\/+|\/+$/g, '' ) )
-	// Unir las partes con una barra inclinada entre ellas
+
 	return parts.join( '/' )
 
 }
@@ -323,7 +322,7 @@ export const addTextBetweenAMark = async ( projectPath, startMarker, endMarker, 
 
 	try {
 
-		const filePath    = path.join( pkg.dir, projectPath )
+		const filePath    = projectPath
 		const fileContent = await fs.promises.readFile( filePath, 'utf-8' )
 		const startIndex  = fileContent.indexOf( startMarker )
 		const endIndex    = fileContent.indexOf( endMarker )

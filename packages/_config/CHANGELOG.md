@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.0.8
+
+### Patch Changes
+
+- add feats to builder like: create client, create types definition etc
+
 ## 0.0.7
 
 ### Patch Changes

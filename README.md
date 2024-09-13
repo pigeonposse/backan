@@ -55,12 +55,14 @@ DEVELOPED BY Angelo 🐦🌈
 [![License](https://img.shields.io/github/license/pigeonposse/backan?color=green&style=for-the-badge&logoColor=white)](/LICENSE)
 [![Version](https://img.shields.io/npm/v/backan?color=blue&style=for-the-badge&label=Version)](https://www.npmjs.com/package/backan)
 
-Create endpoints with type validations and OpenApi documentation, safely and quickly.
+[**BACKAN**](https://backan.pigeonposse.com/) Create endpoints with type validations and OpenApi documentation, safely and quickly.
 
 
 <!-- PIGEONPOSSE END HEADER -->
 
 <!-- PIGEONPOSSE START INDEX -->
+
+## More from Backan
 
 - [Documentation](https://backan.pigeonposse.com/)
 	- 📚 [Library](https://backan.pigeonposse.com/guide/core)

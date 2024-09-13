@@ -1,40 +1,8 @@
-
-// import { Route } from '../src/lib/route'
-// import { App }   from '../src/lib/app'
-import {
-	Route, App, 
-} from '../src/main'
-import { bugs }    from '../../../package.json'
-import { version } from '../package.json'
-
-const app = new App( {
-	version,
-	title       : 'BACKAN Example app',
-	description : 'API documentation for BACKAN Example',
-	cors        : {
-		origin       : '*',
-		allowMethods : [
-			'GET', 
-		],
-	},
-	docs : {
-		path   : '/docs',
-		active : true,
-	},
-	health : {
-		path   : '/health',
-		active : true,
-		opts   : {
-			additionalResponseValues : {
-				customValue : false,
-			},
-		},
-	}, 
-	contact : bugs,
-} )
+import { Route }       from '@backan/core'
+import type { AppEnv } from './env'
 
 const id    = 'random'
-const route = new Route( {
+const route = new Route<AppEnv, typeof id>( {
 	path : id,
 } )
 
@@ -91,9 +59,9 @@ route.add(
 
 	}, 
 )
-
-const childRoute                       = new Route( {
-	path : 'child',
+const childId                          = 'child'
+const childRoute                       = new Route<AppEnv, typeof childId>( {
+	path : childId,
 
 } )
 childRoute.RESPONSE_MESSAGES.ERROR_400 = 'Error getting child data'
@@ -137,7 +105,4 @@ childRoute.add(
 )
 
 route.addRoute( childRoute )
-
-app.addRoute( route )
-
-export default app
+export { route }

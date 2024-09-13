@@ -23,6 +23,12 @@ export type BuilderSchemaParams<Env extends object> = {
 	 * The path where the resulting `json` file will be saved.
 	 */
 	output: string 
+	/**
+	 * Generate dts file.
+	 *
+	 * @default true
+	 */
+	dts?: boolean
 }
 
 export type BuilderParams = {
@@ -34,7 +40,7 @@ export type BuilderParams = {
 	 */
 	input: string, 
 	/**
-	 *
+	 * Binary name.
 	 */
 	name?: string,
 	/**
