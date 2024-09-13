@@ -22,6 +22,7 @@ await execProcess( {
 
 		const getContent = content => {
 
+			content     = content.replace( /<video[^>]*>(.*?)<\/video>|<video[^>]*\/>/gs, '' )
 			const lines = content.split( '\n' )
 				.filter( line => !line.startsWith( ':::' ) ) // Filtrar líneas que no empiezan por ':::'
 			const index = lines.findIndex( line => line.startsWith( '#' ) )
@@ -54,18 +55,29 @@ await execProcess( {
 
 		const convertReadme = async id => {
 			
-			const filePath   = id === 'monorepo' ? 'README.md' : joinPath( paths.workspaceDir,'packages', id, 'README.md' )
-			const docsPathID = id === 'backan' ? 'core' : id
-			const docsPath   = joinPath( paths.workspaceDir, 'docs', 'guide', docsPathID, 'index.md' ) 
-			const existsDocs = await existPath( docsPath )
+			const filePath      = id === 'monorepo' ? 'README.md' : joinPath( paths.workspaceDir,'packages', id, 'README.md' )
+			const docsPathID    = id === 'backan' ? 'core' : id
+			const docsPath      = joinPath( paths.workspaceDir, 'docs', 'guide', docsPathID, 'index.md' ) 
+			const docsIndexPath = joinPath( paths.workspaceDir, 'docs', 'guide', 'index.md' ) 
+			const existsDocs    = await existPath( docsPath )
 
 			if( existsDocs ){
 
-				const content = replaceRelativeUrls( 
+				let content = replaceRelativeUrls( 
 					getContent( await readFile( docsPath ) ), 
 					pkg.data.homepage, 
 					joinPath( 'guide', docsPathID ), 
 				)
+				
+				if( docsPathID === 'core' ) {
+
+					content = replaceRelativeUrls( 
+						getContent( await readFile( docsIndexPath ) ), 
+						pkg.data.homepage, 
+						joinPath( 'guide' ), 
+					) + '\n' + content
+				
+				}
 				await addTextBetweenAMark( filePath, '<!-- PIGEONPOSSE START DOCS -->', '<!-- PIGEONPOSSE END DOCS -->', content )
 			
 			}

@@ -29,7 +29,7 @@ A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project.
 
 <!-- ![backan-image](https://backan.pigeonposse.com/backan-create.png) -->
 
-<video src="https://backan.pigeonposse.com/backan-create.webm" controls autoplay />
+
 
 ## CLI
 
