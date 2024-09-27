@@ -1,6 +1,7 @@
 {
 	"name": "@backan/core",
-	"version": "0.0.19",
+	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
+	"version": "0.0.20",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com",
@@ -44,11 +45,11 @@
 		"lint": "pnpm eslint src"
 	},
 	"devDependencies": {
-		"@hono/vite-dev-server": "0.14.0"
+		"@hono/vite-dev-server": "0.16.0"
 	},
 	"dependencies": {
-		"@hono/swagger-ui": "0.4.0",
-		"@hono/zod-openapi": "0.15.3",
-		"hono": "4.5.8"
+		"@hono/swagger-ui": "0.4.1",
+		"@hono/zod-openapi": "0.16.2",
+		"hono": "4.6.3"
 	}
 }

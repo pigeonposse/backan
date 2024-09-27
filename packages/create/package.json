@@ -1,6 +1,7 @@
 {
 	"name": "create-backan",
-	"version": "0.0.19",
+	"description": "Quickly create a backan application to get started",
+	"version": "0.0.20",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com",
@@ -49,7 +50,7 @@
 		"lint": "pnpm eslint src"
 	},
 	"dependencies": {
-		"@clack/prompts": "^0.7.0",
-		"picocolors": "^1.0.1"
+		"@clack/prompts": "0.7.0",
+		"picocolors": "1.1.0"
 	}
 }

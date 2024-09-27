@@ -1,5 +1,11 @@
 # @backan/core
 
+## 0.0.20
+
+### Patch Changes
+
+- Update deps and add description to pkg
+
 ## 0.0.19
 
 ### Patch Changes

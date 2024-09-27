@@ -199,38 +199,6 @@ export const buildConstructor = async ( {
 	
 	} )
 	esbuildLog.end()
-	
-	/**
-	 * SUCRASE BUILD.
-	 *
-	 * @see https://sucrase.io/
-	 */
-	// const sucraseLog = log.group( 'Building cjs file...' )
-	// sucraseLog.start()
-
-	// try {
-
-	// 	const { code } = transform( input, {
-	// 		transforms : [
-	// 			'imports',
-	// 		],
-	// 		production : true, // optimiza el código para producción si es posible
-	// 		filePath   : input,
-	// 	} )
-
-	// 	await writeFile( projectBuildIndexFile, code )
-
-	// 	sucraseLog.end()
-
-	// } catch ( err ) {
-
-	// 	sucraseLog.end()
-	// 	throw new BuildError( ERROR_ID.ON_SUCRASE, {
-	// 		...data,
-	// 		error : err,
-	// 	} )
-
-	// }
 
 	/**
 	 * NCC BUILD.
