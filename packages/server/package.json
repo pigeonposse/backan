@@ -1,7 +1,7 @@
 {
 	"name": "@backan/server",
 	"description": "Build the Backan server with zero config.",
-	"version": "0.0.21",
+	"version": "0.0.22",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com",

@@ -103,9 +103,20 @@ type BuilderParams = {
 
 ## Build `JSON` | `Types` schema
 
-```js
+
+```js twoslash
+// @filename: app.js
+import { App } from 'backan';
+
+const app = new App( {
+	version     : '1.0.0',
+	title       : 'BACKAN Example app',
+})
+
+export  {app}
+// ---cut---
 import {buildSchema} from '@backan/builder'
-import {app} from './your-backan-app.js' 
+import {app} from './app.js' 
 
 buildSchema( {
  app    : app,
@@ -136,9 +147,19 @@ export type BuilderSchemaParams = {
 
 ## Build `Markdown` documentation
 
-```js
+```js twoslash
+// @filename: app.js
+import { App } from 'backan';
+
+const app = new App( {
+	version     : '1.0.0',
+	title       : 'BACKAN Example app',
+})
+
+export  {app}
+// ---cut---
 import {buildMD} from '@backan/builder'
-import {app} from './your-backan-app.js' 
+import {app} from './app.js' 
 
 buildMD( {
  app    : app,
@@ -165,7 +186,8 @@ type BuilderMDParams = {
 
 Create a client for your `backan` API and make your frontend app able to access your API easily and with type. To achieve this, backan makes use of the [`openapi-featch`](https://openapi-ts.dev/openapi-fetch/) library.
 
-```ts
+```ts twoslash
+// @noErrors
 import { createClient } from '@backan/builder'
 import type { paths }   from './openapi.d.ts' // Generate with buildSchema
 
@@ -178,8 +200,20 @@ export {client}
 ```
 ### Example of call
 
-```ts
-import {client} from './client'
+```ts twoslash
+// @filename: client.js
+import { createClient } from '@backan/builder'
+// @noErrors
+import type { paths }   from './openapi.d.ts' // Generate with buildSchema
+
+const client = createClient<paths>( {
+	baseUrl : 'http://localhost:1312/',
+} )
+
+export {client}
+
+// ---cut---
+import {client} from './client.js'
 const response = await client.GET( '/random/child', {
 	params : {
 		query : {
