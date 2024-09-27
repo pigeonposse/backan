@@ -1,5 +1,14 @@
 # backan
 
+## 0.0.23
+
+### Patch Changes
+
+- update docs
+
+- Updated dependencies []:
+  - @backan/core@0.0.23
+
 ## 0.0.22
 
 ### Patch Changes
