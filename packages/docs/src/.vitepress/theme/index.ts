@@ -2,8 +2,12 @@
 import { onMounted, h } from 'vue';
 import mediumZoom from 'medium-zoom';
 import DefaultTheme from "vitepress/theme";
+import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 
 import "./custom.css";
+import 'virtual:group-icons.css'
+import '@shikijs/vitepress-twoslash/style.css'
+
 // @ts-ignore
 import PostCard from "./components/PostCard.vue";
 // @ts-ignore
@@ -36,11 +40,12 @@ export default {
 	  'home-features-after': () => h(HomeContent),
     })
   },
-  enhanceApp({ app }) {
+  async enhanceApp({ app }) {
 
     app.component("PostCard", PostCard);
 	app.component('Posts', Posts);
 	// app.component('post', PostLayout);
+	app.use(TwoslashFloatingVue);
 
   },
 };

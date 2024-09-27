@@ -124,7 +124,7 @@ childRoute.add(
 		try {
 			
 			return route.response.addSuccessResponse( c, {
-				child : true as const,
+				child : true,
 			} ) 
 	
 		} catch ( e ) {

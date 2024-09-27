@@ -6,7 +6,7 @@
 
 Add `GET` endpoint to a route
 
-```ts
+```js twoslash
 import { Route } from 'backan';
 
 const id    = 'random'

@@ -51,10 +51,13 @@ Start building your restAPI app now 🌈.
 npm install backan
 ```
 ```bash [pnpm]
-pnpm i backan
+pnpm add backan
 ```
 ```bash [yarn]
 yarn add backan
+```
+```bash [bun]
+bun add backan
 ```
 
 [![NPM Version](https://img.shields.io/npm/v/backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/backan)
@@ -66,10 +69,13 @@ yarn add backan
 npm install @backan/core
 ```
 ```bash [pnpm]
-pnpm i @backan/core
+pnpm add @backan/core
 ```
 ```bash [yarn]
 yarn add @backan/core
+```
+```bash [bun]
+bun add backan
 ```
 
 [![NPM Version](https://img.shields.io/npm/v/%40backan%2Fcore?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/core)
@@ -87,6 +93,9 @@ pnpm create backan
 ```
 ```bash [yarn]
 yarn create backan
+```
+```bash [bun]
+bun create backan
 ```
 
 

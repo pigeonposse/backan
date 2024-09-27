@@ -170,6 +170,11 @@
 			"url": "https://pigeonposse.com",
 			"web": "https://pigeonposse.com",
 			"email": "dev@pigeonposse.com",
+			"socialUser": {
+				"twitter": "pigeonposse_",
+				"instagram": "pigeon.posse",
+				"medium": "pigeonposse"
+			},
 			"social": {
 				"twitter": "https://twitter.com/pigeonposse_",
 				"instagram": "https://www.instagram.com/pigeon.posse/",

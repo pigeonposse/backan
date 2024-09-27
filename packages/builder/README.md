@@ -46,6 +46,10 @@ pnpm i @backan/builder
 yarn add @backan/builder 
 ```
 
+```bash [bun]
+bun add @backan/builder 
+```
+
 
 [![NPM Version](https://img.shields.io/npm/v/@backan/builder?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/builder)
 
@@ -63,7 +67,7 @@ Using  *Backan* `Builder` is simple and will work in most cases, but that may no
 ### 📈 usage
 
 
-```js
+```js twoslash
 import {build} from '@backan/builder'
 
 await build( {

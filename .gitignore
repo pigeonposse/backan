@@ -59,6 +59,7 @@ packages/**/build
 
 # project 
 **/dist
+**/dev-dist
 **/__temp__
 /__cache__
 **/__cache__

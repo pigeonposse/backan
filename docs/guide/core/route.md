@@ -4,7 +4,7 @@
 
 ## Usage
 
-```ts
+```ts twoslash
 import { Route } from 'backan';
 
 const id    = 'random'
@@ -41,7 +41,11 @@ route.add(
 					if ( !response.ok ) throw new Error( 'Network response was not ok' )
 			
 					const data = await response.json()
-					return data.text
+					
+					if(typeof data.text !== 'string') throw new Error( 'Network response is no a string' )
+
+					return data.text as string
+					
 				
 				} catch ( error ) {
 
@@ -68,7 +72,7 @@ route.add(
 
 ## Parameters
 
-```ts
+```ts twoslash
 export type RouteParams<Path extends string> = {
 	/**
 	 * The path of the route.

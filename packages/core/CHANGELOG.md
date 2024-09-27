@@ -1,5 +1,11 @@
 # @backan/core
 
+## 0.0.21
+
+### Patch Changes
+
+- update deps and add docs deps
+
 ## 0.0.20
 
 ### Patch Changes

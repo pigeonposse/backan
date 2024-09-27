@@ -20,7 +20,7 @@ yarn add @backan/server
 
 ## 📈 usage
 
-```js
+```js twoslash
 import {server} from '@backan/server'
 import {App} from 'backan' 
 
@@ -41,7 +41,7 @@ The `backan` server comes ready to use without any configuration, but this does 
 
 Here is a list of the available options.
 
-```ts
+```ts 
 /**
  * Options for server function. 
  * 

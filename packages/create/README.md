@@ -40,13 +40,15 @@ npm create backan@latest
 pnpm create backan@latest
 # using YARN
 yarn create backan@latest
+# using BUN
+bun create backan@latest
 ```
 
 ## API
 
 You can also use `create-backan` programmatically
 
-```js
+```js twoslash
 import { create } from 'create-backan';
 
 await create( {

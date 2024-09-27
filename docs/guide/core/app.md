@@ -4,7 +4,7 @@
 
 ## Usage
 
-```js
+```js twoslash
 import { App } from 'backan';
 
 const app = new App( {

@@ -28,6 +28,9 @@ build/*
 dist
 **/dist/*
 
+dev-dist
+**/dev-dist/*
+
 .svelte-kit/*
 **/.svelte-kit/*
 

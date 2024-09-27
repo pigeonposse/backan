@@ -1,6 +1,4 @@
 
-// import { Route } from '../src/lib/route'
-// import { App }   from '../src/lib/app'
 import {
 	Route, App, 
 } from '../dist/main'
