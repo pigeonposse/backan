@@ -1,7 +1,7 @@
 {
 	"name": "@backan/core",
 	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
-	"version": "0.0.23",
+	"version": "0.0.24",
 	"type": "module",
 	"license": "GPL-3.0",
 	"homepage": "https://backan.pigeonposse.com",

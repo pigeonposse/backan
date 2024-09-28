@@ -9,9 +9,6 @@ import {
 	rm,
 } from 'node:fs/promises'
 import {
-	arch, platform, 
-} from 'node:os'
-import {
 	parse,
 	dirname,
 	join, 
@@ -60,57 +57,6 @@ export const writeFile = async ( path: string, data: string ) => {
 	await fsWriteFile( path, data, 'utf8' )
 
 }
-
-export const getArch = () => {
-
-	const architecture = arch()
-	
-	switch ( architecture ) {
-
-		case 'arm64' :
-			return 'arm64'
-		case 'arm' :
-			return 'arm64'
-		case 'x64' :
-			return 'x64'
-		default :
-			return 'unknown'
-	
-	}
-
-}
-
-export const getPlatform = async () => {
-
-	const p = platform()
-
-	switch ( p ) {
-
-		case 'win32' :
-			return 'win'
-		case 'darwin' :
-			return 'macos'
-		case 'linux' :
-			return 'linux'
-		default :
-			return 'unknown'
-	
-	}
-
-}
-
-export const getFlagValue = ( key: string ) =>{
-
-	const flags = process.argv
-	for ( const flag of flags ) {
-
-		if ( flag.startsWith( `--${key}=` ) ) return flag.split( '=' )[1]
-	
-	}
-	return undefined
-
-}
-export const existsFlag = ( v: string ) => process.argv.includes( `--${v}` )
 
 export const exec = async ( cmd: string ) => {
  

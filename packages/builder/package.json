@@ -1,6 +1,6 @@
 {
 	"name": "@backan/builder",
-	"version": "0.0.23",
+	"version": "0.0.24",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"type": "module",
 	"license": "GPL-3.0",
@@ -51,14 +51,10 @@
 	},
 	"devDependencies": {
 		"@backan/core": "workspace:*",
-		"@backan/server": "workspace:*",
-		"@types/archiver": "6.0.2"
+		"@backan/server": "workspace:*"
 	},
 	"dependencies": {
-		"@vercel/ncc": "0.38.2",
-		"@yao-pkg/pkg": "5.15.0",
-		"archiver": "7.0.1",
-		"esbuild": "0.24.0",
+		"binarium": "0.1.2",
 		"openapi-fetch": "0.12.2",
 		"openapi-to-md": "1.0.24",
 		"openapi-typescript": "7.4.1"

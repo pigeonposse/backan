@@ -1,5 +1,11 @@
 # @backan/builder
 
+## 0.0.24
+
+### Patch Changes
+
+- refactor builder for use binarium libray
+
 ## 0.0.23
 
 ### Patch Changes
