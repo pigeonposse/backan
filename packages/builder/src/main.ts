@@ -8,6 +8,7 @@ import {
 } from 'binarium'
 import { extra } from '../../../package.json'
 
+BINARIUM_CONSTS.icon = '🔥'
 BINARIUM_CONSTS.name = extra.libraryId.toUpperCase()
 
 export { build }
