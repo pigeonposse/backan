@@ -1,22 +1,24 @@
 // @ts-nocheck
 import Conf from 'conf'
-import { paths } from './const.mjs'
+
+import { paths }    from './const.mjs'
 import { readJSON } from './fs.mjs'
 
-export const initCache = async ( { id, values, cached = true } ) => {
+export const initCache = async ( {
+	id, values, cached = true,
+} ) => {
+
 	const getAppName = async () => {
 
 		const packageJsonPath = paths.libPkg
 		const packageJson     = await readJSON( packageJsonPath )
 		return packageJson.name
-	
+
 	}
 	const name = await getAppName()
 
 	// Crear una instancia de Conf, se utilizará id como clave de configuración base.
-	const config = new Conf( {
-		projectName : name+ '-dev',
-	} )
+	const config = new Conf( { projectName: name + '-dev' } )
 
 	return {
 		values,
@@ -27,16 +29,17 @@ export const initCache = async ( { id, values, cached = true } ) => {
 			if ( cached && c && typeof c === 'object' && v in c ) return c[v]
 			if ( typeof values === 'object' && v in values ) return values[v]
 			throw new Error( `Cache value is unexpected: ${v}` )
-		
+
 		},
 		set : obj => {
 
 			const currentConfig = config.get( id ) || {}
 			const updatedConfig = {
-				...currentConfig, ...obj, 
+				...currentConfig,
+				...obj,
 			}
 			config.set( id, updatedConfig )
-		
+
 		},
 	}
 
@@ -44,7 +47,7 @@ export const initCache = async ( { id, values, cached = true } ) => {
 
 // import NodeCache from 'node-cache'
 // export const initCache = ( { id, values } ) => {
-	
+
 // 	const cacheInstace = new NodeCache()
 // 	return {
 // 		values,
@@ -55,7 +58,7 @@ export const initCache = async ( { id, values, cached = true } ) => {
 // 			if( c && typeof c === 'object' && v in c ) return c[v]
 // 			if( typeof values === 'object' && v in values ) return values[v]
 // 			throw Error( 'Cache value is unexpected', v )
-		
+
 // 		},
 // 		set : obj => cacheInstace.set( id, obj ),
 // 	}

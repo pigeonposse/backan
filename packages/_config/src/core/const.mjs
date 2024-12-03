@@ -1,11 +1,11 @@
 import {
-	joinPath, 
-	pkg, 
+	joinPath,
+	pkg,
 } from './fs.mjs'
 
 const workspaceDir     = pkg.dir
 const workspacePkg     = joinPath( workspaceDir, 'package.json' )
-const workflowsDir    = joinPath( workspaceDir, '.github', 'workflows' )
+const workflowsDir     = joinPath( workspaceDir, '.github', 'workflows' )
 const packagesDir      = joinPath( workspaceDir, 'packages' )
 const tempDir          = joinPath( workspaceDir, '__temp__' )
 const documentationDir = joinPath( workspaceDir, 'docs' )

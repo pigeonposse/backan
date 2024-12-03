@@ -1,16 +1,15 @@
 /**
  * TODO prompt.
- *
  * @description Add prompt for edit project TODO List.
  */
 
 import {
 	initCache,
-	execChild, 
-	execProcess, 
-	getFilteredFileNames, 
-	joinUrl, 
-	paths, 
+	execChild,
+	execProcess,
+	getFilteredFileNames,
+	joinUrl,
+	paths,
 	prompt,
 	readJSON,
 } from '@backan/config/core'
@@ -39,11 +38,9 @@ await execProcess( {
 
 		const fileNames = await getFilteredFileNames( {
 			path       : paths.workflowsDir,
-			extensions : [
-				'.yml',
-			],
+			extensions : [ '.yml' ],
 		} )
-		
+
 		const data  = {
 			file   : 'file',
 			inputs : 'inputs',
@@ -70,7 +67,7 @@ await execProcess( {
 				message : `Set inputs for workflow in comma separed.\nExample: version=${version},platform=ubuntu-22.04\n`,
 			},
 		] )
-		
+
 		let formattedInputs = ''
 		if ( answers.inputs && !answers.inputs.split().includes( ' ' ) ) {
 
@@ -80,30 +77,29 @@ await execProcess( {
 				formattedInputs   = inputsArray
 					.map( input => {
 
-						const [
-							key, value,
-						] = input.split( '=' )
+						const [ key, value ] = input.split( '=' )
 						return `-f ${key}=${value}`
-				
+
 					} )
 					.join( ' ' )
-			
-			}catch( e ){
+
+			}
+			catch ( e ) {
 
 				formattedInputs = ''
-			
+
 			}
-		
+
 		}
 
 		const createdWorkflow = await execChild( `gh workflow run ${answers.file}.yml ${formattedInputs}` )
-		if( createdWorkflow.stderr ) throw Error( 'Error creating workflow' )
+		if ( createdWorkflow.stderr ) throw Error( 'Error creating workflow' )
 
 		const result = await execChild( 'echo $(gh run list --limit 1 --json databaseId,url --jq \'.[0].url\')' )
-		if( result.stdout ) log.info( `GitHub action url: ${result.stdout}` )
-		
+		if ( result.stdout ) log.info( `GitHub action url: ${result.stdout}` )
+
 		cache.set( answers )
-	
+
 	},
 	onSuccess : ( { log } ) => log.success( `See action progress: ${actionUrl}` ),
 } )

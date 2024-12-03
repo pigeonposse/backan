@@ -1,20 +1,21 @@
-import { OpenAPIHono }  from '@hono/zod-openapi'
-import * as response    from './response'
+import { OpenAPIHono } from '@hono/zod-openapi'
+
+import {
+	ERROR_ID,
+	RESPONSE_MESSAGES,
+} from './const'
+import * as response from './response'
+import { validate }  from './validate'
+
 import type { Route }   from './route'
 import type { Context } from 'hono'
-import { validate }     from './validate'
-import {
-	ERROR_ID, 
-	RESPONSE_MESSAGES, 
-} from './const'
 
 export class AppSuper<Env extends object> {
 
-	constructor(){}
-	
+	constructor() {}
+
 	/**
 	 * Validation option works with zod library.
-	 *
 	 * @see https://zod.dev/
 	 * @example const stringSchema = validation.string()
 	 */
@@ -38,7 +39,7 @@ export class AppSuper<Env extends object> {
 		...response,
 		addSuccessResponse : response.addSuccessResponse,
 		add500ErrorObject  : response.add500ErrorObject,
-		add500Error        : ( c: Context, e: unknown ) =>{
+		add500Error        : ( c: Context, e: unknown ) => {
 
 			const data = {
 				id    : this.ERROR_ID.SERVER_FETCH,
@@ -46,50 +47,47 @@ export class AppSuper<Env extends object> {
 			}
 			this.logger( JSON.stringify( response.add500ErrorObject( data ) ) )
 			return response.add500Error( c, data )
-		
+
 		},
-		add400ErrorObject : ( e: unknown ) =>{
+		add400ErrorObject : ( e: unknown ) => {
 
 			return response.add400ErrorObject( {
 				id      : e && typeof e == 'object' && 'message' in e ? e.message as string : this.ERROR_ID.BAD_REQUEST,
 				message : this.RESPONSE_MESSAGES.ERROR_400,
 				error   : e,
 			} )
-		
+
 		},
-		add400Error : ( c: Context, e: unknown ) =>{
+		add400Error : ( c: Context, e: unknown ) => {
 
 			const res =  this.response.add400ErrorObject( e )
 			// console.log( res )
 			this.logger( JSON.stringify( res ) )
 			return response.add400Error( c, res )
-			
+
 		},
 	}
-	
-	protected app = new OpenAPIHono<Env>( {
-		defaultHook : ( res, c ) => {
 
-			if( !res.success ) 
-				return this.response.add400Error( c, {
-					id      : this.ERROR_ID.VALIDATION,
-					message : this.RESPONSE_MESSAGES.ERROR_400,
-					error   : res.error.issues,
-				} )
-	
-			return res
-		
-		},
-	} )
-	
+	protected app = new OpenAPIHono<Env>( { defaultHook : ( res, c ) => {
+
+		if ( !res.success )
+			return this.response.add400Error( c, {
+				id      : this.ERROR_ID.VALIDATION,
+				message : this.RESPONSE_MESSAGES.ERROR_400,
+				error   : res.error.issues,
+			} )
+
+		return res
+
+	} } )
+
 	/**
 	 * Logs a string of data, determining if it's JSON and formatting accordingly.
 	 * This method can be overridden to customize how logging is handled within the application.
 	 * By default, it logs data to the console, parsing JSON strings if necessary.
-	 *
 	 * @param {string} data - The string to log. If it's JSON, it will be parsed and logged as an object.
 	 * @example
-	 * 
+	 *
 	 * // Customizing logger
 	 * app.logger = (data: string) => {
 	 *   // Custom logging logic, e.g., writing to a file
@@ -98,74 +96,74 @@ export class AppSuper<Env extends object> {
 	 */
 	logger = ( data: string ) => {
 
-		const isJsonString = ( str: string ) =>{
+		const isJsonString = ( str: string ) => {
 
 			try {
 
 				JSON.parse( str )
 				return true
-			
-			} catch ( _e ) {
+
+			}
+			catch ( _e ) {
 
 				return false
-			
+
 			}
-		
+
 		}
-		
+
 		const isJSON    = isJsonString( data )
 		const timestamp = new Date().toISOString()
 
-		console.log( isJSON ? {
-			...JSON.parse( data ),
-			time : timestamp,
-		} : data )
-	
+		console.log( isJSON
+			? {
+				...JSON.parse( data ),
+				time : timestamp,
+			}
+			: data )
+
 	}
-	
+
 	/**
 	 * Adds a route to the BACKAN application instance.
-	 *
 	 * @param {Route} route - The route to add, containing the path and the associated app.
 	 * @example
 	 */
-	addRoute<R extends Route<Env, string>>( route: R ){
+	addRoute<R extends Route<Env, string>>( route: R ) {
 
 		this.app.route( route.path, route.app )
-	
+
 	}
 
-	// eslint-disable-next-line jsdoc/tag-lines, jsdoc/require-param
+	// eslint-disable-next-line jsdoc/require-param
 	/**
 	 * Registers an OpenAPI component within the app's OpenAPI registry.
-	 *
 	 * @returns {void}
 	 */
-	addComponent<T extends Parameters<typeof this.app.openAPIRegistry.registerComponent>[0]>( 
+	addComponent<T extends Parameters<typeof this.app.openAPIRegistry.registerComponent>[0]>(
 		type: T,
 		name: string,
-		component: Parameters<typeof this.app.openAPIRegistry.registerComponent<T>>[2], 
-	){
+		component: Parameters<typeof this.app.openAPIRegistry.registerComponent<T>>[2],
+	) {
 
 		return this.app.openAPIRegistry.registerComponent<T>( type, name, component )
-	
+
 	}
-	
+
 	/**
 	 * Retrieves a list of unique paths from the application's routes.
-	 *
 	 * @returns {string[]} - An array of unique paths as strings.
 	 */
-	getPaths(){
-	
+	getPaths() {
+
 		const uniquePaths = new Set(
 			this.app.all().routes
 				.filter( d => d.path && !d.path.endsWith( '*' ) )
 				.map( d => d.path ),
 		)
-		
+
 		return Array.from( uniquePaths )
-	
+
 	}
 
 }

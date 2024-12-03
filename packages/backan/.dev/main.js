@@ -1,8 +1,10 @@
+import { paths } from '@backan/config/core'
 import {
-	copyDir, joinPath, paths, 
-} from '@backan/config/core'
+	joinPath,
+	copyDir,
+} from '@dovenv/utils'
 
-copyDir( 
-	joinPath( paths.coreDir, 'dist' ), 
-	joinPath( paths.libDir, 'dist' ), 
-)
+copyDir( {
+	input  : joinPath( paths.coreDir, 'dist' ),
+	output : joinPath( paths.libDir, 'dist' ),
+} )

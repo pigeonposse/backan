@@ -1,12 +1,21 @@
 <script setup>
-import ArticleCard from "./PostCard.vue";
+import ArticleCard          from './PostCard.vue'
 import { data as articles } from '../posts.data.ts'
 
 </script>
 <template>
-    <div class="container-posts">
-        <ArticleCard v-for="article in articles" :title="article.title" :href="article.url" :date="article.date.string" :image="article.image" :author="article.author" :category="article.category" :excerpt="article.excerpt"/>
-    </div>
+	<div class="container-posts">
+		<ArticleCard
+			v-for="article in articles"
+			:title="article.title"
+			:href="article.url"
+			:date="article.date.string"
+			:image="article.image"
+			:author="article.author"
+			:category="article.category"
+			:excerpt="article.excerpt"
+		/>
+	</div>
 </template>
 <style scoped>
 .container-posts {

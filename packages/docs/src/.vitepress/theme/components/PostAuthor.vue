@@ -1,19 +1,33 @@
 <!--.vitepress/theme/MyLayout.vue-->
 <script setup>
 import { useData } from 'vitepress'
-const { page, frontmatter } = useData()
+
+const {
+	page, frontmatter,
+} = useData()
 </script>
 
-<template >
+<template>
 	<template v-if="frontmatter.category">
 		<div class="aside-custom">
 			<bold>{{ page.title }}</bold>
 
-			<Badge type="info" :text="frontmatter.category" class="aside-badge"/>
+			<Badge
+				type="info"
+				:text="frontmatter.category"
+				class="aside-badge"
+			/>
 			<div class="author-section">
 				<!-- <span class="outline-title">Author</span> -->
-				<a :href="frontmatter.author.url" target="_blank">
-					<img :src="'https://github.com/' + frontmatter.author.github+'.png?size=72'" alt="author image" width="40">
+				<a
+					:href="frontmatter.author.url"
+					target="_blank"
+				>
+					<img
+						:src="'https://github.com/' + frontmatter.author.github+'.png?size=72'"
+						alt="author image"
+						width="40"
+					>
 					<span>{{ frontmatter.author.name }}</span>
 				</a>
 			</div>

@@ -3,13 +3,13 @@
  */
 export type HealthRouteOptions = {
 	/** Custom message for a 400 Bad Request error during the health check. */
-	error400?: string;
+	error400?                 : string
 	/** Summary of the health check endpoint. */
-	summary?: string;
+	summary?                  : string
 	/** Detailed description of the health check endpoint. */
-	description?: string;
+	description?              : string
 	/**
-	 * Additional response parameters that can be included in the health check response. 
+	 * Additional response parameters that can be included in the health check response.
 	 */
-	additionalResponseValues?: Record<string, boolean>;
+	additionalResponseValues? : Record<string, boolean>
 }

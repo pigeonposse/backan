@@ -1,2 +1,2 @@
 
-export * from "./core/main.mjs";
+export * from './core/main.mjs'

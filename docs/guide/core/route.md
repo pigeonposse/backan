@@ -9,63 +9,62 @@ import { Route } from 'backan';
 
 const id    = 'random'
 const route = new Route( {
-	path : id,
+ path : id,
 } )
 
-route.add( 
-	{
-		method    : 'get',
-		path      : '/',
-		summary   : 'Test route with response json',
-		responses : {
-			200 : route.response.responseJSONSuccess( route.validation.object( {
-				fact : route.validation.string(),
-			} ) ),
-			400 : route.response.responseJSONError400,
-			500 : route.response.responseJSONError500,
-		},
-		tags : [
-			id,
-		],
-	},
-	async c => {
+route.add(
+ {
+  method    : 'get',
+  path      : '/',
+  summary   : 'Test route with response json',
+  responses : {
+   200 : route.response.responseJSONSuccess( route.validation.object( {
+    fact : route.validation.string(),
+   } ) ),
+   400 : route.response.responseJSONError400,
+   500 : route.response.responseJSONError500,
+  },
+  tags : [
+   id,
+  ],
+ },
+ async c => {
 
-		try {
+  try {
 
-			const getRandomFact = async () => {
+   const getRandomFact = async () => {
 
-				try {
+    try {
 
-					const response = await fetch( 'https://uselessfacts.jsph.pl/random.json?language=en' )
-	
-					if ( !response.ok ) throw new Error( 'Network response was not ok' )
-			
-					const data = await response.json()
-					
-					if(typeof data.text !== 'string') throw new Error( 'Network response is no a string' )
+     const response = await fetch( 'https://uselessfacts.jsph.pl/random.json?language=en' )
 
-					return data.text as string
-					
-				
-				} catch ( error ) {
+     if ( !response.ok ) throw new Error( 'Network response was not ok' )
 
-					console.error( 'Error fetching the random fact:', error )
-					return 'Could not fetch a random fact at this time.'
-				
-				}
-			
-			}
-			return route.response.addSuccessResponse( c, {
-				fact : await getRandomFact(),
-			} ) 
-	
-		} catch ( e ) {
+     const data = await response.json()
 
-			return route.response.add500Error( c, e )
-	
-		}
+     if(typeof data.text !== 'string') throw new Error( 'Network response is no a string' )
 
-	}, 
+     return data.text as string
+
+    } catch ( error ) {
+
+     console.error( 'Error fetching the random fact:', error )
+     return 'Could not fetch a random fact at this time.'
+
+    }
+
+   }
+   return route.response.addSuccessResponse( c, {
+    fact : await getRandomFact(),
+   } )
+
+  } catch ( e ) {
+
+   return route.response.add500Error( c, e )
+
+  }
+
+ },
 )
 
 ```
@@ -74,11 +73,11 @@ route.add(
 
 ```ts twoslash
 export type RouteParams<Path extends string> = {
-	/**
-	 * The path of the route.
-	 *
-	 * @example 'users'
-	 */
-	path: Path
+ /**
+  * The path of the route.
+  *
+  * @example 'users'
+  */
+ path: Path
 }
 ```

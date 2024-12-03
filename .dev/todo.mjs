@@ -1,15 +1,14 @@
 /**
  * TODO prompt.
- *
  * @description Add prompt for edit project TODO List.
  */
 
 import {
 	initCache,
-	execProcess, 
-	getFilteredFileNames, 
-	joinPath, 
-	paths, 
+	execProcess,
+	getFilteredFileNames,
+	joinPath,
+	paths,
 	prompt,
 	printMDFromPath,
 } from '@backan/config/core'
@@ -21,9 +20,7 @@ await execProcess( {
 		const todoFolderPath = paths.todoDir
 		const fileNames      = await getFilteredFileNames( {
 			path       : todoFolderPath,
-			extensions : [
-				'.md',
-			],
+			extensions : [ '.md' ],
 		} )
 		const data           = {
 			selectedFile  : 'selectedFile',
@@ -36,9 +33,9 @@ await execProcess( {
 				[data.showInConsole] : true,
 			},
 		} )
-		
+
 		const logFilesPathList = async () => {
-			
+
 			const list = fileNames.map( file => ( {
 				name : file.replace( '.md', '' ),
 				path : joinPath( todoFolderPath, file ),
@@ -55,32 +52,32 @@ await execProcess( {
 
 			const list =  {
 				name : fileName,
-				path : joinPath( todoFolderPath, fileName + '.md' ) ,
-			} 
+				path : joinPath( todoFolderPath, fileName + '.md' ),
+			}
 
 			log.info( {
 				description : 'List of files in the "TODO" folder:',
 				list,
 			} )
-		
+
 		}
 		const logFileContent = async fileName => {
 
 			const selectedFilePath = joinPath( todoFolderPath, fileName + '.md' )
 
 			log.box( await printMDFromPath( selectedFilePath ) )
-		
+
 		}
-		let secondAns 
+		let secondAns
 		const firstAnswers = await prompt( [
 			{
 				type    : 'list',
 				name    : data.selectedFile,
 				message : 'Select a file from the "TODO" folder:',
 				choices : [
-					...fileNames, 
-					'All'
-					,'Exit',
+					...fileNames,
+					'All',
+					'Exit',
 				],
 				default : cache.get( data.selectedFile ),
 			},
@@ -99,34 +96,36 @@ await execProcess( {
 
 			if ( firstAnswers.selectedFile !== 'All' ) {
 
-				if ( secondAns.showInConsole ) 
+				if ( secondAns.showInConsole )
 					await logFileContent( firstAnswers.selectedFile )
 
 				await logFilePath( firstAnswers.selectedFile )
-			
-			}else {
+
+			}
+			else {
 
 				if ( secondAns.showInConsole ) {
 
 					for ( const fileName of fileNames ) {
 
 						await logFileContent( fileName )
-				
+
 					}
-				
+
 				}
-		
+
 				await logFilesPathList()
-			
+
 			}
 
-		} else log.info( '✨ Exit from TODOs' )
+		}
+		else log.info( '✨ Exit from TODOs' )
 
 		cache.set( {
 			[data.selectedFile]  : firstAnswers.selectedFile,
 			[data.showInConsole] : typeof secondAns.showInConsole == 'boolean' ? secondAns.showInConsole : true,
 		} )
-	
+
 	},
 
 } )

@@ -1,17 +1,16 @@
 /**
  * TODO prompt.
- *
  * @description Add prompt for edit project TODO List.
  */
 
 import {
-	exec, 
-	execProcess, 
-	joinUrl, 
-	paths, 
+	exec,
+	execProcess,
+	joinUrl,
+	paths,
 	prompt,
 	readJSON,
-	initCache, 
+	initCache,
 } from '@backan/config/core'
 
 await execProcess( {
@@ -40,7 +39,7 @@ await execProcess( {
 			const packageJsonPath = paths.workspacePkg
 			const packageJson     = await readJSON( packageJsonPath )
 			return joinUrl( packageJson.repository.url )
-		
+
 		}
 		const preAnswer = await prompt( [
 			{
@@ -50,8 +49,8 @@ await execProcess( {
 				message : 'Do yo want update version?',
 			},
 		] )
-		
-		if( preAnswer.update ) await import( './update-version.mjs' )
+
+		if ( preAnswer.update ) await import( './update-version.mjs' )
 
 		const answers = await prompt( [
 			{
@@ -71,7 +70,7 @@ await execProcess( {
 		await exec( `git add ${answers.add} && pnpm cm && git push -f origin ${answers.origin}` )
 
 		log.success( `Successfully commit to ${await getRepoUrl()}\n` )
-		
+
 		const answersAfter = await prompt( [
 			{
 				type    : 'confirm',
@@ -82,8 +81,8 @@ await execProcess( {
 		] )
 
 		cache.set( answers )
-		if( answersAfter.workflow ) await import( './workflow.mjs' )
-	
+		if ( answersAfter.workflow ) await import( './workflow.mjs' )
+
 	},
 } )
 

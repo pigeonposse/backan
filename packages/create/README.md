@@ -17,23 +17,20 @@
 
 [**BACKAN**](https://backan.pigeonposse.com/) Create endpoints with type validations and OpenApi documentation, safely and quickly.
 
-
 <!-- PIGEONPOSSE END HEADER -->
 
 > This package contains **_BACKAN_** Create library
 
 <!-- PIGEONPOSSE START DOCS -->
-A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project. 
+A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project.
 
 [![NPM Version](https://img.shields.io/npm/v/create-backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/create-backan)
 
 <!-- ![backan-image](https://backan.pigeonposse.com/backan-create.png) -->
 
-
-
 ## CLI
 
-```bash 
+```bash
 # using NPM
 npm create backan@latest
 # using PNPM
@@ -52,11 +49,11 @@ You can also use `create-backan` programmatically
 import { create } from 'create-backan';
 
 await create( {
-	input    : '.',
-	name     : 'my-app-name',
-	template : 'demo', 
-	install  : false, 
-	open     : 'code',
+ input    : '.',
+ name     : 'my-app-name',
+ template : 'demo',
+ install  : false,
+ open     : 'code',
 });
 ```
 
@@ -69,23 +66,23 @@ export type CreateParams = {
      *
      * @default .
      */
-	input?: string
+ input?: string
     /**
      * The name of the project & dirmane.
      */
-	name?: string
+ name?: string
     /**
      * The template to use for the project.
      *
      * @default demo
      */
-	template?: typeof TEMPLATES[keyof typeof TEMPLATES]
+ template?: typeof TEMPLATES[keyof typeof TEMPLATES]
     /**
      * Whether to automatically install dependencies after creating the project.
      *
      * @default false
      */
-	install?: typeof INSTALL_OPTS[keyof typeof INSTALL_OPTS]
+ install?: typeof INSTALL_OPTS[keyof typeof INSTALL_OPTS]
     /**
      * Specifies whether to open the project in an IDE or text editor after creation.
      * Can be `false` for no IDE, or specify an IDE/editor to open.
@@ -96,7 +93,7 @@ export type CreateParams = {
      *
      * @default false
      */
-	open?: typeof OPEN_OPTS[keyof typeof OPEN_OPTS]
+ open?: typeof OPEN_OPTS[keyof typeof OPEN_OPTS]
 }
 ```
 
@@ -120,10 +117,10 @@ Now it's time to start with `backan`. [Read more](https://backan.pigeonposse.com
 ## More from Backan
 
 - [Documentation](https://backan.pigeonposse.com/)
-	- 📚 [Library](https://backan.pigeonposse.com/guide/core)
-	- 🏁 [Create (setup)]( https://backan.pigeonposse.com/guide/create )
-	- 🗄️ [Server]( https://backan.pigeonposse.com/guide/server )
-	- 📦 [Builder]( https://backan.pigeonposse.com/guide/builder )
+  - 📚 [Library](https://backan.pigeonposse.com/guide/core)
+  - 🏁 [Create (setup)]( https://backan.pigeonposse.com/guide/create )
+  - 🗄️ [Server]( https://backan.pigeonposse.com/guide/server )
+  - 📦 [Builder]( https://backan.pigeonposse.com/guide/builder )
 - [Installation](https://backan.pigeonposse.com/guide/core/#installation)
 <!-- PIGEONPOSSE END INDEX -->
 
@@ -150,7 +147,7 @@ This software is licensed with **[GPL-3.0](/LICENSE)**.
 
 ## 🐦 About us
 
-*PigeonPosse* is a ✨ **code development collective** ✨ focused on creating practical and interesting tools that help developers and users enjoy a more agile and comfortable experience. Our projects cover various programming sectors and we do not have a thematic limitation in terms of projects.
+_PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating practical and interesting tools that help developers and users enjoy a more agile and comfortable experience. Our projects cover various programming sectors and we do not have a thematic limitation in terms of projects.
 
 [![More](https://img.shields.io/badge/Read-more-grey?style=for-the-badge)](https://github.com/pigeonposse)
 
@@ -177,37 +174,32 @@ This software is licensed with **[GPL-3.0](/LICENSE)**.
 
 <!-- PIGEONPOSSE START MARK -->
 <!--
-██████╗ ██╗ ██████╗ ███████╗ ██████╗ ███╗   ██╗   
-██╔══██╗██║██╔════╝ ██╔════╝██╔═══██╗████╗  ██║   
-██████╔╝██║██║  ███╗█████╗  ██║   ██║██╔██╗ ██║   
-██╔═══╝ ██║██║   ██║██╔══╝  ██║   ██║██║╚██╗██║   
-██║     ██║╚██████╔╝███████╗╚██████╔╝██║ ╚████║   
-╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝   
-                                                  
-██████╗  ██████╗ ███████╗███████╗███████╗         
-██╔══██╗██╔═══██╗██╔════╝██╔════╝██╔════╝         
-██████╔╝██║   ██║███████╗███████╗█████╗           
-██╔═══╝ ██║   ██║╚════██║╚════██║██╔══╝           
-██║     ╚██████╔╝███████║███████║███████╗         
-╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝         
-                                                  
-                                                  
-                                                  
-█████╗█████╗█████╗█████╗█████╗█████╗█████╗        
-╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝        
-                                                  
-                                                  
-                                                  
+██████╗ ██╗ ██████╗ ███████╗ ██████╗ ███╗   ██╗
+██╔══██╗██║██╔════╝ ██╔════╝██╔═══██╗████╗  ██║
+██████╔╝██║██║  ███╗█████╗  ██║   ██║██╔██╗ ██║
+██╔═══╝ ██║██║   ██║██╔══╝  ██║   ██║██║╚██╗██║
+██║     ██║╚██████╔╝███████╗╚██████╔╝██║ ╚████║
+╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
+
+██████╗  ██████╗ ███████╗███████╗███████╗
+██╔══██╗██╔═══██╗██╔════╝██╔════╝██╔════╝
+██████╔╝██║   ██║███████╗███████╗█████╗
+██╔═══╝ ██║   ██║╚════██║╚════██║██╔══╝
+██║     ╚██████╔╝███████║███████║███████╗
+╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
+
+█████╗█████╗█████╗█████╗█████╗█████╗█████╗
+╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+
 ██████╗  █████╗  ██████╗██╗  ██╗ █████╗ ███╗   ██╗
 ██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔══██╗████╗  ██║
 ██████╔╝███████║██║     █████╔╝ ███████║██╔██╗ ██║
 ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══██║██║╚██╗██║
 ██████╔╝██║  ██║╚██████╗██║  ██╗██║  ██║██║ ╚████║
 ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
-                                                                      
-                                                
+
 REPOSITORY: https://github.com/pigeonposse/backan
-AUTHORS: 
+AUTHORS:
 	- Angelo (https://github.com/angelespejo)
 
 DEVELOPED BY Angelo 🐦🌈

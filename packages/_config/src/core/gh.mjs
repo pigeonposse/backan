@@ -1,8 +1,9 @@
 import {
-	execSync, exec, 
+	execSync,
+	exec,
 } from 'node:child_process'
-import { join }      from 'node:path'
 import { rename }    from 'node:fs/promises'
+import { join }      from 'node:path'
 import { promisify } from 'node:util'
 
 const execAsync = promisify( exec )
@@ -11,22 +12,20 @@ export const isGitHubAuthenticated = () => {
 
 	try {
 
-		const output = execSync( 'gh auth status', {
-			encoding : 'utf-8',
-		} )
+		const output = execSync( 'gh auth status', { encoding: 'utf-8' } )
 		return output.includes( 'Logged in to github.com' )
-	
-	} catch ( error ) {
+
+	}
+	catch ( error ) {
 
 		return false
-	
+
 	}
 
 }
 
 /**
  * Downloads a GitHub release asset using the GitHub CLI and optionally renames the final file.
- *
  * @param {object} options               - The options object.
  * @param {string} options.user          - The GitHub username.
  * @param {string} options.repo          - The GitHub project/repository name.
@@ -67,7 +66,7 @@ export async function downloadGitHubRelease( {
 
 			console.error( `stderr: ${stderr}` )
 			return
-		
+
 		}
 
 		console.log( `File downloaded successfully to ${outputFilePath}` )
@@ -76,14 +75,15 @@ export async function downloadGitHubRelease( {
 
 			await rename( outputFilePath, finalFilePath )
 			console.log( `File renamed successfully to ${finalFilePath}` )
-		
+
 		}
-	
-	} catch ( error ) {
+
+	}
+	catch ( error ) {
 
 		// @ts-ignore
 		console.error( `Error: ${error.message}` )
-	
+
 	}
 
 }

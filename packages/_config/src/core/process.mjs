@@ -1,13 +1,13 @@
 // @ts-nocheck
-import { spawn } from 'node:child_process'
+import boxen     from 'boxen'
 import inquirer  from 'inquirer'
-import boxen from 'boxen'
+import { spawn } from 'node:child_process'
 
 export const isDev = () => process.env.NODE_ENV !== 'production'
 export const prompt = inquirer.prompt
 
 export const exec = async cmd => {
- 
+
 	await new Promise( ( resolve, reject ) => {
 
 		const childProcess = spawn( cmd, {
@@ -17,17 +17,17 @@ export const exec = async cmd => {
 
 		childProcess.on( 'close', code => {
 
-			if ( code === 0 ) resolve()	
+			if ( code === 0 ) resolve()
 			else {
 
 				const error = new Error( `Command failed with code ${code}` )
 				console.error( error )
 				reject( error )
-				
+
 			}
-			
+
 		} )
-		
+
 	} )
 
 }
@@ -48,13 +48,13 @@ export const execChild = async cmd => {
 		childProcess.stdout.on( 'data', data => {
 
 			stdout += data.toString()
-		
+
 		} )
 
 		childProcess.stderr.on( 'data', data => {
 
 			stderr += data.toString()
-		
+
 		} )
 
 		childProcess.on( 'close', code => {
@@ -62,36 +62,36 @@ export const execChild = async cmd => {
 			if ( code === 0 ) {
 
 				resolve( {
-					stdout, 
-					stderr, 
+					stdout,
+					stderr,
 				} )
-			
-			} else {
+
+			}
+			else {
 
 				const error  = new Error( `Command failed with code ${code}` )
 				error.stdout = stdout
 				error.stderr = stderr
 				console.error( error )
 				reject( error )
-			
+
 			}
-		
+
 		} )
 
 		// Maneja errores del proceso
 		childProcess.on( 'error', err => {
 
 			reject( err )
-		
+
 		} )
-	
+
 	} )
 
 }
 
 /**
  * Executes a process with logging and error handling.
- *
  * @param   {object}        options             - Options for the process execution.
  * @param   {string}        options.name        - The name of the process, used in logs.
  * @param   {Function}      options.on          - The main function to execute the process. Receives an object with the `log` utility.
@@ -116,20 +116,25 @@ export const execChild = async cmd => {
  *     onError,
  * });
  */
-export const execProcess = async ( { name, on, onError, onExit, onSuccess } ) => {
+export const execProcess = async ( {
+	name, on, onError, onExit, onSuccess,
+} ) => {
 
 	const isDebugMode = process.argv.includes( '--debug' )
 	const log         = {
 		debug : data => {
 
-			if( isDebugMode )console.debug( `\n🐦⬛ [${name}]`, data )
-		
+			if ( isDebugMode )console.debug( `\n🐦⬛ [${name}]`, data )
+
 		},
 		info    : data => console.log( `\n🐦🟦 [${name}]`, data ),
 		success : data => console.log( `\n🐦✅ [${name}]`, data ),
 		warn    : data => console.warn( `\n🐦🟡 [${name}]`, data ),
 		error   : data => console.error( `\n🐦❌ [${name}] Error: `, data ),
-		box: data => console.log(`\n${boxen(data, {padding: 1, title: `🐦🟦 [${name}]`} )}`)
+		box     : data => console.log( `\n${boxen( data, {
+			padding : 1,
+			title   : `🐦🟦 [${name}]`,
+		} )}` ),
 	}
 
 	try {
@@ -137,35 +142,32 @@ export const execProcess = async ( { name, on, onError, onExit, onSuccess } ) =>
 		log.info( 'Init process \n' )
 
 		console.group()
-		await on( {
-			log,
-		} )
+		await on( { log } )
 		console.groupEnd()
 
-		if( onSuccess ) await onSuccess( {
-			log,
-		} )
+		if ( onSuccess ) await onSuccess( { log } )
 		else log.success( 'Process executed successfully \n' )
-	
-	} catch ( error ) {
+
+	}
+	catch ( error ) {
 
 		console.groupEnd()
-		if( error.name === 'ExitPromptError' ){
-			
-			if( onExit ) await onExit( {
-				log,
-			} )
-			else log.warn( 'Exit from process' )
-		
-		}else {
+		if ( error.name === 'ExitPromptError' ) {
 
-			if( onExit ) await onError( {
-				log, error,
+			if ( onExit ) await onExit( { log } )
+			else log.warn( 'Exit from process' )
+
+		}
+		else {
+
+			if ( onExit ) await onError( {
+				log,
+				error,
 			} )
 			else log.error( error )
-		
+
 		}
-	
+
 	}
 
 }

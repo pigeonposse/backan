@@ -1,6 +1,6 @@
-# Setup `backan` project 
+# Setup `backan` project
 
-A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project. 
+A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project.
 
 [![NPM Version](https://img.shields.io/npm/v/create-backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/create-backan)
 
@@ -10,7 +10,7 @@ A `CLI` for creating new [Backan](https://backan.pigeonposse.com) project.
 
 ## CLI
 
-```bash 
+```bash
 # using NPM
 npm create backan@latest
 # using PNPM
@@ -29,11 +29,11 @@ You can also use `create-backan` programmatically
 import { create } from 'create-backan';
 
 await create( {
-	input    : '.',
-	name     : 'my-app-name',
-	template : 'demo', 
-	install  : false, 
-	open     : 'code',
+ input    : '.',
+ name     : 'my-app-name',
+ template : 'demo',
+ install  : false,
+ open     : 'code',
 });
 ```
 
@@ -46,23 +46,23 @@ export type CreateParams = {
      *
      * @default .
      */
-	input?: string
+ input?: string
     /**
      * The name of the project & dirmane.
      */
-	name?: string
+ name?: string
     /**
      * The template to use for the project.
      *
      * @default demo
      */
-	template?: typeof TEMPLATES[keyof typeof TEMPLATES]
+ template?: typeof TEMPLATES[keyof typeof TEMPLATES]
     /**
      * Whether to automatically install dependencies after creating the project.
      *
      * @default false
      */
-	install?: typeof INSTALL_OPTS[keyof typeof INSTALL_OPTS]
+ install?: typeof INSTALL_OPTS[keyof typeof INSTALL_OPTS]
     /**
      * Specifies whether to open the project in an IDE or text editor after creation.
      * Can be `false` for no IDE, or specify an IDE/editor to open.
@@ -73,7 +73,7 @@ export type CreateParams = {
      *
      * @default false
      */
-	open?: typeof OPEN_OPTS[keyof typeof OPEN_OPTS]
+ open?: typeof OPEN_OPTS[keyof typeof OPEN_OPTS]
 }
 ```
 

@@ -1,21 +1,21 @@
 /* eslint-disable jsdoc/require-returns */
 /* eslint-disable jsdoc/require-param */
-/* eslint-disable jsdoc/require-jsdoc */
 
-import type { Context }      from 'hono'
-import { validate }          from './validate'
 import { RESPONSE_MESSAGES } from './const'
+import { validate }          from './validate'
+
+import type { Context } from 'hono'
 
 type Error400Data = {
-    id: string;
-    message: string;
-    error?: unknown;
-    help?: string | undefined;
+	id      : string
+	message : string
+	error?  : unknown
+	help?   : string | undefined
 }
 
 type Error500Data = {
-    id: string;
-    error?: unknown;
+	id     : string
+	error? : unknown
 }
 
 export const add500Error = (
@@ -79,10 +79,10 @@ export const add400ErrorObject = (
 export const add404Error = (
 	c: Context,
 	data: {
-        id: string,
-        message: string,
-        help: string
-    },
+		id      : string
+		message : string
+		help    : string
+	},
 ) => {
 
 	const status = 404 as const
@@ -110,7 +110,7 @@ export const addSuccessResponse = <Data extends object>(
 }
 
 /**
- * Use HTTP status code 201 for successful requests that create a new resource on the server. 
+ * Use HTTP status code 201 for successful requests that create a new resource on the server.
  *
  */
 export const addSuccess201Response = <Data extends object>(
@@ -159,49 +159,29 @@ export const schemaError400 = error( 400 )
 
 export const responseJSONSuccess = <OBJ extends validate.ZodTypeAny>( schema: OBJ, more?: object ) => ( {
 	description : RESPONSE_MESSAGES.SUCCESS_FETCH,
-	content     : {
-		'application/json' : {
-			schema : schema,
-		},
-	},
+	content     : { 'application/json': { schema: schema } },
 	...( more ? more : {} ),
 } )
 
 export const responseStreamSuccess = <OBJ extends validate.ZodTypeAny>( schema: OBJ, more?: object ) => ( {
 	description : RESPONSE_MESSAGES.SUCCESS_FETCH,
-	content     : {
-		'text/plain' : {
-			schema : schema,
-		},
-	},
+	content     : { 'text/plain': { schema: schema } },
 	...( more ? more : {} ),
 } )
 
 export const responseJSONError500 = {
 	description : RESPONSE_MESSAGES.ERROR_500,
-	content     : {
-		'application/json' : {
-			schema : schemaError500,
-		},
-	},
+	content     : { 'application/json': { schema: schemaError500 } },
 }
 
 export const responseJSONError404 = {
 	description : RESPONSE_MESSAGES.ERROR_404,
-	content     : {
-		'application/json' : {
-			schema : schemaError404,
-		},
-	},
+	content     : { 'application/json': { schema: schemaError404 } },
 }
 
 export const responseJSONError400 = {
 	description : RESPONSE_MESSAGES.ERROR_400,
-	content     : {
-		'application/json' : {
-			schema : schemaError400,
-		},
-	},
+	content     : { 'application/json': { schema: schemaError400 } },
 }
 
 export type AppError505 = validate.infer<typeof schemaError500>

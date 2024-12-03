@@ -1,11 +1,10 @@
 /**
  * TODO prompt.
- *
  * @description Add prompt for edit project TODO List.
  */
 
 import {
-	execProcess, 
+	execProcess,
 	exec,
 } from '@backan/config/core'
 
@@ -14,7 +13,7 @@ await execProcess( {
 	on   : async ( ) => {
 
 		await exec( 'changeset && changeset version' )
-	
+
 	},
 
 } )

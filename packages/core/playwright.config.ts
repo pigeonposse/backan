@@ -1,11 +1,11 @@
 /**
  * Playwright config.
- *
  * @description Playwright config.
  * @see https://playwright.dev/docs/api/class-test
  */
+import { port } from './vite.config'
+
 import type { PlaywrightTestConfig } from '@playwright/test'
-import { port }                      from './vite.config'
 
 const config: PlaywrightTestConfig = {
 	webServer : {

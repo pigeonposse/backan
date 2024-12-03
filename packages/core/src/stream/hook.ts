@@ -1,15 +1,14 @@
 /* eslint-disable jsdoc/require-param-type */
 
-type hookStdoutCallback = ( 
-	string: string, 
-	encoding: BufferEncoding, 
-	isError: boolean, 
-	fd?: number, 
+type hookStdoutCallback = (
+	string: string,
+	encoding: BufferEncoding,
+	isError: boolean,
+	fd?: number,
 ) => void
 
 /**
  * Hooks the stdout and stderr streams to intercept their outputs.
- *
  * @param          callback - A function to be called with the intercepted output.
  *                          The callback receives four parameters: the output string, encoding, file descriptor, and a boolean indicating if it's stderr.
  * @returns {void}          - A function to restore the original stdout and stderr behavior.
@@ -24,7 +23,7 @@ export const hookStdout = ( callback: hookStdoutCallback ) => {
 		boundProcessStdout( string, encoding )
 		callback( string, encoding, false, fd )
 		return true
-		
+
 	}
 
 	// @ts-ignore
@@ -33,14 +32,14 @@ export const hookStdout = ( callback: hookStdoutCallback ) => {
 		boundProcessStderr( string, encoding )
 		callback( string, encoding, true, fd )
 		return true
-		
+
 	}
 
 	return () => {
 
 		process.stdout.write = boundProcessStdout
 		process.stderr.write = boundProcessStderr
-		
+
 	}
 
 }

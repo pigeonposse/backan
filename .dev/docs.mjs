@@ -1,37 +1,43 @@
 import {
-	funding, extra, bugs, repository,
-} from '../package.json'
-import {
-	joinPath, joinUrl, 
+	joinPath,
+	joinUrl,
 }                                     from '@backan/config/core'
+
+import {
+	funding,
+	extra,
+	bugs,
+	repository,
+} from '../package.json'
 
 const sidebarConstructor = [
 	{
 		text  : 'Introduction',
 		items : [
 			{
-				text : 'What is BACKAN?', link : joinPath( extra.docsPath.guide,'/' ), 
+				text : 'What is BACKAN?',
+				link : joinPath( extra.docsPath.guide, '/' ),
 			},
 		],
 	},
 	{
 		text  : 'Reference',
 		items : [
-			{ 
-				text      : '📚 Library', 
+			{
+				text      : '📚 Library',
 				collapsed : false,
 				items     : [
 					{
 						text : '🏁 Get started',
-						link : joinPath( extra.docsPath.core ), 
+						link : joinPath( extra.docsPath.core ),
 					},
 					{
 						text : 'App',
-						link : joinPath( extra.docsPath.core, 'app' ), 
+						link : joinPath( extra.docsPath.core, 'app' ),
 					},
 					{
 						text : 'Route',
-						link : joinPath( extra.docsPath.core, 'route' ), 
+						link : joinPath( extra.docsPath.core, 'route' ),
 					},
 					{
 						text      : 'Endpoints',
@@ -39,43 +45,43 @@ const sidebarConstructor = [
 						items     : [
 							{
 								text : 'GET',
-								link : joinPath( extra.docsPath.core, 'get' ), 
+								link : joinPath( extra.docsPath.core, 'get' ),
 							},
 							{
 								text : 'POST',
-								link : joinPath( extra.docsPath.core, 'post' ), 
+								link : joinPath( extra.docsPath.core, 'post' ),
 							},
 							{
 								text : 'STREAM',
-								link : joinPath( extra.docsPath.core, 'stream' ), 
+								link : joinPath( extra.docsPath.core, 'stream' ),
 							},
 							{
 								text : 'PUT',
-								link : joinPath( extra.docsPath.core, 'put' ), 
+								link : joinPath( extra.docsPath.core, 'put' ),
 							},
 							{
 								text : 'DELETE',
-								link : joinPath( extra.docsPath.core, 'delete' ), 
+								link : joinPath( extra.docsPath.core, 'delete' ),
 							},
 							{
 								text : 'PATCH',
-								link : joinPath( extra.docsPath.core, 'patch' ), 
+								link : joinPath( extra.docsPath.core, 'patch' ),
 							},
 						],
 					},
 				],
 			},
-			{ 
-				text : '🎉 Create (setup)', 
-				link : joinPath( extra.docsPath.create, 'index.md' ), 
+			{
+				text : '🎉 Create (setup)',
+				link : joinPath( extra.docsPath.create, 'index.md' ),
 			},
-			{ 
-				text : '🗄️ Server', 
-				link : joinPath( extra.docsPath.server, 'index.md' ), 
+			{
+				text : '🗄️ Server',
+				link : joinPath( extra.docsPath.server, 'index.md' ),
 			},
-			{ 
-				text : '📦 Builder', 
-				link : joinPath( extra.docsPath.builder, 'index.md' ), 
+			{
+				text : '📦 Builder',
+				link : joinPath( extra.docsPath.builder, 'index.md' ),
 			},
 		],
 	},
@@ -83,10 +89,12 @@ const sidebarConstructor = [
 		text  : 'Contribute',
 		items : [
 			{
-				text : 'Report issues', link : bugs.url, 
+				text : 'Report issues',
+				link : bugs.url,
 			},
 			{
-				text : 'Todo', link : joinPath( extra.docsPath.todo,'/v1' ), 
+				text : 'Todo',
+				link : joinPath( extra.docsPath.todo, '/v1' ),
 			},
 		],
 	},
@@ -94,32 +102,32 @@ const sidebarConstructor = [
 		text  : 'About',
 		items : [
 			{
-				text : 'License', 
+				text : 'License',
 				link : joinUrl( repository.url, 'blob/main/LICENSE' ),
 			},
 			{
-				text : 'More projects', 
-				link : extra.collective.web, 
+				text : 'More projects',
+				link : extra.collective.web,
 			},
 		],
 	},
 ]
-export const sidebar = { 
+export const sidebar = {
 	'/guide/' : sidebarConstructor,
 	'/todo/'  : sidebarConstructor,
 }
 export const nav =  [
-	{ 
+	{
 		text : 'Home',
-		link : '/', 
+		link : '/',
 	},
-	{ 
-		text        : 'Guide', 
+	{
+		text        : 'Guide',
 		activeMatch : '/^\\/guide\\//',
 		link        : joinPath( extra.docsPath.guide ),
 	},
-	{ 
-		text : 'Donate', 
-		link : funding.url, 
+	{
+		text : 'Donate',
+		link : funding.url,
 	},
 ]

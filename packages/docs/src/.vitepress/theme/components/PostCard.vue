@@ -1,7 +1,14 @@
 
 <template>
-    <a :href="href" class="card">
-		<img class="image" :src="image" :alt="title" />
+	<a
+		:href="href"
+		class="card"
+	>
+		<img
+			class="image"
+			:src="image"
+			:alt="title"
+		>
 		<div class="info">
 			<div class="tags">
 				<span class="tag">{{ date }}</span>
@@ -10,9 +17,51 @@
 			<h3 class="title">{{ title }}</h3>
 			<p class="desc">{{ excerpt }}</p>
 		</div>
-    </a>
+	</a>
 </template>
 
+<script>
+export default { props : {
+	title : {
+		type     : String,
+		required : true,
+	},
+	excerpt : {
+		type     : String,
+		required : true,
+	},
+	image : {
+		type     : String,
+		required : true,
+	},
+	date : {
+		type     : String,
+		required : true,
+	},
+	author : {
+		name : {
+			type     : String,
+			required : true,
+		},
+		github : {
+			type     : String,
+			required : true,
+		},
+		url : {
+			type     : String,
+			required : true,
+		},
+	},
+	category : {
+		type     : String,
+		required : true,
+	},
+	href : {
+		type     : String,
+		required : true,
+	},
+} }
+</script>
 <style scoped>
 .card {
     display: flex;
@@ -70,47 +119,3 @@
 	font-weight: 900;
 }
 </style>
-<script>
-export default {
-    props: {
-        title: {
-            type: String,
-            required: true,
-        },
-        excerpt: {
-            type: String,
-            required: true,
-        },
-        image: {
-            type: String,
-            required: true,
-        },
-        date: {
-            type: String,
-            required: true,
-        },
-		author : {
-			name: {
-				type: String,
-            	required: true,
-			},
-			github: {
-				type: String,
-            	required: true,
-			},
-			url: {
-				type: String,
-            	required: true,
-			},
-		},
-        category: {
-            type: String,
-            required: true,
-        },
-        href: {
-            type: String,
-            required: true,
-        },
-    },
-};
-</script>

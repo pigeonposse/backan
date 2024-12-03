@@ -4,5 +4,10 @@ import { dovenvEslintConfig } from '@dovenv/lint'
 export default [
 	dovenvEslintConfig.includeGitIgnore(),
 	...dovenvEslintConfig.config,
-	dovenvEslintConfig.setIgnoreConfig( [ '**/templates/**/*', '**/partials/**/*' ] ),
+	dovenvEslintConfig.setIgnoreConfig( [
+		'**/templates/**/*',
+		'**/partials/**/*',
+		'**/CHANGELOG.md',
+		'**/README.md',
+	] ),
 ]

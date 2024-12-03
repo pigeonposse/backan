@@ -1,43 +1,31 @@
 /**
  * Vite config.
- *
  * @description Vite config.
  * @see https://vitejs.dev/guide
  */
+import { target }       from '@backan/config/consts'
 import { defineConfig } from 'vite'
 import dts              from 'vite-plugin-dts'
-import { target }       from '@backan/config/consts'
 
 export const port = 13126
 
 export default defineConfig( {
-	esbuild : { 
+	esbuild : {
 		platform : 'node',
 		target,
 	},
 	server : {
-		host : '0.0.0.0', 
+		host : '0.0.0.0',
 		port,
 	},
-	preview : {
-		port,
-	},
-	build : {
+	preview : { port },
+	build   : {
 		ssr : true,
 		target,
 		lib : {
-			entry : [
-				'src/main.ts',
-				'src/bin.ts',
-			],  
-			formats : [
-				'es', 
-			],
+			entry   : [ 'src/main.ts', 'src/bin.ts' ],
+			formats : [ 'es' ],
 		},
 	},
-	plugins : [ 
-		dts( {
-			rollupTypes : true,
-		} ),
-	],
+	plugins : [ dts( { rollupTypes: true } ) ],
 } )

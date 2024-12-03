@@ -1,8 +1,11 @@
-<template >
-<section v-if="$frontmatter.demo">
-	<h2>Preview</h2>
-	<img :src="$frontmatter.demo"  alt="demo"/>
-</section>
+<template>
+	<section v-if="$frontmatter.demo">
+		<h2>Preview</h2>
+		<img
+			:src="$frontmatter.demo"
+			alt="demo"
+		>
+	</section>
 </template>
 <style scoped>
 h2 {

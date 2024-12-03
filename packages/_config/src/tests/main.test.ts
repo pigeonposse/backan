@@ -4,7 +4,9 @@ test( async ( { section } ) => {
 
 	section( {
 		title : 'test example section',
-		fn    : async ( { addTest, addBooleanTest } ) => {
+		fn    : async ( {
+			addTest, addBooleanTest,
+		} ) => {
 
 			addTest( {
 				title : 'test simple',
@@ -12,20 +14,20 @@ test( async ( { section } ) => {
 
 					const returnTrue = () => true
 					expect( returnTrue() ).toBe( true )
-				
+
 				},
 			} )
-			
+
 			addBooleanTest( {
 				title    : 'boolean test',
 				expected : true,
 				fn       : async () => {
 
 					return true
-				
+
 				},
 			} )
-		
+
 		},
 	} )
 

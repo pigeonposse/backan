@@ -1,19 +1,7 @@
 {
 	"name": "@backan/core",
-	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"version": "0.0.25",
-	"type": "module",
-	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/core"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
+	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"keywords": [
 		"backend",
 		"api",
@@ -23,33 +11,45 @@
 		"node",
 		"js"
 	],
-	"files": [
-		"dist"
-	],
-	"module": "dist/main.js",
-	"main": "dist/main.js",
-	"types": "dist/main.d.ts",
+	"homepage": "https://backan.pigeonposse.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/core"
+	},
+	"license": "GPL-3.0",
+	"type": "module",
 	"exports": {
 		".": "./dist/main.js",
 		"./stream": "./dist/stream.js"
 	},
+	"main": "dist/main.js",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:lib": "vite build",
+		"build:rm": "rimraf dist",
 		"dev": "vite dev",
 		"dev:node": "tsx examples/app.ts",
-		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:rm": "rimraf dist",
-		"build:lib": "vite build",
+		"lint": "pnpm eslint src",
 		"test": "pnpm run --sequential \"/^test:.*/\"",
-		"test:unit": "vitest run src --passWithNoTests",
 		"test:e2e": "playwright test",
-		"lint": "pnpm eslint src"
-	},
-	"devDependencies": {
-		"@hono/vite-dev-server": "0.16.0"
+		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
 		"@hono/swagger-ui": "0.4.1",
 		"@hono/zod-openapi": "0.16.2",
 		"hono": "4.6.3"
+	},
+	"devDependencies": {
+		"@hono/vite-dev-server": "0.16.0"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }

@@ -1,13 +1,15 @@
-<template >
+<template>
 	<section v-if="$frontmatter.category">
-		<img :src="$frontmatter.image" alt="header image">
-	
+		<img
+			:src="$frontmatter.image"
+			alt="header image"
+		>
+
 		<div>
 			<span class="tag category">{{ $frontmatter.category }}</span>
-			<span class="tag">{{  new Date($frontmatter.date).toDateString() }}</span>
+			<span class="tag">{{ new Date($frontmatter.date).toDateString() }}</span>
 		</div>
 	</section>
-
 </template>
 
 <style scoped>

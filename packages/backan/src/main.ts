@@ -1,5 +1,6 @@
 export {
-	App, Route, 
+	App,
+	Route,
 } from '@backan/core'
 
 export type * from './types'

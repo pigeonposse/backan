@@ -1,10 +1,10 @@
 /**
  * Playwright config.
- *
  * @description Playwright config.
  * @see https://playwright.dev/docs/api/class-test
  */
 import type { PlaywrightTestConfig } from '@playwright/test'
+
 const port                         = 13124
 const config: PlaywrightTestConfig = {
 	webServer : {

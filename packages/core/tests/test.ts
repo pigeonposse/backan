@@ -1,12 +1,12 @@
 /**
  * Test files.
- *
  * @description Test files.
  * @see https://playwright.dev/docs/api/class-test
  */
 
 import {
-	expect, test,
+	expect,
+	test,
 } from '@playwright/test'
 
 test( 'Server is healthy', async ( { page } ) => {

@@ -41,7 +41,10 @@ export default defineConfig(
 				desc  : 'Only development environment',
 			},
 		] } },
-		lint      : { staged: { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm . lint eslint' } },
+		lint : {
+			staged : { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm . lint eslint' },
+			eslint : { flags: [ '--fix' ] },
+		},
 		workspace : { check : { pkg : { schema : async ( {
 			v, path, data,
 		} ) => {

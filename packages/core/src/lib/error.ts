@@ -2,10 +2,10 @@ export class ApiError<IDS extends Uppercase<string>> extends Error {
 
 	details
 
-	static isInstanceOf( value: unknown ){
+	static isInstanceOf( value: unknown ) {
 
 		return value instanceof ApiError
-	
+
 	}
 
 	constructor( id: IDS, details?: unknown ) {
@@ -14,7 +14,7 @@ export class ApiError<IDS extends Uppercase<string>> extends Error {
 		this.details = details
 		// Set the prototype explicitly.
 		Object.setPrototypeOf( this, ApiError.prototype )
-	
+
 	}
 
 }

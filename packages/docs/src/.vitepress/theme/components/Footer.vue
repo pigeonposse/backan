@@ -1,21 +1,40 @@
 <script setup>
 import { useData } from 'vitepress'
-const formatLink = (key, link) => {
-  return key === 'email' ? `mailto:${link}` : link;
-};
-const { theme, frontmatter } = useData()
+
+const formatLink = ( key, link ) => {
+
+	return key === 'email' ? `mailto:${link}` : link
+
+}
+const {
+	theme, frontmatter,
+} = useData()
 </script>
 
 <template>
-  <footer v-if="theme.customFooter !== false" class="container">
-	<div v-if="theme.collectiveLinks" class="collectivelinks">
-    	<a v-for="(link, key) in theme.collectiveLinks" :key="key" :href="formatLink(key, link)" target="_blank">{{ key }}</a>
-  	</div>
-	<div class="mark">
-		<span>Released under the {{ theme.customFooter.license }} License.</span>
-    	<span>Copyright © {{ new Date().getFullYear() }} <a :href="theme.customFooter.copy.url" target="_blank"> {{ theme.customFooter.copy.name }}</a></span>
-	</div>
-  </footer>
+	<footer
+		v-if="theme.customFooter !== false"
+		class="container"
+	>
+		<div
+			v-if="theme.collectiveLinks"
+			class="collectivelinks"
+		>
+			<a
+				v-for="(link, key) in theme.collectiveLinks"
+				:key="key"
+				:href="formatLink(key, link)"
+				target="_blank"
+			>{{ key }}</a>
+		</div>
+		<div class="mark">
+			<span>Released under the {{ theme.customFooter.license }} License.</span>
+			<span>Copyright © {{ new Date().getFullYear() }} <a
+				:href="theme.customFooter.copy.url"
+				target="_blank"
+			> {{ theme.customFooter.copy.name }}</a></span>
+		</div>
+	</footer>
 </template>
 
 <style scoped>

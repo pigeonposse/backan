@@ -1,23 +1,23 @@
 /**
  * Cz-customizable config..
- *
  * @description Cz-customizable config.
  * @see https://github.com/leoforfree/cz-customizable
  */
 const { extra } = require( '../package.json' )
-module.exports  = {
+
+module.exports = {
 	types : [
 		{
-			value : ':sparkles: feat', 
-			name  : '✨ feat:\tAdding a new feature', 
+			value : ':sparkles: feat',
+			name  : '✨ feat:\tAdding a new feature',
 		},
 		{
-			value : ':bug: fix', 
-			name  : '🐛 fix:\tFixing a bug', 
+			value : ':bug: fix',
+			name  : '🐛 fix:\tFixing a bug',
 		},
 		{
-			value : ':memo: docs', 
-			name  : '📝 docs:\tAdd or update documentation', 
+			value : ':memo: docs',
+			name  : '📝 docs:\tAdd or update documentation',
 		},
 		{
 			value : ':lipstick: style',
@@ -40,12 +40,12 @@ module.exports  = {
 			name  : '🚚 chore:\tChanges to the build process or auxiliary tools\n\t\tand libraries such as documentation generation',
 		},
 		{
-			value : ':rewind: revert', 
-			name  : '⏪️ revert:\tRevert to a commit', 
+			value : ':rewind: revert',
+			name  : '⏪️ revert:\tRevert to a commit',
 		},
 		{
-			value : ':construction: wip', 
-			name  : '🚧 wip:\tWork in progress', 
+			value : ':construction: wip',
+			name  : '🚧 wip:\tWork in progress',
 		},
 		{
 			value : ':construction_worker: build',
@@ -56,32 +56,19 @@ module.exports  = {
 			name  : '💚 ci:\tAdd or update regards to build process',
 		},
 	],
-	
+
 	scopes         : extra.scopes,
-	scopeOverrides : {
-		fix : [
-			{
-				name : 'merge', 
-			}, 
-			{
-				name : 'style', 
-			}, 
-			{
-				name : 'test', 
-			}, 
-			{
-				name : 'hotfix', 
-			}, 
-		], 
-	},
+	scopeOverrides : { fix : [
+		{ name: 'merge' },
+		{ name: 'style' },
+		{ name: 'test' },
+		{ name: 'hotfix' },
+	] },
 
 	allowCustomScopes    : true,
-	allowBreakingChanges : [
-		'feat', 
-		'fix', 
-	],
+	allowBreakingChanges : [ 'feat', 'fix' ],
 	// skip any questions you want
 	// skipQuestions: ['body'],
-	subjectLimit : 100,
+	subjectLimit         : 100,
 }
 

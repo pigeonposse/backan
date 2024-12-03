@@ -55,8 +55,8 @@ Start building your restAPI app now 🌈.
 
 The backan builder library allows you to build multiple things. Among others:
 
-- [**`Executables / binaries`**](./builder/index.md#build-binaries): Create binaries of your project for all **systems** and **architectures** with zero config. 
-- [**`Client library`**](./builder/index.md#create-client): Create a client to facilitate the implementation of the API in a frontend or other service. 
+- [**`Executables / binaries`**](./builder/index.md#build-binaries): Create binaries of your project for all **systems** and **architectures** with zero config.
+- [**`Client library`**](./builder/index.md#create-client): Create a client to facilitate the implementation of the API in a frontend or other service.
 - [**`JSON schema file`**](./builder/index.md#build-json-types-schema): Export the **OpenAPI schema** to a **JSON file**.
 - [**`TypeScript definitions file`**](./builder/index.md#build-json-types-schema): Export **OpenAPI schema** to a **d.ts file**.
 - [**`Markdown documentation`**](./builder/index.md#build-markdown-documentation): Build your application documentation in a **Markdown file**.
