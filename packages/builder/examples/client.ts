@@ -1,21 +1,14 @@
 // @ts-ignore
-import type { paths }   from '../../../openapi.d.ts' // Generate with buildSchema
 import { createClient } from '../src/client'
 
-const client = createClient<paths>( {
-	baseUrl : 'http://localhost:1312/',
-} )
+import type { paths } from './schema/openapi.d.ts' // Generate with buildSchema
+
+const client = createClient<paths>( { baseUrl: 'http://localhost:1312/' } )
 
 // example of call
-const response = await client.GET( '/random/child', {
-	params : {
-		query : {
-			value : 'holaaaa', 
-		}, 
-	},
-} )
+const response = await client.GET( '/random/child', { params: { query: { value: 'holaaaa' } } } )
 
-console.log( response ) 
+console.log( response )
 /* Response must be like:
 {
   data: { child: true },

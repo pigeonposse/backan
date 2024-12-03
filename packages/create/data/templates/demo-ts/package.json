@@ -1,29 +1,33 @@
 {
-	"name": "project_name",
+	"name": "{{prompt.name}}",
 	"version": "0.0.1",
 	"type": "module",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
-		"dev-server": "node src/server.js",
+		"dev-server": "tsx src/server.ts",
 		"build": "vite build",
-		"build-bin": "backan-builder --input=src/server.js",
+		"build-bin": "backan-builder --input=src/server.ts",
 		"test:unit": "vitest run src --passWithNoTests",
 		"test:e2e": "playwright test",
 		"lint": "eslint src"
 	},
 	"devDependencies": {
-		"@backan/builder": "^0.0.6",
-		"@backan/server": "^0.0.6",
+		"@backan/builder": "{{consts.version}}",
+		"@backan/server": "{{consts.version}}",
 		"@eslint/js": "^9.9.0",
 		"@hono/vite-dev-server": "^0.14.0",
 		"@playwright/test": "1.46.1",
 		"@types/eslint__js": "^8.42.3",
 		"eslint": "^9.9.0",
+		"tsx": "^4.17.0",
+		"typescript": "5.4.2",
+		"typescript-eslint": "^8.2.0",
 		"vite": "5.4.2",
+		"vite-plugin-dts": "4.0.3",
 		"vitest": "2.0.5"
 	},
 	"dependencies": {
-		"backan": "^0.0.6"
+		"backan": "{{consts.version}}"
 	}
 }

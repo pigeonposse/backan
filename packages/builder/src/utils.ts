@@ -1,8 +1,8 @@
 
 import { spawn } from 'node:child_process'
 import {
-	mkdir, 
-	writeFile as fsWriteFile, 
+	mkdir,
+	writeFile as fsWriteFile,
 	access,
 	unlink,
 	stat,
@@ -11,8 +11,8 @@ import {
 import {
 	parse,
 	dirname,
-	join, 
-	resolve, 
+	join,
+	resolve,
 } from 'node:path'
 import * as url from 'node:url'
 
@@ -27,39 +27,38 @@ export const getFilename = ( path: string ) => {
 
 }
 export const getDirname = dirname
-export const deleteFile = async( path: string ) => {
+export const deleteFile = async ( path: string ) => {
 
 	await unlink( path )
 
 }
-export const existsPath = async ( path: string ) =>{
+export const existsPath = async ( path: string ) => {
 
 	try {
 
 		await access( path )
 		return true
-	
-	} catch ( _e ) {
+
+	}
+	catch ( _e ) {
 
 		return false
-	
+
 	}
 
 }
 export const writeFile = async ( path: string, data: string ) => {
 
 	const dir = getDirname( path )
-        
-	await mkdir( dir, {
-		recursive : true, 
-	} )
+
+	await mkdir( dir, { recursive: true } )
 
 	await fsWriteFile( path, data, 'utf8' )
 
 }
 
 export const exec = async ( cmd: string ) => {
- 
+
 	await new Promise<void>( ( resolve, reject ) => {
 
 		const childProcess = spawn( cmd, {
@@ -75,11 +74,11 @@ export const exec = async ( cmd: string ) => {
 				const error = new Error( `Command failed with code ${code}` )
 				console.error( error )
 				reject( error )
-				
+
 			}
-			
+
 		} )
-		
+
 	} )
 
 }
@@ -90,31 +89,33 @@ export const removePathIfExist = async ( path: string ) => {
 
 		// Check if the path exists
 		const stats = await stat( path )
-		
+
 		if ( stats.isDirectory() ) {
 
 			// If it's a directory, delete it recursively
 			await rm( path, {
-				recursive : true, 
+				recursive : true,
 				force     : true,
 			} )
 			// console.log( `Directory ${path} successfully deleted.` )
-		
-		} else if( stats.isFile() ){
+
+		}
+		else if ( stats.isFile() ) {
 
 			// If it's a file, delete it
 			await unlink( path )
 			// console.log( `File ${path} successfully deleted.` )
-		
+
 		}
-	
-	} catch ( error ) {
+
+	}
+	catch ( error ) {
 
 		// @ts-ignore
 		// `The directory or file ${path} does not exist.`
 		if ( error.code === 'ENOENT' ) return
 		else console.error( `Error deleting ${path}:`, error )
-	
+
 	}
 
 }

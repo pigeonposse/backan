@@ -1,8 +1,16 @@
-import { build } from '../src/main'
-// import { build } from '../dist/main'
+/* eslint-disable @stylistic/object-curly-newline */
 
-build( {
-	input : 'examples/server',
+import {
+	getCurrentDir,
+	joinPath,
+} from '@dovenv/utils'
+
+import { buildNode } from '../src/main'
+
+const currDir = joinPath( getCurrentDir( import.meta.url ) )
+
+await buildNode( {
+	input : joinPath( currDir, 'server' ),
 	// name   : 'backan',
 	// outDir : resolve( 'build' ),
 	// type   : 'all',

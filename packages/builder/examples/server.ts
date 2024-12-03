@@ -1,6 +1,7 @@
 
 import { server } from '@backan/server'
-import { app }    from './app'
+
+import { app } from './app/main'
 
 server( {
 	app,

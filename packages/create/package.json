@@ -1,34 +1,7 @@
 {
 	"name": "create-backan",
-	"description": "Quickly create a backan application to get started",
 	"version": "0.0.25",
-	"type": "module",
-	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/create"
-	},
-	"bugs": {
-		"url": "https://github.com/pigeonposse/backan/issues"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"bin": "dist/bin.js",
-	"files": [
-		"dist",
-		"templates"
-	],
-	"module": "dist/main.js",
-	"main": "dist/main.js",
-	"types": "dist/main.d.ts",
-	"exports": {
-		".": "./dist/main.js",
-		"./types": "./dist/main.d.ts"
-	},
+	"description": "Quickly create a backan application to get started",
 	"keywords": [
 		"backend",
 		"api",
@@ -39,18 +12,44 @@
 		"create",
 		"creator"
 	],
+	"homepage": "https://backan.pigeonposse.com",
+	"bugs": {
+		"url": "https://github.com/pigeonposse/backan/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/create"
+	},
+	"license": "GPL-3.0",
+	"type": "module",
+	"exports": {
+		".": "./dist/main.js",
+		"./types": "./dist/main.d.ts"
+	},
+	"main": "dist/main.js",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"bin": "dist/bin.js",
+	"files": [
+		"dist",
+		"data"
+	],
 	"scripts": {
+		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:lib": "vite build",
+		"build:rm": "rimraf dist && rimraf build",
 		"dev": "tsx src/bin.ts",
 		"example": "tsx examples/main.ts",
-		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:rm": "rimraf dist && rimraf build",
-		"build:lib": "vite build",
+		"lint": "pnpm eslint src",
 		"test": "pnpm run --sequential \"/^test:.*/\"",
-		"test:unit": "vitest run src --passWithNoTests",
-		"lint": "pnpm eslint src"
+		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
-		"@clack/prompts": "0.7.0",
-		"picocolors": "1.1.0"
+		"creatium": "0.1.6"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }

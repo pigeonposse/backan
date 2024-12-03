@@ -1,22 +1,7 @@
 {
 	"name": "@backan/server",
-	"description": "Build the Backan server with zero config.",
 	"version": "0.0.25",
-	"type": "module",
-	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/server"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"files": [
-		"dist"
-	],
+	"description": "Build the Backan server with zero config.",
 	"keywords": [
 		"backend",
 		"api",
@@ -28,27 +13,42 @@
 		"server",
 		"localhost"
 	],
-	"module": "dist/main.js",
-	"main": "dist/main.js",
-	"types": "dist/main.d.ts",
+	"homepage": "https://backan.pigeonposse.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/server"
+	},
+	"license": "GPL-3.0",
+	"type": "module",
 	"exports": {
 		".": "./dist/main.js",
 		"./types": "./dist/main.d.ts"
 	},
+	"main": "dist/main.js",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
-		"dev": "tsx examples/node.ts",
 		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",
+		"build:rm": "rimraf dist && rimraf build",
 		"build:types": "vite build",
+		"dev": "tsx examples/node.ts",
+		"lint": "pnpm eslint src",
 		"test": "pnpm run --sequential \"/^test:.*/\"",
-		"test:unit": "vitest run src --passWithNoTests",
-		"lint": "pnpm eslint src"
+		"test:unit": "vitest run src --passWithNoTests"
+	},
+	"dependencies": {
+		"@hono/node-server": "1.13.7"
 	},
 	"devDependencies": {
 		"@backan/core": "workspace:*"
 	},
-	"dependencies": {
-		"@hono/node-server": "1.13.1"
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }

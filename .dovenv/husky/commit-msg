@@ -1,10 +1,9 @@
 ###############################################################################
-# PRE COMMIT
+# COMMIT MESSAGE
 #
-# @description runs before creating the COMMIT message
+# @description runs after creating the COMMIT message
 # @see https://typicode.github.io/husky/
 # @see https://git-scm.com/docs/git-commit#_hooks
-# @see https://www.npmjs.com/package/lint-staged
 ###############################################################################
 
-pnpm exec lint-staged
+pnpm . lint commitlint --edit $1

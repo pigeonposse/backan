@@ -1,5 +1,7 @@
-import { App }         from '@backan/core'
-import { route }       from './route'
+import { App } from '@backan/core'
+
+import { route } from './route'
+
 import type { AppEnv } from './env'
 
 const app = new App<AppEnv>( {

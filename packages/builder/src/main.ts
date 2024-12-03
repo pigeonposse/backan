@@ -1,17 +1,24 @@
-/**
- * PACKAGE FILE.
- *
- * @description File with build function.
- */
 import {
-	build, BINARIUM_CONSTS, 
+	buildDeno,
+	buildNode,
+	build,
+	buildAuto,
+	BINARIUM_CONSTS,
+	defineConfig,
 } from 'binarium'
-import { extra } from '../../../package.json'
+
+import { bin } from '../package.json'
 
 BINARIUM_CONSTS.icon = '🔥'
-BINARIUM_CONSTS.name = extra.libraryId.toUpperCase()
+BINARIUM_CONSTS.name = Object.keys( bin )[0].toUpperCase()
 
-export { build }
+export {
+	defineConfig,
+	buildDeno,
+	buildNode,
+	build,
+	buildAuto,
+}
 
 export { buildSchema } from './schema'
 export { buildMD } from './md'

@@ -2,31 +2,6 @@
 	"name": "@backan/builder",
 	"version": "0.0.25",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
-	"type": "module",
-	"license": "GPL-3.0",
-	"homepage": "https://backan.pigeonposse.com/",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/builder"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"bin": {
-		"backan-builder": "dist/bin.js"
-	},
-	"files": [
-		"dist",
-		"tsconfig.builder.json"
-	],
-	"module": "dist/main.js",
-	"main": "dist/main.js",
-	"types": "dist/main.d.ts",
-	"exports": {
-		".": "./dist/main.js"
-	},
 	"keywords": [
 		"backend",
 		"api",
@@ -39,24 +14,49 @@
 		"schema",
 		"markdown"
 	],
+	"homepage": "https://backan.pigeonposse.com/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/backan",
+		"directory": "packages/builder"
+	},
+	"license": "GPL-3.0",
+	"type": "module",
+	"exports": {
+		".": "./dist/main.js"
+	},
+	"main": "dist/main.js",
+	"module": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"bin": {
+		"backan-builder": "dist/bin.js"
+	},
+	"files": [
+		"dist",
+		"tsconfig.builder.json"
+	],
 	"scripts": {
-		"dev": "tsx examples/build.ts",
-		"preview": "node dist/bin.js --input=examples/server.ts",
 		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:rm": "rimraf dist && rimraf build",
+		"build:_rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",
+		"dev": "tsx examples/build.ts",
+		"lint": "pnpm eslint src",
+		"preview": "node dist/bin.js --input=examples/server.ts",
 		"test": "pnpm run --sequential \"/^test:.*/\"",
-		"test:unit": "vitest run src --passWithNoTests",
-		"lint": "pnpm eslint src"
+		"test:unit": "vitest run src --passWithNoTests"
+	},
+	"dependencies": {
+		"binarium": "2.0.1",
+		"openapi-fetch": "0.13.1",
+		"openapi-to-md": "1.0.24",
+		"openapi-typescript": "7.4.4"
 	},
 	"devDependencies": {
 		"@backan/core": "workspace:*",
 		"@backan/server": "workspace:*"
 	},
-	"dependencies": {
-		"binarium": "0.1.4",
-		"openapi-fetch": "0.12.2",
-		"openapi-to-md": "1.0.24",
-		"openapi-typescript": "7.4.1"
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }

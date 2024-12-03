@@ -1,16 +1,16 @@
-import type { App }    from '@backan/core'
 import { buildSchema } from './schema'
 import {
-	exec, 
+	exec,
 	getDirname,
 	joinPath,
-	removePathIfExist, 
+	removePathIfExist,
 } from './utils'
+
 import type { BuilderMDParams } from './types'
+import type { App }             from '@backan/core'
 
 /**
  * Builds a Markdown file from Backan app.
- *
  * @param   {object}        params        - The parameters for building the Markdown file.
  * @param   {App<object>}   params.app    - The instance of the Backan application used to generate the OpenAPI schema.
  * @param   {string}        params.output - The path where the resulting Markdown file will be saved.
@@ -18,7 +18,9 @@ import type { BuilderMDParams } from './types'
  * @throws {Error} Throws an error if any of the operations fail, including schema generation, file execution, or file removal.
  * @see https://backan.pigeonposse.com/guide/builder/
  */
-export const buildMD = async <Env extends object>( { app, output }: BuilderMDParams<Env> ) => {
+export const buildMD = async <Env extends object>( {
+	app, output,
+}: BuilderMDParams<Env> ) => {
 
 	try {
 
@@ -26,12 +28,12 @@ export const buildMD = async <Env extends object>( { app, output }: BuilderMDPar
 		const outputDir    = getDirname( output )
 		const outputSchema = joinPath( outputDir, 'schema.json' )
 
-		const binPath = joinPath( 
-			new URL( '.', import.meta.url ).pathname, 
+		const binPath = joinPath(
+			new URL( '.', import.meta.url ).pathname,
 			'..',
-			'node_modules', 
-			'.bin', 
-			'openapi-to-md', 
+			'node_modules',
+			'.bin',
+			'openapi-to-md',
 		)
 
 		// console.log( {
@@ -48,8 +50,9 @@ export const buildMD = async <Env extends object>( { app, output }: BuilderMDPar
 
 		await exec( `${binPath} ${outputSchema} ${output}` )
 		await removePathIfExist( outputSchema )
-	
-	}catch( e ){
+
+	}
+	catch ( e ) {
 
 		console.error( {
 			message : 'Error on build Makdown file',
@@ -57,7 +60,7 @@ export const buildMD = async <Env extends object>( { app, output }: BuilderMDPar
 		} )
 
 		throw e
-	
+
 	}
 
 }
