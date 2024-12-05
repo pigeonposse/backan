@@ -2,7 +2,7 @@ import {
 	exec,
 	joinPath,
 	getCurrentDir,
-} from '@dovenv/utils'
+} from '@dovenv/core/utils'
 
 const cmd = `node ${joinPath( getCurrentDir( import.meta.url ), '..', 'dist', 'bin.js' )}`
 

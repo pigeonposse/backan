@@ -1,11 +1,11 @@
-import { defineConfig }         from '@dovenv/core'
-import { config as bandaTheme } from '@dovenv/theme-banda'
+import { defineConfig } from '@dovenv/core'
 import {
 	asciiFont,
 	getCurrentDir,
 	getObjectFromJSONFile,
 	joinPath,
-} from '@dovenv/utils'
+} from '@dovenv/core/utils'
+import { config as bandaTheme } from '@dovenv/theme-banda'
 
 const workspaceDir = joinPath( getCurrentDir( import.meta.url ), '..' )
 const pkgPath      = joinPath( workspaceDir, 'package.json' )

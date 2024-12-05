@@ -1,4 +1,6 @@
-import { dovenvEslintConfig } from '@dovenv/lint'
+import { lint } from '@dovenv/theme-banda'
+
+const { dovenvEslintConfig } = lint
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [

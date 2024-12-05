@@ -2,7 +2,7 @@ import { paths } from '@backan/config/core'
 import {
 	joinPath,
 	copyDir,
-} from '@dovenv/utils'
+} from '@dovenv/core/utils'
 
 copyDir( {
 	input  : joinPath( paths.coreDir, 'dist' ),

@@ -3,7 +3,7 @@
 import {
 	getCurrentDir,
 	joinPath,
-} from '@dovenv/utils'
+} from '@dovenv/core/utils'
 
 import { buildNode } from '../src/main'
 
