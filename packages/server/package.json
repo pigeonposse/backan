@@ -1,6 +1,6 @@
 {
 	"name": "@backan/server",
-	"version": "0.0.25",
+	"version": "0.1.0",
 	"description": "Build the Backan server with zero config.",
 	"keywords": [
 		"backend",
@@ -33,9 +33,8 @@
 	],
 	"scripts": {
 		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:lib": "vite build",
-		"build:rm": "rimraf dist && rimraf build",
-		"build:types": "vite build",
+		"build:1": "rimraf dist && rimraf build",
+		"build:2": "vite build",
 		"dev": "tsx examples/node.ts",
 		"lint": "pnpm eslint src",
 		"test": "pnpm run --sequential \"/^test:.*/\"",

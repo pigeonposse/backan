@@ -1,6 +1,6 @@
 {
 	"name": "backan",
-	"version": "0.0.25",
+	"version": "0.1.0",
 	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"keywords": [
 		"backend",
@@ -30,8 +30,8 @@
 	],
 	"scripts": {
 		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:_rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",
-		"build:rm": "rimraf dist && rimraf build",
 		"dev": "vite dev"
 	},
 	"dependencies": {

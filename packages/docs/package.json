@@ -1,6 +1,6 @@
 {
 	"name": "@backan/docs",
-	"version": "0.0.25",
+	"version": "0.1.0",
 	"private": true,
 	"description": "Documentation for backan",
 	"repository": {
@@ -14,9 +14,9 @@
 	],
 	"scripts": {
 		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:copy-docs": "node .dev/copy-docs.js",
-		"build:rm-docs": "node .dev/copy-docs.js --rm-dest",
-		"build:web": "vitepress build src --force",
+		"build:1": "node .dev/copy-docs.js",
+		"build:2": "vitepress build src --force",
+		"build:3": "node .dev/copy-docs.js --rm-dest",
 		"dev": "vitepress dev src",
 		"preview": "vitepress preview src",
 		"test": "playwright test"

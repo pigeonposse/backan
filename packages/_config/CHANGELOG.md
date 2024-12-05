@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.1.0
+
+### Minor Changes
+
+- Refactor packages
+
 ## 0.0.10
 
 ### Patch Changes

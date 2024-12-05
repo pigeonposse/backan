@@ -13,8 +13,8 @@ const pkg          = await getObjectFromJSONFile( pkgPath )
 
 export default defineConfig(
 	{
-		name  : 'BACKAN 🔥',
-		desc  : 'Workspaces for creatium',
+		name  : 'BACKAN',
+		desc  : 'Workspace for backan 🔥',
 		const : {
 			workspaceDir,
 			pkg,
@@ -42,7 +42,7 @@ export default defineConfig(
 			},
 		] } },
 		lint : {
-			staged : { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm . lint eslint' },
+			staged : { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm --silent . lint eslint --silent' },
 			eslint : { flags: [ '--fix' ] },
 		},
 		workspace : { check : { pkg : { schema : async ( {

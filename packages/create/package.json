@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.0.25",
+	"version": "0.1.0",
 	"description": "Quickly create a backan application to get started",
 	"keywords": [
 		"backend",
@@ -37,8 +37,8 @@
 	],
 	"scripts": {
 		"build": "pnpm run --sequential \"/^build:.*/\"",
+		"build:_rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",
-		"build:rm": "rimraf dist && rimraf build",
 		"dev": "tsx src/bin.ts",
 		"example": "tsx examples/main.ts",
 		"lint": "pnpm eslint src",

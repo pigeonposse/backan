@@ -1,12 +1,12 @@
 
 // import { Route } from '../src/lib/route'
 // import { App }   from '../src/lib/app'
-import { bugs } from '../../../package.json'
+import { bugs }    from '../../../package.json'
+import { version } from '../package.json'
 import {
 	Route,
 	App,
-} from '../dist/main'
-import { version } from '../package.json'
+} from '../src/main'
 
 const app = new App( {
 	version,

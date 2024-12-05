@@ -18,11 +18,11 @@ importers:
         specifier: 2.27.10
         version: 2.27.10
       '@dovenv/core':
-        specifier: 0.0.7
-        version: 0.0.7
+        specifier: 0.0.8
+        version: 0.0.8
       '@dovenv/theme-banda':
-        specifier: 0.0.7
-        version: 0.0.7(@algolia/client-search@5.15.0)(@dovenv/core@0.0.7)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(axios@1.7.8)(change-case@5.4.4)(enquirer@2.4.1)(jiti@2.4.1)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)
+        specifier: 0.0.8
+        version: 0.0.8(@algolia/client-search@5.15.0)(@dovenv/core@0.0.8)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(axios@1.7.8)(change-case@5.4.4)(enquirer@2.4.1)(jiti@2.4.1)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)
       '@playwright/test':
         specifier: 1.49.0
         version: 1.49.0
@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@hono/vite-dev-server':
         specifier: 0.16.0
-        version: 0.16.0(hono@4.6.3)(miniflare@3.20240821.0)
+        version: 0.16.0(hono@4.6.12)(miniflare@3.20240821.0)
 
   packages/builder:
     dependencies:
@@ -137,18 +137,18 @@ importers:
   packages/core:
     dependencies:
       '@hono/swagger-ui':
-        specifier: 0.4.1
-        version: 0.4.1(hono@4.6.3)
+        specifier: 0.5.0
+        version: 0.5.0(hono@4.6.12)
       '@hono/zod-openapi':
-        specifier: 0.16.2
-        version: 0.16.2(hono@4.6.3)(zod@3.23.8)
+        specifier: 0.18.3
+        version: 0.18.3(hono@4.6.12)(zod@3.23.8)
       hono:
-        specifier: 4.6.3
-        version: 4.6.3
+        specifier: 4.6.12
+        version: 4.6.12
     devDependencies:
       '@hono/vite-dev-server':
-        specifier: 0.16.0
-        version: 0.16.0(hono@4.6.3)(miniflare@3.20240821.0)
+        specifier: 0.17.0
+        version: 0.17.0(hono@4.6.12)(miniflare@3.20240821.0)
 
   packages/create:
     dependencies:
@@ -205,7 +205,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: 1.13.7
-        version: 1.13.7(hono@4.6.3)
+        version: 1.13.7(hono@4.6.12)
     devDependencies:
       '@backan/core':
         specifier: workspace:*
@@ -1152,68 +1152,68 @@ packages:
       search-insights:
         optional: true
 
-  '@dovenv/convert@0.0.7':
-    resolution: {integrity: sha512-hpqH8A/IvJGggfGvMiM8KLANbT+KA+LMHjmQMRAy9o4n0YeGJLlCm+OZO9/a9R/hudCucBwXjpRFmJyRfepY8g==}
+  '@dovenv/convert@0.0.8':
+    resolution: {integrity: sha512-xR4aQitOBzWPjcOsnHb46SaG9giaWO4KzE9g8CTHUYAGu+d1gDt3NkDXDt/5hAtyCrr231XS6s3KctRz+XryQw==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/core@0.0.7':
-    resolution: {integrity: sha512-5daGaY7kXP//AxX2gk/kQ/tFV4VJ5cb9Tweox0zWqSvneCYpOo+pBdjVx/Pdb8vgIzOR57xZAX3zhoV/XKRPHA==}
+  '@dovenv/core@0.0.8':
+    resolution: {integrity: sha512-StRw2f4KBrwlMYTqZbHmHJ3O5PGfSSThZLPzePJzxtP5Fs3eVUzxyzclMQ2X90DxQd2iwgd7Bpc0pfAPUCRIwA==}
     hasBin: true
 
-  '@dovenv/docs@0.0.7':
-    resolution: {integrity: sha512-5hHdG3iFwDLVR74cKRktYHoSuYfQtGoc2HquL75cs+FPgDHlbDmS0abEVQkQOBAZQw/Cvzi7hXZ5aOIdWxoRmA==}
+  '@dovenv/docs@0.0.8':
+    resolution: {integrity: sha512-RWxbioh9cZ/rnDhxSWGDtyY2I99CCt8M+ht/cbtao+GGP2mAKxWafteJyzeq/6P03bEhTIWlQCxzXZ2f86vnCQ==}
     hasBin: true
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/eslint-config@0.0.7':
-    resolution: {integrity: sha512-DrhiYOrYVcbofZexSlrtElqKLkwZe+9bCwNS//BCHSDGJrIC25CGi7WTKbZ/DO/TRwFd9efGLq7TgjAvwORZhQ==}
+  '@dovenv/eslint-config@0.0.8':
+    resolution: {integrity: sha512-/LrzYxVX9JkuFaGoyIV8e60FvTmzyJxdc/E8qzHmJWRv0GlpcISJHUsz5a86S7Kl7O5RmyAbY6sHmxvuMHUfdw==}
     peerDependencies:
       eslint: 9.14.0
 
-  '@dovenv/examples@0.0.7':
-    resolution: {integrity: sha512-ypzTuc7zu7qBab87pIHxs0jbRn5LxftolSDlA/bbbv5AiA16uedgIBgPVaLqieK5nuXpcDtChOjN9VNGR1kRXA==}
+  '@dovenv/examples@0.0.8':
+    resolution: {integrity: sha512-V4lea4sLWDR6cC2e/mTl3aa02n+TcV5dlsKl6LVaZrgQp6KmSf3feOuYrVf4iWbAwn/8OxYlcd9gnzaBnHrijQ==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/lint@0.0.7':
-    resolution: {integrity: sha512-o1JO6Ww9OIzQEPeOIooRWyedqOmyKFmbM7qlQxYNrUc18zeupU0NZ5/A1veobXimRRRjJn2JucMY5FMSb/NW0g==}
+  '@dovenv/lint@0.0.8':
+    resolution: {integrity: sha512-ypaqE61LQG3IIJj48pE6U6nPs8cNKWsCvWV1vWPDse5wW8rTYamBESqZdkt7Wp372G6Tr30eLM4cBqM3f4FpUQ==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/media@0.0.7':
-    resolution: {integrity: sha512-gohiDtbGAtStv2wKfueI2FoATCkzdvGo+TNWGisWR85ssVrRLnQmXeObMKAbyTsieiHmYPGRFL5G/QcD4w8XPQ==}
+  '@dovenv/media@0.0.8':
+    resolution: {integrity: sha512-hmHcHuztsN+nvFg/0BAqu0lCcvAlJ/v+Iqn9XMGXCLLKflcx15KoBYROsqd0dpDC9I2FQCWmC17170PAthWqkA==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/repo@0.0.7':
-    resolution: {integrity: sha512-1S+ad3BHgWGtKQX1GhgFEiq2X0hQYJHv6GSDlkagKMbqYw4hyvWX3qnfgEeuLYQXyrh3a+VAk8aUeWBfoFCFsg==}
+  '@dovenv/repo@0.0.8':
+    resolution: {integrity: sha512-an6p848+OqXXnRcx/acHEpOAcb25a6/BN5yhFiljtsY4UFZ70CZKXReRNmMPwaGASQoeXn9LRaxaaSuwJz6YOg==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/stylelint-config@0.0.7':
-    resolution: {integrity: sha512-er8cu8DLzqhL0budSNROj5wb45sNHrwMFyC6TxIJkbuJmOx2OPy61ttskLd7Ju/FP/kKk9p817nyjv6FcmpQ2Q==}
+  '@dovenv/stylelint-config@0.0.8':
+    resolution: {integrity: sha512-YrEBdXyYsQJAEVGbkt8ooAjfxV51Q/JMbeDrlqyL4/cz2pbSt9ogN481WwU6d1+kgfL8+ouRCRr1TUqdtF5/jw==}
     peerDependencies:
       stylelint: 16.10.0
 
-  '@dovenv/theme-banda@0.0.7':
-    resolution: {integrity: sha512-4K4ViIWkfXErvyOXi/zrcJApdhKyKXyT9kGBaUqJGq2MwWEcutcB1USxoa5lVVsekvvF/AG0s3IpE2IsMMIKWA==}
+  '@dovenv/theme-banda@0.0.8':
+    resolution: {integrity: sha512-PdzlelaIYHjdePP3CNEK4/E0hYW7+wDTtAL+2QMdkOHJpBfdR9juOYC0shS1IAxhEhCXq5qn9IvLh3PmeybL2Q==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/todo@0.0.7':
-    resolution: {integrity: sha512-Ntwjg8CImGUgK7NGpxch5RN11/9in2dRIoygVPHsyRSGU3rE+Fa0+zdRLzQ2W6Xb9488OvG9ZV8x3pqz6iTqww==}
+  '@dovenv/todo@0.0.8':
+    resolution: {integrity: sha512-8o6JvxiP2nVKl2Vwch0roXcoSgysSskdIgM/emeH6p2kFcv1/p8YObhqr2h9EwxYzyZYS9c6eRg9V5mvexnaeg==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
-  '@dovenv/core/utils@0.0.7':
-    resolution: {integrity: sha512-zPbxgOtST02GY20oiyJn7BwL4y7hXua5WPvDZBqjzJnoq35uH00SOlMuQ1j4PErRAyJEQsgOLsPgJAFlBUXfGg==}
+  '@dovenv/utils@0.0.8':
+    resolution: {integrity: sha512-sqVjCZ3ByR6DJA6/GxWXfI9JGREiKj33B/3c6itZNQ2qRnF5MqscvZ6cjf5Ogs+Q1CRfGe/STp4tca7YHd2C6Q==}
 
-  '@dovenv/workspace@0.0.7':
-    resolution: {integrity: sha512-sE7etsIK3M/5gIYaQC8m8/OZ+b97cX1wHa7IOaaNMe2oOWsJvbCP66vhsGtmM+2Mxjni16Tf5IUv/++QWg+S1w==}
+  '@dovenv/workspace@0.0.8':
+    resolution: {integrity: sha512-XTvSp89vFlawIShEShTGqSWUR3xtPkUO1JNMGEJDOT/T+nkxBmbwAe/y9KbK/Ebo0Zu1zI/O8y1othDq9vAeUA==}
     peerDependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
   '@dual-bundle/import-meta-resolve@4.1.0':
     resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
@@ -1919,8 +1919,8 @@ packages:
     peerDependencies:
       hono: ^4
 
-  '@hono/swagger-ui@0.4.1':
-    resolution: {integrity: sha512-kPaJatHffeYQ3yVkHo878hCqwfapqx54FczJVJ+eRWt8J4biyVVMIdCAJb6MyA8bcnHUoTmUpPc7OJAV1VTg2g==}
+  '@hono/swagger-ui@0.5.0':
+    resolution: {integrity: sha512-MWYYSv9kC8IwFBLZdwgZZMT9zUq2C/4/ekuyEYOkHEgUMqu+FG3eebtBZ4ofMh60xYRxRR2BgQGoNIILys/PFg==}
     peerDependencies:
       hono: '*'
 
@@ -1937,15 +1937,28 @@ packages:
       wrangler:
         optional: true
 
-  '@hono/zod-openapi@0.16.2':
-    resolution: {integrity: sha512-MxlZzvHTXmOihKgIqYrEH5TysIs3Ep0PlTfmdaXe22HR0o2BULbpWW3F7W4I+2jAbt9rxLbxcs3aE2MXnIuAbw==}
+  '@hono/vite-dev-server@0.17.0':
+    resolution: {integrity: sha512-EvGOIj1MoY9uV94onXXz88yWaTxzUK+Mv8LiIEsR/9eSFoVUnHVR0B7l7iNIsxfHYRN7tbPDMWBSnD2RQun3yw==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: '*'
+      miniflare: '*'
+      wrangler: '*'
+    peerDependenciesMeta:
+      miniflare:
+        optional: true
+      wrangler:
+        optional: true
+
+  '@hono/zod-openapi@0.18.3':
+    resolution: {integrity: sha512-bNlRDODnp7P9Fs13ZPajEOt13G0XwXKfKRHMEFCphQsFiD1Y+twzHaglpNAhNcflzR1DQwHY92ZS06b4LTPbIQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       hono: '>=4.3.6'
       zod: 3.*
 
-  '@hono/zod-validator@0.3.0':
-    resolution: {integrity: sha512-7XcTk3yYyk6ldrO/VuqsroE7stvDZxHJQcpATRAyha8rUxJNBPV3+6waDrARfgEqxOVlzIadm3/6sE/dPseXgQ==}
+  '@hono/zod-validator@0.4.1':
+    resolution: {integrity: sha512-I8LyfeJfvVmC5hPjZ2Iij7RjexlgSBT7QJudZ4JvNPLxn0JQ3sqclz2zydlwISAnw21D2n4LQ0nfZdoiv9fQQA==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
@@ -6042,8 +6055,8 @@ packages:
   highlight.js@10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
 
-  hono@4.6.3:
-    resolution: {integrity: sha512-0LeEuBNFeSHGqZ9sNVVgZjB1V5fmhkBSB0hZrpqStSMLOWgfLy0dHOvrjbJh0H2khsjet6rbHfWTHY0kpYThKQ==}
+  hono@4.6.12:
+    resolution: {integrity: sha512-eHtf4kSDNw6VVrdbd5IQi16r22m3s7mWPLd7xOMhg1a/Yyb1A0qpUFq8xYMX4FMuDe1nTKeMX5rTx7Nmw+a+Ag==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -11927,9 +11940,9 @@ snapshots:
     transitivePeerDependencies:
       - '@algolia/client-search'
 
-  '@dovenv/convert@0.0.7(@dovenv/core@0.0.7)(typescript@5.7.2)':
+  '@dovenv/convert@0.0.8(@dovenv/core@0.0.8)(typescript@5.7.2)':
     dependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
       jsdoc-to-markdown: 9.0.5
       openapi-to-md: 1.0.24
       typedoc: 0.26.11(typescript@5.7.2)
@@ -11939,18 +11952,18 @@ snapshots:
       - encoding
       - typescript
 
-  '@dovenv/core@0.0.7':
+  '@dovenv/core@0.0.8':
     dependencies:
-      '@dovenv/core/utils': 0.0.7
+      '@dovenv/utils': 0.0.8
       update-notifier: 7.3.1
     transitivePeerDependencies:
       - debug
       - encoding
       - supports-color
 
-  '@dovenv/docs@0.0.7(@algolia/client-search@5.15.0)(@dovenv/core@0.0.7)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(axios@1.7.8)(change-case@5.4.4)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)':
+  '@dovenv/docs@0.0.8(@algolia/client-search@5.15.0)(@dovenv/core@0.0.8)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(axios@1.7.8)(change-case@5.4.4)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)':
     dependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
       '@fortawesome/vue-fontawesome': 3.0.8(@fortawesome/fontawesome-svg-core@6.7.0)(vue@3.5.13(typescript@5.7.2))
       '@shikijs/vitepress-twoslash': 1.23.1(typescript@5.7.2)
       markdown-it-container: 4.0.0
@@ -12001,7 +12014,7 @@ snapshots:
       - workbox-build
       - workbox-window
 
-  '@dovenv/eslint-config@0.0.7(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.1))(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))':
+  '@dovenv/eslint-config@0.0.8(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.1))(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))':
     dependencies:
       '@eslint/compat': 1.2.3(eslint@9.14.0(jiti@2.4.1))
       '@eslint/js': 9.15.0
@@ -12044,20 +12057,20 @@ snapshots:
       - svelte
       - ts-node
 
-  '@dovenv/examples@0.0.7(@dovenv/core@0.0.7)':
+  '@dovenv/examples@0.0.8(@dovenv/core@0.0.8)':
     dependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
       leasot: 14.4.0
 
-  '@dovenv/lint@0.0.7(@dovenv/core@0.0.7)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(jiti@2.4.1)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)':
+  '@dovenv/lint@0.0.8(@dovenv/core@0.0.8)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(jiti@2.4.1)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)':
     dependencies:
       '@commitlint/format': 19.5.0
       '@commitlint/lint': 19.5.0
       '@commitlint/load': 19.5.0(@types/node@22.10.1)(typescript@5.7.2)
       '@commitlint/read': 19.5.0
-      '@dovenv/core': 0.0.7
-      '@dovenv/eslint-config': 0.0.7(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.1))(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))
-      '@dovenv/stylelint-config': 0.0.7(stylelint@16.10.0(typescript@5.7.2))
+      '@dovenv/core': 0.0.8
+      '@dovenv/eslint-config': 0.0.8(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.1))(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))
+      '@dovenv/stylelint-config': 0.0.8(stylelint@16.10.0(typescript@5.7.2))
       commitlint-config-gitmoji: 2.3.1
       eslint: 9.14.0(jiti@2.4.1)
       lint-staged: 15.2.10
@@ -12077,9 +12090,9 @@ snapshots:
       - ts-node
       - typescript
 
-  '@dovenv/media@0.0.7(@dovenv/core@0.0.7)(enquirer@2.4.1)':
+  '@dovenv/media@0.0.8(@dovenv/core@0.0.8)(enquirer@2.4.1)':
     dependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
       carbon-now-cli: 2.0.0(enquirer@2.4.1)
       imagemin: 9.0.0
       imagemin-gifsicle: 7.0.0
@@ -12094,16 +12107,16 @@ snapshots:
       - enquirer
       - supports-color
 
-  '@dovenv/repo@0.0.7(@dovenv/core@0.0.7)':
+  '@dovenv/repo@0.0.8(@dovenv/core@0.0.8)':
     dependencies:
       '@changesets/changelog-github': 0.5.0
       '@changesets/cli': 2.27.9
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
       husky: 9.1.7
     transitivePeerDependencies:
       - encoding
 
-  '@dovenv/stylelint-config@0.0.7(stylelint@16.10.0(typescript@5.7.2))':
+  '@dovenv/stylelint-config@0.0.8(stylelint@16.10.0(typescript@5.7.2))':
     dependencies:
       postcss-html: 1.7.0
       stylelint: 16.10.0(typescript@5.7.2)
@@ -12113,17 +12126,17 @@ snapshots:
       stylelint-config-standard: 36.0.1(stylelint@16.10.0(typescript@5.7.2))
       stylelint-order: 6.0.4(stylelint@16.10.0(typescript@5.7.2))
 
-  '@dovenv/theme-banda@0.0.7(@algolia/client-search@5.15.0)(@dovenv/core@0.0.7)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(axios@1.7.8)(change-case@5.4.4)(enquirer@2.4.1)(jiti@2.4.1)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)':
+  '@dovenv/theme-banda@0.0.8(@algolia/client-search@5.15.0)(@dovenv/core@0.0.8)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(axios@1.7.8)(change-case@5.4.4)(enquirer@2.4.1)(jiti@2.4.1)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)':
     dependencies:
-      '@dovenv/convert': 0.0.7(@dovenv/core@0.0.7)(typescript@5.7.2)
-      '@dovenv/core': 0.0.7
-      '@dovenv/docs': 0.0.7(@algolia/client-search@5.15.0)(@dovenv/core@0.0.7)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(axios@1.7.8)(change-case@5.4.4)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)
-      '@dovenv/examples': 0.0.7(@dovenv/core@0.0.7)
-      '@dovenv/lint': 0.0.7(@dovenv/core@0.0.7)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(jiti@2.4.1)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)
-      '@dovenv/media': 0.0.7(@dovenv/core@0.0.7)(enquirer@2.4.1)
-      '@dovenv/repo': 0.0.7(@dovenv/core@0.0.7)
-      '@dovenv/todo': 0.0.7(@dovenv/core@0.0.7)
-      '@dovenv/workspace': 0.0.7(@dovenv/core@0.0.7)
+      '@dovenv/convert': 0.0.8(@dovenv/core@0.0.8)(typescript@5.7.2)
+      '@dovenv/core': 0.0.8
+      '@dovenv/docs': 0.0.8(@algolia/client-search@5.15.0)(@dovenv/core@0.0.8)(@fortawesome/fontawesome-svg-core@6.7.0)(@types/node@22.10.1)(axios@1.7.8)(change-case@5.4.4)(postcss@8.4.49)(react@18.3.1)(search-insights@2.17.0)(terser@5.37.0)(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(workbox-build@7.1.1)(workbox-window@7.1.0)
+      '@dovenv/examples': 0.0.8(@dovenv/core@0.0.8)
+      '@dovenv/lint': 0.0.8(@dovenv/core@0.0.8)(@types/node@22.10.1)(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.1))(typescript@5.6.3))(jiti@2.4.1)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)
+      '@dovenv/media': 0.0.8(@dovenv/core@0.0.8)(enquirer@2.4.1)
+      '@dovenv/repo': 0.0.8(@dovenv/core@0.0.8)
+      '@dovenv/todo': 0.0.8(@dovenv/core@0.0.8)
+      '@dovenv/workspace': 0.0.8(@dovenv/core@0.0.8)
     transitivePeerDependencies:
       - '@75lb/nature'
       - '@algolia/client-search'
@@ -12174,12 +12187,12 @@ snapshots:
       - workbox-build
       - workbox-window
 
-  '@dovenv/todo@0.0.7(@dovenv/core@0.0.7)':
+  '@dovenv/todo@0.0.8(@dovenv/core@0.0.8)':
     dependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
       leasot: 12.5.0
 
-  '@dovenv/core/utils@0.0.7':
+  '@dovenv/utils@0.0.8':
     dependencies:
       '@cfworker/json-schema': 3.0.1
       '@clack/core': 0.3.4
@@ -12248,9 +12261,9 @@ snapshots:
       - encoding
       - supports-color
 
-  '@dovenv/workspace@0.0.7(@dovenv/core@0.0.7)':
+  '@dovenv/workspace@0.0.8(@dovenv/core@0.0.8)':
     dependencies:
-      '@dovenv/core': 0.0.7
+      '@dovenv/core': 0.0.8
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 
@@ -12681,36 +12694,44 @@ snapshots:
       nan: 2.22.0
       prebuild-install: 7.1.2
 
-  '@hono/node-server@1.13.1(hono@4.6.3)':
+  '@hono/node-server@1.13.1(hono@4.6.12)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.12
 
-  '@hono/node-server@1.13.7(hono@4.6.3)':
+  '@hono/node-server@1.13.7(hono@4.6.12)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.12
 
-  '@hono/swagger-ui@0.4.1(hono@4.6.3)':
+  '@hono/swagger-ui@0.5.0(hono@4.6.12)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.12
 
-  '@hono/vite-dev-server@0.16.0(hono@4.6.3)(miniflare@3.20240821.0)':
+  '@hono/vite-dev-server@0.16.0(hono@4.6.12)(miniflare@3.20240821.0)':
     dependencies:
-      '@hono/node-server': 1.13.1(hono@4.6.3)
-      hono: 4.6.3
+      '@hono/node-server': 1.13.1(hono@4.6.12)
+      hono: 4.6.12
       minimatch: 9.0.5
     optionalDependencies:
       miniflare: 3.20240821.0
 
-  '@hono/zod-openapi@0.16.2(hono@4.6.3)(zod@3.23.8)':
+  '@hono/vite-dev-server@0.17.0(hono@4.6.12)(miniflare@3.20240821.0)':
+    dependencies:
+      '@hono/node-server': 1.13.7(hono@4.6.12)
+      hono: 4.6.12
+      minimatch: 9.0.5
+    optionalDependencies:
+      miniflare: 3.20240821.0
+
+  '@hono/zod-openapi@0.18.3(hono@4.6.12)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
-      '@hono/zod-validator': 0.3.0(hono@4.6.3)(zod@3.23.8)
-      hono: 4.6.3
+      '@hono/zod-validator': 0.4.1(hono@4.6.12)(zod@3.23.8)
+      hono: 4.6.12
       zod: 3.23.8
 
-  '@hono/zod-validator@0.3.0(hono@4.6.3)(zod@3.23.8)':
+  '@hono/zod-validator@0.4.1(hono@4.6.12)(zod@3.23.8)':
     dependencies:
-      hono: 4.6.3
+      hono: 4.6.12
       zod: 3.23.8
 
   '@html-eslint/eslint-plugin@0.27.0': {}
@@ -17855,7 +17876,7 @@ snapshots:
 
   highlight.js@10.7.3: {}
 
-  hono@4.6.3: {}
+  hono@4.6.12: {}
 
   hookable@5.5.3: {}
 

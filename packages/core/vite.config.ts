@@ -28,9 +28,5 @@ export default defineConfig( {
 			formats : [ 'es' ],
 		},
 	},
-	plugins : [
-		dts( { rollupTypes: true } ),
-		devServer( { entry : 'examples/app.ts', // The file path of your application.
-		} ),
-	],
+	plugins : [ dts( { rollupTypes: true } ), devServer( { entry: 'examples/app.ts' } ) ],
 } )
