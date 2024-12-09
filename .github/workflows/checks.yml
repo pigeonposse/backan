@@ -139,13 +139,6 @@ jobs:
       # CALL TO WORKFLOWS
       #########################################################################
 
-      - name: ℹ️🐙😺➡️ Update repo info
-        if: steps.check_package_json.outputs.stdout != 'No changes in package.json'
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: update-repo.yml
-        continue-on-error: true
-
       - name: 📚🐙😺➡️ Call to workflow for deploy Documentation
         if: steps.updated.outputs.docs_version != ''
         uses: benc-uk/workflow-dispatch@v1
@@ -153,6 +146,13 @@ jobs:
           workflow: release-docs.yml
           inputs: '{ "version": "${{ steps.updated.outputs.docs_version }}"}'
         continue-on-error: true
+
+    #   - name: ℹ️🐙😺➡️ Update repo info
+    #     if: steps.check_package_json.outputs.stdout != 'No changes in package.json'
+    #     uses: benc-uk/workflow-dispatch@v1
+    #     with:
+    #       workflow: update-repo.yml
+    #     continue-on-error: true
 
     #   - name: 💾🐙😺➡️ Call to workflow for create lib releases
     #     if: steps.updated.outputs.core_version != ''

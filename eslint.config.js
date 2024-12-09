@@ -9,7 +9,9 @@ export default [
 	dovenvEslintConfig.setIgnoreConfig( [
 		'**/templates/**/*',
 		'**/partials/**/*',
+		'**/*.d.ts',
 		'**/CHANGELOG.md',
 		'**/README.md',
+		'./docs/index.md',
 	] ),
 ]

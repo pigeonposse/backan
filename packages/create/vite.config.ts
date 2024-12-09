@@ -14,9 +14,7 @@ export default defineConfig( {
 		platform : 'node',
 		target,
 	},
-	server : {
-		// host : '0.0.0.0',
-		port },
+	server  : { port },
 	preview : { port },
 	build   : {
 		ssr : true,
