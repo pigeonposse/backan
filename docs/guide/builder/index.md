@@ -28,6 +28,10 @@ yarn add @backan/builder
 bun add @backan/builder
 ```
 
+```bash [deno]
+deno add npm:@backan/builder
+```
+
 :::
 
 [![NPM Version](https://img.shields.io/npm/v/@backan/builder?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/builder)

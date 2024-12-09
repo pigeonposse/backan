@@ -1,26 +1,10 @@
-import { defineConfig } from '@dovenv/core'
-import {
-	asciiFont,
-	getCurrentDir,
-	getObjectFromJSONFile,
-	joinPath,
-} from '@dovenv/core/utils'
+import { defineConfig }         from '@dovenv/core'
 import { config as bandaTheme } from '@dovenv/theme-banda'
 
-const workspaceDir = joinPath( getCurrentDir( import.meta.url ), '..' )
-const pkgPath      = joinPath( workspaceDir, 'package.json' )
-const pkg          = await getObjectFromJSONFile( pkgPath )
+import corePlugin from './core.js'
 
 export default defineConfig(
-	{
-		name  : 'BACKAN',
-		desc  : 'Workspace for backan 🔥',
-		const : {
-			workspaceDir,
-			pkg,
-			mark : `\n${asciiFont( `pigeonposse\n-------\n${pkg.extra.id}`, 'ANSI Shadow' )}\nAuthor: ${pkg.author.name}\n`,
-		},
-	},
+	corePlugin,
 	bandaTheme( {
 		repo : { commit : { scopes : [
 			{
@@ -45,6 +29,14 @@ export default defineConfig(
 			staged : { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm --silent . lint eslint --silent' },
 			eslint : { flags: [ '--fix' ] },
 		},
+		todo : { ws : {
+			input     : [ '**/*.{js,ts}', '**/*.md' ],
+			inputOpts : {
+				gitignore : true,
+				onlyFiles : true,
+				dot       : true,
+			},
+		} },
 		workspace : { check : { pkg : { schema : async ( {
 			v, path, data,
 		} ) => {

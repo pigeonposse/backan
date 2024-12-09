@@ -1,4 +1,4 @@
-import { paths } from '@backan/config/core'
+import { paths } from '@backan/config/consts'
 import {
 	joinPath,
 	copyDir,

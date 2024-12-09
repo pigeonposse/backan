@@ -37,18 +37,10 @@ features:
 
 ---
 
-::: code-group
+## Install
 
-```bash [npm]
-npm install backan
-```
+<!--@include: ./partials/install.md-->
 
-```bash [pnpm]
-pnpm install backan
-```
+## Starter app
 
-```bash [yarn]
-yarn add backan
-```
-
-:::
+<!--@include: ./partials/create.md-->

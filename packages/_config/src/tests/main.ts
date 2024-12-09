@@ -7,14 +7,13 @@ export {
 	it,
 	expect,
 } from 'vitest'
+import * as utils from '@dovenv/core/utils'
 import {
 	describe,
 	it,
 	expect,
 	vi,
 } from 'vitest'
-
-import * as utils from '../core/main.mjs'
 
 import type { ExpectStatic } from 'vitest'
 

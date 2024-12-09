@@ -5,12 +5,18 @@ import {
 } from './core'
 
 export { TEMPLATE }
+
+type Prettify<T> = {
+	[K in keyof T]: T[K];
+} & {}
+
 type CoreParams = NonNullable<Parameters<typeof core.build>[0]>
 
-export type CreateParams = Omit<CoreParams, 'input'> & {
+export type CreateParams = Prettify<Omit<CoreParams, 'input'> & {
 	/** Input: teemplate key or path. */
 	input? : typeof TEMPLATE[keyof typeof TEMPLATE]
-}
+}>
+
 export type CreateOpts = Parameters<typeof core.build>[1]
 
 /**

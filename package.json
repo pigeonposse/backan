@@ -33,6 +33,13 @@
 		"email": "angelo@pigeonposse.com",
 		"url": "https://github.com/angelespejo"
 	},
+	"contributors": [
+		{
+			"name": "Alejo",
+			"email": "alejo@pigeonposse.com",
+			"url": "https://github.com/alejomalia"
+		}
+	],
 	"type": "module",
 	"workspaces": [
 		"packages/*"
@@ -64,15 +71,12 @@
 		"@backan/config": "workspace:*",
 		"@changesets/changelog-github": "0.5.0",
 		"@changesets/cli": "2.27.10",
-		"@dovenv/core": "0.0.8",
-		"@dovenv/theme-banda": "0.0.8",
+		"@dovenv/core": "0.0.19",
+		"@dovenv/theme-banda": "0.0.19",
 		"@playwright/test": "1.49.0",
 		"@types/node": "22.10.1",
 		"eslint": "9.16.0",
-		"husky": "9.1.7",
 		"rimraf": "6.0.1",
-		"terser": "5.37.0",
-		"ts-node": "10.9.2",
 		"tslib": "2.8.1",
 		"tsx": "4.19.2",
 		"typescript": "5.7.2",
@@ -94,29 +98,23 @@
 		"repoId": "backan",
 		"rawRepoUrl": "https://raw.githubusercontent.com/pigeonposse/backan",
 		"docsUrl": "https://backan.pigeonposse.com",
-		"docsPath": {
-			"posts": "/posts/",
-			"todo": "/todo/",
-			"guide": "/guide/",
-			"core": "/guide/core/",
-			"server": "/guide/server",
-			"create": "/guide/create",
-			"builder": "/guide/builder"
-		},
+		"changelogURL": "https://github.com/pigeonposse/backan/blob/main/packages/backan/CHANGELOG.md",
+		"contributingURL": "https://github.com/pigeonposse/.github/blob/main/CONTRIBUTING.md",
+		"licenseURL": "https://github.com/pigeonposse/backan/blob/main/LICENSE",
 		"collective": {
 			"id": "pigeonposse",
 			"name": "PigeonPosse",
 			"gh": "https://github.com/pigeonposse",
 			"about": "https://pigeonposse.com?popup=about",
 			"url": "https://pigeonposse.com",
-			"web": "https://pigeonposse.com",
-			"email": "dev@pigeonposse.com",
 			"socialUser": {
 				"twitter": "pigeonposse_",
 				"instagram": "pigeon.posse",
 				"medium": "pigeonposse"
 			},
 			"social": {
+				"web": "https://pigeonposse.com",
+				"email": "dev@pigeonposse.com",
 				"twitter": "https://twitter.com/pigeonposse_",
 				"instagram": "https://www.instagram.com/pigeon.posse/",
 				"medium": "https://medium.com/@pigeonposse"

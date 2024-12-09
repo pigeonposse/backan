@@ -18,6 +18,14 @@ pnpm i @backan/server
 yarn add @backan/server
 ```
 
+```bash [bun]
+bun add @backan/server
+```
+
+```bash [deno]
+deno add npm:@backan/server
+```
+
 :::
 
 [![NPM Version](https://img.shields.io/npm/v/@backan/server?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/server)

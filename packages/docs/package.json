@@ -1,6 +1,6 @@
 {
 	"name": "@backan/docs",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"private": true,
 	"description": "Documentation for backan",
 	"repository": {
@@ -13,28 +13,16 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:1": "node .dev/copy-docs.js",
-		"build:2": "vitepress build src --force",
-		"build:3": "node .dev/copy-docs.js --rm-dest",
-		"dev": "vitepress dev src",
-		"preview": "vitepress preview src",
+		"build": "dovenv docs build",
+		"dev": "dovenv docs dev",
+		"preview": "dovenv docs preview",
 		"test": "playwright test"
 	},
 	"devDependencies": {
 		"@backan/builder": "workspace:*",
 		"@backan/core": "workspace:*",
 		"@backan/server": "workspace:*",
-		"@shikijs/vitepress-twoslash": "1.13.0",
 		"backan": "workspace:*",
-		"create-backan": "workspace:*",
-		"markdown-it-task-lists": "2.1.1",
-		"medium-zoom": "1.1.0",
-		"openapi-to-md": "1.0.24",
-		"vite-plugin-pwa": "0.20.5",
-		"vitepress": "1.3.3",
-		"vitepress-plugin-group-icons": "1.2.4",
-		"vitepress-plugin-rss": "0.2.10",
-		"vue": "3.4.38"
+		"create-backan": "workspace:*"
 	}
 }

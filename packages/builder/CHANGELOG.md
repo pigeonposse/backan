@@ -1,5 +1,11 @@
 # @backan/builder
 
+## 0.1.2
+
+### Patch Changes
+
+- Update
+
 ## 0.1.1
 
 ### Patch Changes

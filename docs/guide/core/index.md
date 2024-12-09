@@ -4,25 +4,7 @@ Start building your restAPI app now 🌈.
 
 ## 🔑 Installation
 
-::: code-group
-
-```bash [npm]
-npm install backan
-```
-
-```bash [pnpm]
-pnpm add backan
-```
-
-```bash [yarn]
-yarn add backan
-```
-
-```bash [bun]
-bun add backan
-```
-
-:::
+<!--@include: ../../partials/install.md-->
 
 [![NPM Version](https://img.shields.io/npm/v/backan?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/backan)
 
@@ -43,7 +25,11 @@ yarn add @backan/core
 ```
 
 ```bash [bun]
-bun add backan
+bun add backancore
+```
+
+```bash [deno]
+deno add npm:backancore
 ```
 
 :::
@@ -54,25 +40,7 @@ bun add backan
 
 You can automatically create a `backan` template with:
 
-::: code-group
-
-```bash [npm]
-npm create backan
-```
-
-```bash [pnpm]
-pnpm create backan
-```
-
-```bash [yarn]
-yarn create backan
-```
-
-```bash [bun]
-bun create backan
-```
-
-:::
+<!--@include: ../../partials/create.md-->
 
 <video src="/backan-create.webm" controls/>
 

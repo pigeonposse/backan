@@ -1,6 +1,6 @@
 {
 	"name": "@backan/builder",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
 		"backend",
@@ -47,7 +47,7 @@
 	},
 	"dependencies": {
 		"binarium": "2.0.1",
-		"openapi-fetch": "0.13.1",
+		"openapi-fetch": "0.13.3",
 		"openapi-to-md": "1.0.24",
 		"openapi-typescript": "7.4.4"
 	},
