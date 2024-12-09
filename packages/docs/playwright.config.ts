@@ -8,7 +8,7 @@ import type { PlaywrightTestConfig } from '@playwright/test'
 const port                         = 13124
 const config: PlaywrightTestConfig = {
 	webServer : {
-		command : `pnpm run preview --port=${port}`,
+		command : `pnpm run preview --port ${port}`,
 		port,
 	},
 	testDir   : 'tests',

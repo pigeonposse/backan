@@ -1,5 +1,14 @@
 # backan
 
+## 0.1.3
+
+### Patch Changes
+
+- Fix env issues
+
+- Updated dependencies []:
+  - @backan/core@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes
