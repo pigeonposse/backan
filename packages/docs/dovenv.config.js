@@ -1,5 +1,5 @@
-import { defineConfig }         from '@dovenv/core'
-import { config as bandaTheme } from '@dovenv/theme-banda'
+import { defineConfig } from '@dovenv/core'
+import ppTheme          from '@dovenv/theme-pigeonposse'
 
 import corePlugin from '../../.dovenv/core.js'
 
@@ -81,43 +81,21 @@ const sidebar = [
 	},
 ]
 
-const pkg = corePlugin.const.pkg
-console.log( 'DOCUMENTATION' )
-
 export default defineConfig(
-	corePlugin,
-	bandaTheme( { docs : {
-		input           : '../../docs',
-		output          : 'build',
-		shortDesc       : pkg.extra.shortDesc,
-		repoURL         : pkg.repository.url,
-		name            : pkg.extra.productName,
-		changelogURL    : pkg.extra.changelogURL,
-		contributingURL : pkg.extra.contributingURL,
-		npmURL          : pkg.repository.url,
-		license         : {
-			type : pkg.license,
-			url  : pkg.extra.licenseURL,
-		},
-		moreURL : pkg.extra.collective.url,
-		footer  : { links: pkg.extra.collective.social },
-		sidebar : {
-			'/guide/'       : sidebar,
-			'/todo/'        : sidebar,
-			'/contributors' : sidebar,
-		},
-		autoSidebar : {
-			intro     : false,
-			reference : false,
-		},
-		// vitepress: {
-		// 	vite: {
-		// 		build: {
-		// 			rollupOptions: {
-		// 			  external: ['vue/server-renderer', 'vue'],
-		// 			},
-		// 		},
-		// 	}
-		// }
-	} } ),
+	ppTheme( {
+		core : corePlugin,
+		docs : async () => ( {
+			input   : '../../docs',
+			output  : 'build',
+			sidebar : {
+				'/guide/'       : sidebar,
+				'/todo/'        : sidebar,
+				'/contributors' : sidebar,
+			},
+			autoSidebar : {
+				intro     : false,
+				reference : false,
+			},
+		} ),
+	} ),
 )

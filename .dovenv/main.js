@@ -1,11 +1,11 @@
-import { defineConfig }         from '@dovenv/core'
-import { config as bandaTheme } from '@dovenv/theme-banda'
+import { defineConfig } from '@dovenv/core'
+import ppTheme          from '@dovenv/theme-pigeonposse'
 
 import corePlugin from './core.js'
 
 export default defineConfig(
-	corePlugin,
-	bandaTheme( {
+	ppTheme( {
+		core : corePlugin,
 		repo : { commit : { scopes : [
 			{
 				value : 'core',
@@ -25,10 +25,7 @@ export default defineConfig(
 				desc  : 'Only development environment',
 			},
 		] } },
-		lint : {
-			staged : { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm --silent . lint eslint --silent' },
-			eslint : { flags: [ '--fix' ] },
-		},
+		lint : { staged: { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm --silent . lint eslint --silent' } },
 		todo : { ws : {
 			input     : [ '**/*.{js,ts}', '**/*.md' ],
 			inputOpts : {
@@ -37,18 +34,5 @@ export default defineConfig(
 				dot       : true,
 			},
 		} },
-		workspace : { check : { pkg : { schema : async ( {
-			v, path, data,
-		} ) => {
-
-			if ( !data ) throw new Error( `No data in ${path}` )
-			if ( 'private' in data ) return
-			return v.object( {
-				name        : v.string(),
-				version     : v.string(),
-				description : v.string(),
-			} )
-
-		} } } },
 	} ),
 )

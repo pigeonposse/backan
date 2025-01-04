@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.1.4
+
+### Patch Changes
+
+- Update documentation and dependences
+
 ## 0.1.3
 
 ### Patch Changes

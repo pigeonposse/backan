@@ -3,8 +3,8 @@
 layout: home
 hero:
   name: "BACKAN"
-  text: "All in one web API builder."
-  tagline: Create endpoints with type validations and OpenApi documentation, safely and quickly.
+  text: "All in one web API builder"
+  tagline: Create endpoints with type validations and OpenApi documentation, safely and quickly
   image:
       src: /logo.png
       alt: BACKAN
