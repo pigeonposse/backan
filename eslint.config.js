@@ -1,4 +1,4 @@
-import { lint } from '@dovenv/theme-banda'
+import { lint } from '@dovenv/theme-pigeonposse'
 
 const { dovenvEslintConfig } = lint
 
