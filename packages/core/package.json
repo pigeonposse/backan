@@ -1,6 +1,6 @@
 {
 	"name": "@backan/core",
-	"version": "0.1.5",
+	"version": "0.2.0",
 	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"keywords": [
 		"backend",
@@ -9,7 +9,9 @@
 		"openapi",
 		"library",
 		"node",
-		"js"
+		"js",
+		"pp",
+		"pigeonposse"
 	],
 	"homepage": "https://backan.pigeonposse.com",
 	"repository": {

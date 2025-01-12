@@ -1,6 +1,6 @@
 {
 	"name": "@backan/builder",
-	"version": "0.1.5",
+	"version": "0.2.0",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
 		"backend",
@@ -12,7 +12,9 @@
 		"packager",
 		"builder",
 		"schema",
-		"markdown"
+		"markdown",
+		"pp",
+		"pigeonposse"
 	],
 	"homepage": "https://backan.pigeonposse.com/guide/builder",
 	"repository": {

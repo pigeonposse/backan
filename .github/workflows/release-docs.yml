@@ -6,15 +6,13 @@ name: 🚀📚 Release Documentation
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Set number for release version'
-        type: string
-        required: true
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
     GITHUB_TOKEN: ${{ github.token }}
+    DOCS_ID: 'backan'
+    DOCS_DIR: 'packages/docs/build/docs'
+    BUILD_CMD: 'pnpm build'
 
 ###############################################################################
 # JOBS
@@ -22,9 +20,7 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    env:
-      UPDATED_VERSION: ${{ github.event.inputs.version }}
+    runs-on: macos-latest
 
     steps:
 
@@ -45,24 +41,30 @@ jobs:
           cache: 'pnpm'
 
       - name: ⬇️📦 Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: |
+           export npm_config_build_from_source=false
+           pnpm install --no-frozen-lockfile --ignore-scripts
+           pnpm i -g wrangler 
+
+      #########################################################################
+      # BUILD
+      #########################################################################
+
+      - name: 🏗 Build packages
+        run: ${{env.BUILD_CMD}}
 
       ###################################################################
       # BUILD AND DEPLOY
       ###################################################################
 
-      - name: 🏗 Build package
-        run: pnpm build
-
       - name: 🌥 Deploy in cloudflare pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{env.DOCS_DIR}} --project-name=${{env.DOCS_ID}}
+          # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          projectName: "backan"
-          directory: 'packages/docs/build/docs'
-          wranglerVersion: '3'
+          packageManager: pnpm
 
 ###############################################################################

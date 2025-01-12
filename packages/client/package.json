@@ -1,6 +1,6 @@
 {
 	"name": "@backan/client",
-	"version": "0.1.5",
+	"version": "0.2.0",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
 		"backend",
@@ -8,11 +8,9 @@
 		"rest-api",
 		"openapi",
 		"library",
-		"bin",
-		"packager",
-		"builder",
-		"schema",
-		"markdown"
+		"client",
+		"pp",
+		"pigeonposse"
 	],
 	"homepage": "https://backan.pigeonposse.com/guide/client",
 	"repository": {

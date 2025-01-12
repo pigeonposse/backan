@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.1.5",
+	"version": "0.2.0",
 	"description": "Quickly create a backan application to get started",
 	"keywords": [
 		"backend",
@@ -10,7 +10,9 @@
 		"library",
 		"bin",
 		"create",
-		"creator"
+		"creator",
+		"pp",
+		"pigeonposse"
 	],
 	"homepage": "https://backan.pigeonposse.com",
 	"bugs": {

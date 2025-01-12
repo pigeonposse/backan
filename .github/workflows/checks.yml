@@ -128,12 +128,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
+      #########################################################################
+      # UPDATE REPO INFO
+      #########################################################################
       - name: ℹ️➡️ Check for changes in package.json
         run: |
           git fetch origin main
           git diff --name-only HEAD origin/main | grep 'package.json' || echo "No changes in package.json"
         continue-on-error: true
         id: check_package_json
+      - name: ℹ️🐙😺➡️ Update repo info
+        if: steps.check_package_json.outputs.stdout != 'No changes in package.json'
+        run: pnpm . gh info update
+        continue-on-error: true
 
       #########################################################################
       # CALL TO WORKFLOWS
@@ -144,22 +152,6 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: release-docs.yml
-          inputs: '{ "version": "${{ steps.updated.outputs.docs_version }}"}'
         continue-on-error: true
-
-    #   - name: ℹ️🐙😺➡️ Update repo info
-    #     if: steps.check_package_json.outputs.stdout != 'No changes in package.json'
-    #     uses: benc-uk/workflow-dispatch@v1
-    #     with:
-    #       workflow: update-repo.yml
-    #     continue-on-error: true
-
-    #   - name: 💾🐙😺➡️ Call to workflow for create lib releases
-    #     if: steps.updated.outputs.core_version != ''
-    #     uses: benc-uk/workflow-dispatch@v1
-    #     with:
-    #       workflow: release-lib.yml
-    #       inputs: '{ "version": "${{ steps.updated.outputs.core_version }}"}'
-    #     continue-on-error: true
 
 ###############################################################################

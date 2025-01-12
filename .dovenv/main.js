@@ -1,11 +1,11 @@
 import { defineConfig } from '@dovenv/core'
 import ppTheme          from '@dovenv/theme-pigeonposse'
 
-import corePlugin from './core.js'
+import core from './core.js'
 
 export default defineConfig(
 	ppTheme( {
-		core : corePlugin,
+		core,
 		repo : { commit : { scopes : [
 			{
 				value : 'core',
