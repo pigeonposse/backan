@@ -1,5 +1,33 @@
 # *Backan* `client`
 
+## 🔑 Installation
+
+::: code-group
+
+```bash [npm]
+npm install @backan/client
+```
+
+```bash [pnpm]
+pnpm i @backan/client
+```
+
+```bash [yarn]
+yarn add @backan/client
+```
+
+```bash [bun]
+bun add @backan/client
+```
+
+```bash [deno]
+deno add npm:@backan/client
+```
+
+:::
+
+[![NPM Version](https://img.shields.io/npm/v/@backan/client?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/client)
+
 Create a client for your `backan` API and make your frontend app able to access your API easily and with type. To achieve this, backan makes use of the [`openapi-featch`](https://openapi-ts.dev/openapi-fetch/) library.
 
 ```ts twoslash
