@@ -30,7 +30,7 @@ deno add npm:@backan/client
 
 [![NPM Version](https://img.shields.io/npm/v/@backan/client?style=for-the-badge&color=yellow)](https://www.npmjs.com/package/@backan/client)
 
-## Usage
+## 📈 Usage
 
 ```ts twoslash
 // @noErrors
