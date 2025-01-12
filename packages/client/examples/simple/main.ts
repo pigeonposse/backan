@@ -1,7 +1,7 @@
-// @ts-ignore
-import { createClient } from '../src/client'
 
-import type { paths } from './schema/openapi.d.ts' // Generate with buildSchema
+import { createClient } from '../../src/main.ts'
+
+import type { paths } from './openapi' // Generate with buildSchema
 
 const client = createClient<paths>( { baseUrl: 'http://localhost:1312/' } )
 

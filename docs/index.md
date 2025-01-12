@@ -30,10 +30,18 @@ features:
     icon: 🗄️
     details: Set up a BACKAN server with zero configuration.
     link: guide/server
+  - title: Client
+    icon: 🌐
+    details: Create the BACKAN app client.
+    link: guide/server
   - title: Builder
     icon: 🔢
-    details: Create binaries, JSON openapi schema and markdown documentation of your BACKAN application.
+    details: Create binaries, JSON openapi schema type definitions...
     link: guide/builder
+  - title: Markdown docs
+    icon: 📖
+    details: Create markdown documentation of your BACKAN application.
+    link: guide/builder#build-markdown-documentation
 
 ---
 

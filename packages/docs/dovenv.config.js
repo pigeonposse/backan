@@ -74,6 +74,10 @@ const sidebar = [
 				link : '/guide/server/',
 			},
 			{
+				text : '🌐 Client',
+				link : '/guide/client/',
+			},
+			{
 				text : '📦 Builder',
 				link : '/guide/builder/',
 			},

@@ -1,6 +1,6 @@
 {
 	"name": "@backan/server",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Build the Backan server with zero config.",
 	"keywords": [
 		"backend",

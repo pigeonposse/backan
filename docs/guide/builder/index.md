@@ -3,7 +3,6 @@
 The backan builder library allows you to build multiple things. Among others:
 
 - [**Executables / binaries**](#build-binaries)
-- [**client library**](#create-client)
 - [**JSON schema file**](#build-json-types-schema)
 - [**TypeScript definitions file**](#build-json-types-schema)
 - [**Markdown documentation**](#build-markdown-documentation)
@@ -183,48 +182,4 @@ type BuilderMDParams = {
   */
  output: string
 }
-```
-
-## Create client
-
-Create a client for your `backan` API and make your frontend app able to access your API easily and with type. To achieve this, backan makes use of the [`openapi-featch`](https://openapi-ts.dev/openapi-fetch/) library.
-
-```ts twoslash
-// @noErrors
-import { createClient } from '@backan/builder'
-import type { paths }   from './openapi.d.ts' // Generate with buildSchema
-
-const client = createClient<paths>( {
- baseUrl : 'http://localhost:1312/',
-} )
-
-export {client}
-
-```
-
-### Example of call
-
-```ts twoslash
-// @filename: client.js
-import { createClient } from '@backan/builder'
-// @noErrors
-import type { paths }   from './openapi.d.ts' // Generate with buildSchema
-
-const client = createClient<paths>( {
- baseUrl : 'http://localhost:1312/',
-} )
-
-export {client}
-
-// ---cut---
-import {client} from './client.js'
-const response = await client.GET( '/random/child', {
- params : {
-  query : {
-   value : 'myValue',
-  },
- },
-} )
-
-console.log( response )
 ```

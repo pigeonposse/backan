@@ -1,6 +1,6 @@
 {
 	"name": "@backan/docs",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"private": true,
 	"description": "Documentation for backan",
 	"repository": {
@@ -20,6 +20,7 @@
 	},
 	"devDependencies": {
 		"@backan/builder": "workspace:*",
+		"@backan/client": "workspace:*",
 		"@backan/core": "workspace:*",
 		"@backan/server": "workspace:*",
 		"backan": "workspace:*",

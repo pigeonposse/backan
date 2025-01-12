@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Quickly create a backan application to get started",
 	"keywords": [
 		"backend",
@@ -46,7 +46,7 @@
 		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
-		"creatium": "0.1.6"
+		"creatium": "0.1.12"
 	},
 	"publishConfig": {
 		"access": "public",

@@ -1,5 +1,5 @@
 {
-	"name": "@backan/builder",
+	"name": "@backan/client",
 	"version": "0.1.5",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
@@ -14,11 +14,11 @@
 		"schema",
 		"markdown"
 	],
-	"homepage": "https://backan.pigeonposse.com/guide/builder",
+	"homepage": "https://backan.pigeonposse.com/guide/client",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/pigeonposse/backan",
-		"directory": "packages/builder"
+		"directory": "packages/client"
 	},
 	"license": "GPL-3.0",
 	"type": "module",
@@ -28,31 +28,17 @@
 	"main": "dist/main.js",
 	"module": "dist/main.js",
 	"types": "dist/main.d.ts",
-	"bin": {
-		"backan-builder": "dist/bin.js"
-	},
 	"files": [
-		"dist",
-		"tsconfig.builder.json"
+		"dist"
 	],
 	"scripts": {
-		"build": "pnpm run --sequential \"/^build:.*/\"",
-		"build:_rm": "rimraf dist && rimraf build",
-		"build:lib": "vite build",
-		"dev": "tsx examples/build.ts",
-		"lint": "pnpm eslint src",
-		"preview": "node dist/bin.js --input=examples/server.ts",
+		"build": "vite build",
+		"dev": "tsx examples/simple/main.ts",
 		"test": "pnpm run --sequential \"/^test:.*/\"",
 		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
-		"binarium": "2.0.5",
-		"openapi-to-md": "1.0.25",
-		"openapi-typescript": "7.5.2"
-	},
-	"devDependencies": {
-		"@backan/core": "workspace:*",
-		"@backan/server": "workspace:*"
+		"openapi-fetch": "0.13.4"
 	},
 	"publishConfig": {
 		"access": "public",

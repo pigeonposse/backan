@@ -22,5 +22,5 @@ export {
 
 export { buildSchema } from './schema'
 export { buildMD } from './md'
-export { createClient } from './client'
+
 export type * from './types'

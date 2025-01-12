@@ -1,0 +1,9 @@
+CLI:
+  title: "Simple example"
+  data:
+    FN:
+      input: "./simple/main.ts"
+      title: "Configuration"
+    API:
+      input: "./simple/openapi.d.ts"
+      title: "d.ts file"
