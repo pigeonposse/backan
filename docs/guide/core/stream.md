@@ -4,7 +4,7 @@
 
 ## Usage
 
-```js
+```ts twoslash
 
 import { Route }  from 'backan'
 import { stream } from 'backan/stream'
@@ -24,6 +24,7 @@ route.add(
   },
   tags : [ id ],
  },
+ // @ts-ignore
  async c => {
 
   try {

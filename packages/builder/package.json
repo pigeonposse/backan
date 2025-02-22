@@ -1,20 +1,20 @@
 {
 	"name": "@backan/builder",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
-		"backend",
 		"api",
-		"rest-api",
-		"openapi",
-		"library",
+		"backend",
 		"bin",
-		"packager",
 		"builder",
-		"schema",
+		"library",
 		"markdown",
+		"openapi",
+		"packager",
+		"pigeonposse",
 		"pp",
-		"pigeonposse"
+		"rest-api",
+		"schema"
 	],
 	"homepage": "https://backan.pigeonposse.com/guide/builder",
 	"repository": {
@@ -25,7 +25,10 @@
 	"license": "GPL-3.0",
 	"type": "module",
 	"exports": {
-		".": "./dist/main.js"
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.js"
+		}
 	},
 	"main": "dist/main.js",
 	"module": "dist/main.js",
@@ -48,7 +51,7 @@
 		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
-		"binarium": "2.0.5",
+		"binarium": "2.0.6",
 		"openapi-to-md": "1.0.25",
 		"openapi-typescript": "7.5.2"
 	},

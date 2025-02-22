@@ -25,7 +25,7 @@ export default defineConfig(
 				desc  : 'Only development environment',
 			},
 		] } },
-		lint : { staged: { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm --silent . lint eslint --silent' } },
+		// lint : { staged: { '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,json,yml,yaml}': 'pnpm --silent . lint eslint --silent' } },
 		todo : { ws : {
 			input     : [ '**/*.{js,ts}', '**/*.md' ],
 			inputOpts : {

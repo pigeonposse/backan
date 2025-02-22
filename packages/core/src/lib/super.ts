@@ -82,6 +82,11 @@ export class AppSuper<Env extends object> {
 	} } )
 
 	/**
+	 * Hono app instace for add hono custom routes or middlewars or etc
+	 */
+	honoInstance = this.app
+
+	/**
 	 * Logs a string of data, determining if it's JSON and formatting accordingly.
 	 * This method can be overridden to customize how logging is handled within the application.
 	 * By default, it logs data to the console, parsing JSON strings if necessary.

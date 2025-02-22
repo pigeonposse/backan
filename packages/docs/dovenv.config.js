@@ -96,6 +96,11 @@ export default defineConfig(
 				'/todo/'        : sidebar,
 				'/contributors' : sidebar,
 			},
+			css : `
+			:root {
+				--vp-c-brand-1: var(--pp-brand-3) !important;
+			}
+			`,
 			autoSidebar : {
 				intro     : false,
 				reference : false,

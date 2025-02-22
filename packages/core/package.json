@@ -1,17 +1,17 @@
 {
 	"name": "@backan/core",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"keywords": [
-		"backend",
 		"api",
-		"rest-api",
-		"openapi",
+		"backend",
+		"js",
 		"library",
 		"node",
-		"js",
+		"openapi",
+		"pigeonposse",
 		"pp",
-		"pigeonposse"
+		"rest-api"
 	],
 	"homepage": "https://backan.pigeonposse.com",
 	"repository": {
@@ -22,8 +22,14 @@
 	"license": "GPL-3.0",
 	"type": "module",
 	"exports": {
-		".": "./dist/main.js",
-		"./stream": "./dist/stream.js"
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.js"
+		},
+		"./stream": {
+			"types": "./dist/stream.d.ts",
+			"import": "./dist/stream.js"
+		}
 	},
 	"main": "dist/main.js",
 	"module": "dist/main.js",

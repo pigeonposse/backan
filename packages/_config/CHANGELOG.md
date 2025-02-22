@@ -1,5 +1,11 @@
 # @backan/config
 
+## 0.2.1
+
+### Patch Changes
+
+- up deps, fix types
+
 ## 0.2.0
 
 ### Minor Changes

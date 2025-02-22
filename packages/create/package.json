@@ -1,18 +1,18 @@
 {
 	"name": "create-backan",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Quickly create a backan application to get started",
 	"keywords": [
-		"backend",
 		"api",
-		"rest-api",
-		"openapi",
-		"library",
+		"backend",
 		"bin",
 		"create",
 		"creator",
+		"library",
+		"openapi",
+		"pigeonposse",
 		"pp",
-		"pigeonposse"
+		"rest-api"
 	],
 	"homepage": "https://backan.pigeonposse.com",
 	"bugs": {
@@ -26,7 +26,10 @@
 	"license": "GPL-3.0",
 	"type": "module",
 	"exports": {
-		".": "./dist/main.js",
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.js"
+		},
 		"./types": "./dist/main.d.ts"
 	},
 	"main": "dist/main.js",
@@ -34,8 +37,8 @@
 	"types": "dist/main.d.ts",
 	"bin": "dist/bin.js",
 	"files": [
-		"dist",
-		"data"
+		"data",
+		"dist"
 	],
 	"scripts": {
 		"build": "pnpm run --sequential \"/^build:.*/\"",
