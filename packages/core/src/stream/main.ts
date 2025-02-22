@@ -6,6 +6,7 @@ import {
 
 import * as utils from './hook'
 
+export type * from 'hono/streaming'
 /* eslint-disable jsdoc/check-tag-names */
 
 export {

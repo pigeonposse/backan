@@ -1,5 +1,11 @@
 # create-backan
 
+## 0.2.2
+
+### Patch Changes
+
+- fix types
+
 ## 0.2.1
 
 ### Patch Changes
