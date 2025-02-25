@@ -7,7 +7,7 @@
 ```ts twoslash
 
 import { Route }  from 'backan'
-import { stream } from 'backan/stream'
+import { stream } from 'backan/utils'
 
 const id    = 'loop'
 const route = new Route( { path: id } )

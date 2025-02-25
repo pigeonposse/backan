@@ -1,5 +1,10 @@
-import type { HealthRouteOptions }   from './health/types'
-import type { cors as corsFunction } from 'hono/cors'
+/* eslint-disable @stylistic/object-curly-newline */
+
+import type {
+	cors as corsFunction,
+	cache,
+} from './app-utils'
+import type { HealthRouteOptions } from './health/types'
 
 /**
  * Parameters for configuring the App.
@@ -23,7 +28,10 @@ export type AppParameters = {
 		mail? : string
 	}
 
-	/** Whether to format JSON responses prettily. */
+	/**
+	 * Whether to format JSON responses prettily.
+	 * @default true
+	 */
 	jsonResponse? : boolean
 
 	/**
@@ -37,8 +45,27 @@ export type AppParameters = {
 	 *   allowMethods : [ 'GET'],
 	 * }
 	 */
-	cors? : Parameters<typeof corsFunction>[0]
-
+	cors?          : Parameters<typeof corsFunction>[0]
+	/**
+	 * Cache Opts.
+	 * @see {@link https://hono.dev/docs/middleware/builtin/cache}
+	 * @example
+	 * ```{
+	 *     cacheName: 'my-app',
+	 *     cacheControl: 'max-age=3600',
+	 *   }
+	 * ```
+	 */
+	cache?         : Parameters<typeof cache>[0]
+	/**
+	 * Controls the behavior of the trailing slash in a URL.
+	 *
+	 * - `'trim'`    → Removes the trailing slash if it exists.
+	 * - `'append'`  → Adds a trailing slash if it does not exist.
+	 * - `false`     → Leaves the URL unchanged.
+	 * @default false
+	 */
+	trailingSlash? : 'trim' | 'append' | false
 	/** Documentation configuration. */
 	docs?: {
 		/**

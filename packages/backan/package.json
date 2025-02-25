@@ -1,6 +1,6 @@
 {
 	"name": "backan",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"keywords": [
 		"api",
@@ -25,9 +25,9 @@
 			"types": "./dist/main.d.ts",
 			"import": "./dist/main.js"
 		},
-		"./stream": {
-			"types": "./dist/stream.d.ts",
-			"import": "./dist/stream.js"
+		"./utils": {
+			"types": "./dist/utils.d.ts",
+			"import": "./dist/utils.js"
 		}
 	},
 	"main": "dist/main.js",

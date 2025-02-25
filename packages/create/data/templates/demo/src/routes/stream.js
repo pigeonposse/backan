@@ -5,7 +5,7 @@
  */
 
 import { Route }  from 'backan'
-import { stream } from 'backan/stream'
+import { stream } from 'backan/utils'
 
 import { getRandomFact } from './_utils'
 const id    = 'stream-example'

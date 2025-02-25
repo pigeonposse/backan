@@ -1,6 +1,6 @@
 {
 	"name": "create-backan",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Quickly create a backan application to get started",
 	"keywords": [
 		"api",

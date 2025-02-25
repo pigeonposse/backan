@@ -70,14 +70,13 @@ export class AppSuper<Env extends object> {
 
 	protected app = new OpenAPIHono<Env>( { defaultHook : ( res, c ) => {
 
-		if ( !res.success )
-			return this.response.add400Error( c, {
-				id      : this.ERROR_ID.VALIDATION,
-				message : this.RESPONSE_MESSAGES.ERROR_400,
-				error   : res.error.issues,
-			} )
+		if ( res.success ) return res
 
-		return res
+		return this.response.add400Error( c, {
+			id      : this.ERROR_ID.VALIDATION,
+			message : this.RESPONSE_MESSAGES.ERROR_400,
+			error   : res.error.issues,
+		} )
 
 	} } )
 
@@ -120,12 +119,14 @@ export class AppSuper<Env extends object> {
 		const isJSON    = isJsonString( data )
 		const timestamp = new Date().toISOString()
 
-		console.log( isJSON
-			? {
-				...JSON.parse( data ),
-				time : timestamp,
-			}
-			: data )
+		console.log(
+			isJSON
+				? {
+					...JSON.parse( data ),
+					time : timestamp,
+				}
+				: data,
+		)
 
 	}
 

@@ -1,7 +1,12 @@
-import { swaggerUI }            from '@hono/swagger-ui'
-import { cors as corsFunction } from 'hono/cors'
-import { prettyJSON }           from 'hono/pretty-json'
-
+import {
+	swaggerUI,
+	prettyJSON,
+	cache as cacheMW,
+	cors as corsFunction,
+	appendTrailingSlash,
+	trimTrailingSlash,
+	ipRestriction,
+} from './app-utils'
 import { getHealthRoute } from './health/main'
 import { add404Error }    from './response'
 import { AppSuper }       from './super'
@@ -107,6 +112,8 @@ export class App<Env extends object> extends AppSuper<Env> {
 		docs,
 		health,
 		contact,
+		cache,
+		trailingSlash,
 	}: AppParameters ) {
 
 		super()
@@ -117,6 +124,13 @@ export class App<Env extends object> extends AppSuper<Env> {
 		if ( title ) this.title = title
 		if ( contact ) this.contact = contact
 		if ( description ) this.description = description
+
+		if ( trailingSlash ) this.app.use(
+			trailingSlash === 'trim'
+				? trimTrailingSlash()
+				: appendTrailingSlash(),
+		)
+
 		if ( this.#jsonResponse ) this.app.use( prettyJSON( { space: 4 } ) )
 		if ( cors ) this.app.use( '*', corsFunction( cors ) )
 
@@ -140,11 +154,29 @@ export class App<Env extends object> extends AppSuper<Env> {
 			},
 		}
 
+		if ( cache ) this.app.use( '*', cacheMW( cache ) )
+
 		this.#setDocs()
 		this.#setHealthPath()
 		this.#setNotFound()
 
 		this.fetch = this.app.fetch
+
+	}
+
+	setIpRestriction( {
+		pattern = '*', getIP, rules, onError,
+	}:{
+		pattern? : string
+		getIP    : Parameters<typeof ipRestriction>[0]
+		rules?   : Parameters<typeof ipRestriction>[1]
+		onError? : Parameters<typeof ipRestriction>[2]
+	} ) {
+
+		this.app.use(
+			pattern,
+			ipRestriction( getIP, rules || {}, onError ),
+		)
 
 	}
 

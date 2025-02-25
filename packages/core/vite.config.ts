@@ -24,7 +24,7 @@ export default defineConfig( {
 		ssr : true,
 		target,
 		lib : {
-			entry   : [ 'src/main.ts', 'src/stream.ts' ],
+			entry   : [ 'src/main.ts', 'src/utils.ts' ],
 			formats : [ 'es' ],
 		},
 	},
