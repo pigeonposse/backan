@@ -5,6 +5,7 @@ import type {
 	cache,
 } from './app-utils'
 import type { HealthRouteOptions } from './health/types'
+import type { AppSuper }           from './super'
 
 /**
  * Parameters for configuring the App.
@@ -91,6 +92,11 @@ export type AppParameters = {
 
 		/** Additional options for the health route. */
 		opts? : HealthRouteOptions
+	}
+	/** Add hooks */
+	hook?: {
+		/** Hook before all */
+		beforeAll? : <E extends object>( app:AppSuper<E>['app'] ) => void
 	}
 }
 

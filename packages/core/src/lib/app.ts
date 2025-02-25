@@ -114,6 +114,7 @@ export class App<Env extends object> extends AppSuper<Env> {
 		contact,
 		cache,
 		trailingSlash,
+		hook,
 	}: AppParameters ) {
 
 		super()
@@ -124,6 +125,8 @@ export class App<Env extends object> extends AppSuper<Env> {
 		if ( title ) this.title = title
 		if ( contact ) this.contact = contact
 		if ( description ) this.description = description
+
+		if ( hook ) hook.beforeAll?.<Env>( this.app )
 
 		if ( trailingSlash ) this.app.use(
 			trailingSlash === 'trim'

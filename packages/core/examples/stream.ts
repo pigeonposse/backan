@@ -1,5 +1,5 @@
 import { Route }  from '../src/main'
-import { stream } from '../src/stream'
+import { stream } from '../src/utils'
 
 const id    = 'loop'
 const route = new Route( { path: id } )

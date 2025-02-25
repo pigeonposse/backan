@@ -1,5 +1,11 @@
 # @backan/client
 
+## 0.2.4
+
+### Patch Changes
+
+- Add feats, fix issues
+
 ## 0.2.3
 
 ### Patch Changes

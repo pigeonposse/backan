@@ -28,5 +28,6 @@ export default defineConfig( {
 			formats : [ 'es' ],
 		},
 	},
+	// @ts-ignore
 	plugins : [ dts( { rollupTypes: true } ), devServer( { entry: 'examples/app.ts' } ) ],
 } )
