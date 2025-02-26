@@ -67,6 +67,11 @@ export type AppParameters = {
 	 * @default false
 	 */
 	trailingSlash? : 'trim' | 'append' | false
+	/**
+	 * The value for X-Powered-By header.
+	 * @default backan
+	 */
+	poweredBy?     : string | false
 	/** Documentation configuration. */
 	docs?: {
 		/**

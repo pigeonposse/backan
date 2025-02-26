@@ -16,6 +16,7 @@ export { compress } from 'hono/compress'
 export { timeout } from 'hono/timeout'
 export { bodyLimit } from 'hono/body-limit'
 export { prettyJSON } from 'hono/pretty-json'
+
 export {
 	some,
 	every,
@@ -33,6 +34,17 @@ export {
 	deleteCookie,
 } from 'hono/cookie'
 export * from './validate'
+export * from 'hono/factory'
+export { poweredBy } from 'hono/powered-by'
+export { accepts } from 'hono/accepts'
+export { proxy } from 'hono/proxy'
+export { jwt } from 'hono/jwt'
+export { jwk } from 'hono/jwk'
+export { csrf } from 'hono/csrf'
+export { etag } from 'hono/etag'
+export { logger } from 'hono/logger'
+export { languageDetector } from 'hono/language'
+export { methodOverride } from 'hono/method-override'
 
 export const getConnInfo = async ( type: 'bun' | 'deno' | 'cf-workers' | 'vercel' ) => {
 

@@ -1,5 +1,11 @@
 # @backan/builder
 
+## 0.2.5
+
+### Patch Changes
+
+- add feats
+
 ## 0.2.4
 
 ### Patch Changes

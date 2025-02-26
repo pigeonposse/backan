@@ -26,7 +26,9 @@ const app = new App( {
 		active : true,
 		opts   : { additionalResponseValues: { customValue: false } },
 	},
-	contact : bugs,
+	contact       : bugs,
+	trailingSlash : 'trim',
+
 } )
 
 app.addRoute( getRoute )

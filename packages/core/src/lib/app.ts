@@ -6,6 +6,7 @@ import {
 	appendTrailingSlash,
 	trimTrailingSlash,
 	ipRestriction,
+	poweredBy as poweredByMW,
 } from './app-utils'
 import { getHealthRoute } from './health/main'
 import { add404Error }    from './response'
@@ -115,6 +116,7 @@ export class App<Env extends object> extends AppSuper<Env> {
 		cache,
 		trailingSlash,
 		hook,
+		poweredBy,
 	}: AppParameters ) {
 
 		super()
@@ -128,7 +130,13 @@ export class App<Env extends object> extends AppSuper<Env> {
 
 		if ( hook ) hook.beforeAll?.<Env>( this.app )
 
+		if ( poweredBy !== false ) this.app.use(
+			'*',
+			poweredByMW( { serverName: poweredBy || 'backan' } ),
+		)
+
 		if ( trailingSlash ) this.app.use(
+			'*',
 			trailingSlash === 'trim'
 				? trimTrailingSlash()
 				: appendTrailingSlash(),
