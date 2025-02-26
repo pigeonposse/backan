@@ -1,6 +1,6 @@
 {
 	"name": "@backan/core",
-	"version": "0.2.5",
+	"version": "0.2.6",
 	"description": "All in one web API builder. Create endpoints with type validations and OpenApi documentation, safely and quickly.",
 	"keywords": [
 		"api",

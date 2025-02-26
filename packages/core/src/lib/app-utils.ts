@@ -45,6 +45,7 @@ export { etag } from 'hono/etag'
 export { logger } from 'hono/logger'
 export { languageDetector } from 'hono/language'
 export { methodOverride } from 'hono/method-override'
+export { HTTPException } from 'hono/http-exception'
 
 export const getConnInfo = async ( type: 'bun' | 'deno' | 'cf-workers' | 'vercel' ) => {
 
