@@ -1,6 +1,6 @@
 {
 	"name": "@backan/client",
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
 		"api",
@@ -39,7 +39,7 @@
 		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
-		"openapi-fetch": "0.13.4"
+		"openapi-fetch": "0.13.5"
 	},
 	"publishConfig": {
 		"access": "public",

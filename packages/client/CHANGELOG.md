@@ -1,5 +1,11 @@
 # @backan/client
 
+## 0.2.7
+
+### Patch Changes
+
+- up deps
+
 ## 0.2.6
 
 ### Patch Changes
