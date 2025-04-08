@@ -1,7 +1,5 @@
 # Create `app` instance
 
-<!--@include: ../../partials/coming-soon.md-->
-
 ## Usage
 
 ```js twoslash

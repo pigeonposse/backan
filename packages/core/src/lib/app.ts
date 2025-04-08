@@ -8,7 +8,7 @@ import {
 	ipRestriction,
 	poweredBy as poweredByMW,
 } from './app-utils'
-import { getHealthRoute } from './health/main'
+import { setHealthRoute } from './health/main'
 import { add404Error }    from './response'
 import { AppSuper }       from './super'
 
@@ -16,6 +16,7 @@ import type { AppParameters } from './types'
 import type { Context }       from 'hono'
 
 type OpenApiObject<Env extends object> = ReturnType<App<Env>['app']['getOpenAPIDocument']>
+
 /**
  * Represents an application with configuration options and methods
  * for managing routes, OpenAPI documentation, and error handling.
@@ -36,21 +37,21 @@ export class App<Env extends object> extends AppSuper<Env> {
 	/**
 	 * The version of the application.
 	 */
-	version = ''
+	version
 	/**
 	 * The title of the application.
 	 */
-	title = ''
+	title
 	/**
 	 * A brief description of the application.
 	 */
-	description = ''
+	description
 	/**
 	 * Contact information for the application.
 	 */
 	contact
 
-	#jsonResponse = true
+	#jsonPretty
 
 	#docs = {
 		path   : '/docs',
@@ -90,7 +91,6 @@ export class App<Env extends object> extends AppSuper<Env> {
 		const optsJson = `${this.#docs.path}.json`
 
 		this.app.doc( optsJson, this.#openApiConfig )
-
 		this.app.get( this.#docs.path, swaggerUI( { url: optsJson } ) )
 
 	}
@@ -98,35 +98,61 @@ export class App<Env extends object> extends AppSuper<Env> {
 	#setHealthPath() {
 
 		if ( !this.#health.path || !this.#health.active ) return
-		const route = getHealthRoute( this.#health.path, this.#health.opts )
-		// @ts-ignore
-		this.addRoute( route )
+
+		setHealthRoute(
+			this as unknown as AppSuper<object>,
+			this.#health.path,
+			this.#health.opts,
+		)
 
 	}
 
-	constructor( {
-		jsonResponse,
-		cors,
-		version,
-		title,
-		description,
-		docs,
-		health,
-		contact,
-		cache,
-		trailingSlash,
-		hook,
-		poweredBy,
-	}: AppParameters ) {
+	#setJSONPrettify() {
+
+		if ( typeof this.#jsonPretty === 'string' ) this.app.use( prettyJSON( {
+			space : 4,
+			query : this.#jsonPretty,
+		} ) )
+		else this.app.use( async ( c, next ) => {
+
+			await next()
+			if ( c.res.headers.get( 'Content-Type' )?.startsWith( 'application/json' ) ) {
+
+				const obj = await c.res.json()
+				c.res     = new Response( JSON.stringify( obj, null, 2 ), c.res )
+
+			}
+
+		} )
+
+	}
+
+	constructor( data?: AppParameters   ) {
+
+		const {
+			jsonPretty = true,
+			cors,
+			version,
+			title,
+			description,
+			docs,
+			health,
+			contact,
+			cache,
+			trailingSlash,
+			hook,
+			poweredBy,
+		} = data || {}
+
+		const isRoute = version && title && description
 
 		super()
 
-		if ( jsonResponse ) this.#jsonResponse = jsonResponse
-
-		if ( version ) this.version = version
-		if ( title ) this.title = title
+		this.#jsonPretty = jsonPretty
+		this.version     = version || ''
+		this.title       = title || ''
+		this.description = description || ''
 		if ( contact ) this.contact = contact
-		if ( description ) this.description = description
 
 		if ( hook ) hook.beforeAll?.<Env>( this.app )
 
@@ -142,13 +168,14 @@ export class App<Env extends object> extends AppSuper<Env> {
 				: appendTrailingSlash(),
 		)
 
-		if ( this.#jsonResponse ) this.app.use( prettyJSON( { space: 4 } ) )
+		if ( this.#jsonPretty ) this.#setJSONPrettify()
 		if ( cors ) this.app.use( '*', corsFunction( cors ) )
 
 		if ( docs?.active || docs?.active == false ) this.#docs.active = docs.active
 		if ( docs?.path ) this.#docs.path = docs.path
 
-		if ( health?.active || health?.active == false ) this.#health.active = health.active
+		if ( health?.active || health?.active == false )
+			this.#health.active = health.active
 		if ( health?.path ) this.#health.path = health.path
 		if ( health?.opts ) this.#health.opts = {
 			...this.#health.opts,
@@ -167,9 +194,17 @@ export class App<Env extends object> extends AppSuper<Env> {
 
 		if ( cache ) this.app.use( '*', cacheMW( cache ) )
 
-		this.#setDocs()
-		this.#setHealthPath()
-		this.#setNotFound()
+		if ( isRoute ) {
+
+			this.#setDocs()
+			this.#setNotFound()
+
+		}
+		else {
+
+			if ( ( health?.active === true ) ) this.#setHealthPath()
+
+		}
 
 		this.fetch = this.app.fetch
 

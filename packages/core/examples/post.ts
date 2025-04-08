@@ -1,8 +1,8 @@
 
-import { Route } from '../src/main'
+import { App } from '../src/main'
 
 const id    = 'form'
-const route = new Route( { path: id } )
+const route = new App(  )
 
 const {
 	validation, response,

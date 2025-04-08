@@ -6,11 +6,10 @@
 
 ```ts twoslash
 
-import { Route }  from 'backan'
+import { App }  from 'backan'
 import { stream } from 'backan/utils'
 
-const id    = 'loop'
-const route = new Route( { path: id } )
+const route = new App( )
 
 route.add(
  {
@@ -22,7 +21,7 @@ route.add(
    400 : route.response.responseJSONError400,
    500 : route.response.responseJSONError500,
   },
-  tags : [ id ],
+  tags : [ 'loop' ],
  },
  // @ts-ignore
  async c => {

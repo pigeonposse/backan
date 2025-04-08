@@ -5,14 +5,23 @@ import {
 	RESPONSE_MESSAGES,
 } from './const'
 import * as response from './response'
+import { Route }     from './route'
 import { validate }  from './validate'
 
-import type { Route }   from './route'
 import type { Context } from 'hono'
 
 export class AppSuper<Env extends object> {
 
-	constructor() {}
+	/**
+	 * Method to add route with OpenAPI configuration.
+	 */
+	add : AppSuper<Env>['app']['openapi']
+
+	constructor() {
+
+		this.add = this.app.openapi
+
+	}
 
 	/**
 	 * Validation option works with zod library.
@@ -51,6 +60,7 @@ export class AppSuper<Env extends object> {
 		},
 		add400ErrorObject : ( e: unknown ) => {
 
+			// console.log(e)
 			return response.add400ErrorObject( {
 				id      : e && typeof e == 'object' && 'message' in e ? e.message as string : this.ERROR_ID.BAD_REQUEST,
 				message : this.RESPONSE_MESSAGES.ERROR_400,
@@ -132,12 +142,25 @@ export class AppSuper<Env extends object> {
 
 	/**
 	 * Adds a route to the BACKAN application instance.
-	 * @param {Route} route - The route to add, containing the path and the associated app.
-	 * @example
+	 * @param {Route} app - The route to add, containing the path and the associated app.
+	 * @param route
+	 * @deprecated
 	 */
-	addRoute<R extends Route<Env, string>>( route: R ) {
+	addRoute<R extends Route<Env, string>>(  route: R ) {
 
 		this.app.route( route.path, route.app )
+
+	}
+
+	/**
+	 * Adds a route to the BACKAN application instance.
+	 * @param {AppSuper} app - The route to add, containing the path and the associated app.
+	 * @param path
+	 * @param route
+	 */
+	route<R extends AppSuper<Env>>( path: string, route: R ) {
+
+		this.app.route( path, route.app )
 
 	}
 

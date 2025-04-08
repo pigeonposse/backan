@@ -36,13 +36,6 @@ export const buildMD = async <Env extends object>( {
 			'openapi-to-md',
 		)
 
-		// console.log( {
-		// 	binPath,
-		// 	output,
-		// 	outputDir,
-		// 	outputSchema,
-		// } )
-
 		await buildSchema( {
 			app,
 			output : outputSchema,
@@ -54,12 +47,7 @@ export const buildMD = async <Env extends object>( {
 	}
 	catch ( e ) {
 
-		console.error( {
-			message : 'Error on build Makdown file',
-			data    : e,
-		} )
-
-		throw e
+		throw new Error( `Markdown build failed: ${e instanceof Error ? e.message : 'Unknown error'}` )
 
 	}
 

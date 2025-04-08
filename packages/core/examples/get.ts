@@ -1,7 +1,7 @@
-import { Route } from '../src/main'
+import { App } from '../src/main'
 
 const id    = 'random'
-const route = new Route( { path: id } )
+const route = new App(  )
 
 route.RESPONSE_MESSAGES.ERROR_400 = 'Error getting random data'
 
@@ -53,7 +53,7 @@ route.add(
 	},
 )
 
-const childRoute                       = new Route( { path: 'child' } )
+const childRoute                       = new App(  )
 childRoute.RESPONSE_MESSAGES.ERROR_400 = 'Error getting child data'
 
 childRoute.add(
@@ -85,6 +85,6 @@ childRoute.add(
 	},
 )
 
-route.addRoute( childRoute )
+route.route( 'child', childRoute )
 
 export default route

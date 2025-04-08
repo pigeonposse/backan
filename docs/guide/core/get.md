@@ -7,12 +7,10 @@
 Add `GET` endpoint to a route
 
 ```js twoslash
-import { Route } from 'backan';
+import { App } from 'backan';
 
 const id    = 'random'
-const route = new Route( {
- path : id,
-} )
+const route = new App( )
 
 route.add(
  {

@@ -5,10 +5,10 @@
 ## Usage
 
 ```js twoslash
-import { Route } from 'backan'
+import { App } from 'backan'
 
 const id    = 'patch'
-const route = new Route( { path: id } )
+const route = new App(  )
 
 const {
  validation: v,

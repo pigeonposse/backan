@@ -1,16 +1,11 @@
 # Create `route` instace
 
-<!--@include: ../../partials/coming-soon.md-->
-
 ## Usage
 
 ```ts twoslash
-import { Route } from 'backan';
+import { App } from 'backan';
 
-const id    = 'random'
-const route = new Route( {
- path : id,
-} )
+const route = new App( )
 
 route.add(
  {
@@ -25,7 +20,7 @@ route.add(
    500 : route.response.responseJSONError500,
   },
   tags : [
-   id,
+   'random',
   ],
  },
  async c => {
@@ -69,15 +64,17 @@ route.add(
 
 ```
 
-## Parameters
+## Route method
 
-```ts twoslash
-export type RouteParams<Path extends string> = {
- /**
-  * The path of the route.
-  *
-  * @example 'users'
-  */
- path: Path
-}
+You can add a App instance as a route to the application using the `route` method.
+
+```ts
+import { App } from 'backan';
+import myChildApp from './child'
+
+const app = new App( )
+
+app.route( '/child', myChildApp )
+
+export default app
 ```

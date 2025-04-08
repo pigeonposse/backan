@@ -1,9 +1,9 @@
 // Create `PATCH` endpoint
 
-import { Route } from '../src/main'
+import { App } from '../src/main'
 
 const id    = 'patch'
-const route = new Route( { path: id } )
+const route = new App( )
 
 const {
 	validation: v,

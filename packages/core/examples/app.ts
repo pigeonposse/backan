@@ -31,10 +31,11 @@ const app = new App( {
 
 } )
 
-app.addRoute( getRoute )
-app.addRoute( postRoute )
-app.addRoute( streamRoute )
-app.addRoute( deleteRoute )
-app.addRoute( putRoute )
-app.addRoute( patchRoute )
+app.route( 'get', getRoute )
+app.route( 'post', postRoute )
+app.route( 'stream', streamRoute )
+app.route( 'delete', deleteRoute )
+app.route( 'put', putRoute )
+app.route( 'patch', patchRoute )
+
 export default app

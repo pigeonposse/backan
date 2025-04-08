@@ -1,6 +1,6 @@
 {
 	"name": "@backan/builder",
-	"version": "0.2.7",
+	"version": "0.2.8",
 	"description": "Backan library for building executables, client libraries, JSON schema files, TypeScript definitions, and Markdown documentation.",
 	"keywords": [
 		"api",
@@ -45,6 +45,7 @@
 		"build:_rm": "rimraf dist && rimraf build",
 		"build:lib": "vite build",
 		"dev": "tsx examples/build.ts",
+		"dev-schema": "tsx examples/schema/main.ts",
 		"lint": "pnpm eslint src",
 		"preview": "node dist/bin.js --input=examples/server.ts",
 		"test": "pnpm run --sequential \"/^test:.*/\"",

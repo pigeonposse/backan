@@ -5,10 +5,10 @@
 ## Usage
 
 ```ts twoslash
-import { Route } from 'backan'
+import { App } from 'backan'
 
 const id    = 'form'
-const route = new Route( { path: id } )
+const route = new App( )
 
 const {
  validation, response,

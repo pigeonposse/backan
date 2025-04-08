@@ -30,10 +30,10 @@ export type AppParameters = {
 	}
 
 	/**
-	 * Whether to format JSON responses prettily.
+	 * Whether to format JSON responses prettily. If is a string, it will be used as a query parameter for pretty printing.
 	 * @default true
 	 */
-	jsonResponse? : boolean
+	jsonPretty? : boolean | string
 
 	/**
 	 * CORS (Cross-Origin Resource Sharing) configuration.

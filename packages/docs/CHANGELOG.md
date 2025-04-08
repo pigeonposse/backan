@@ -1,5 +1,11 @@
 # @backan/docs
 
+## 0.2.8
+
+### Patch Changes
+
+- add feats, deprecate functions, add docs. fix issues
+
 ## 0.2.7
 
 ### Patch Changes

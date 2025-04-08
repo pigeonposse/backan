@@ -1,8 +1,8 @@
-import { Route }  from '../src/main'
+import { App }    from '../src/main'
 import { stream } from '../src/utils'
 
 const id    = 'loop'
-const route = new Route( { path: id } )
+const route = new App(  )
 
 route.add(
 	{

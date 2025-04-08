@@ -1,7 +1,7 @@
-import { Route } from '../src/main'
+import { App } from '../src/main'
 
 const id    = 'delete'
-const route = new Route( { path: id } )
+const route = new App( )
 
 route.add(
 	{

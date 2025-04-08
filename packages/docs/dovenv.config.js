@@ -62,6 +62,14 @@ const sidebar = [
 							},
 						],
 					},
+					{
+						text : 'Middleware',
+						link : '/guide/core/middleware',
+					},
+					{
+						text : 'Utils',
+						link : '/guide/core/utils',
+					},
 				],
 			},
 			{

@@ -23,6 +23,7 @@ import type { RouteParams } from './types'
  * )
  * @example https://github.com/BimaAdi/Integrate-hono-with-openapi/blob/main/src/index.ts
  * @see  https://backan.pigeonposse.com/guide/core/route
+ * @deprecated
  */
 export class Route<Env extends object, Path extends string> extends AppSuper<Env> {
 
@@ -36,17 +37,6 @@ export class Route<Env extends object, Path extends string> extends AppSuper<Env
 	 */
 	add : AppSuper<Env>['app']['openapi']
 
-	// /**
-	//  * Creates a new route with OpenAPI integration.
-	//  *
-	//  * @param   {object} config - Configuration options for the route.
-	//  * @returns {object}        - The created route configuration.
-	//  * @example
-	//  * const routeConfig = route.create({
-	//  *   // route creation configuration
-	//  * });
-	//  */
-	// create = createRoute
 	constructor( params: RouteParams<Path> ) {
 
 		super()

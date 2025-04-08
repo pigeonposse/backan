@@ -33,7 +33,7 @@ export const buildSchema = async <Env extends object> ( {
 		if ( dts === false ) return
 
 		// type schema
-		const dtsOutput = output.endsWith( '.json' ) ? output.replace( '.json', '.d.ts' ) : output + '.d.ts'
+		const dtsOutput = jsonOutput.replace( '.json', '.d.ts' )
 		const ast       = await openapiTS( openApi as OpenAPI3 )
 		const contents  = astToString( ast )
 
@@ -45,12 +45,7 @@ export const buildSchema = async <Env extends object> ( {
 	}
 	catch ( e ) {
 
-		console.error( {
-			message : 'Error on build schema',
-			data    : e,
-		} )
-
-		throw e
+		throw new Error( `Schema build failed: ${e instanceof Error ? e.message :  'Unknown error'}` )
 
 	}
 

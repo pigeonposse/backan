@@ -1,7 +1,7 @@
-import { Route } from '../src/main'
+import { App } from '../src/main'
 
 const id    = 'update'
-const route = new Route( { path: id } )
+const route = new App(  )
 
 route.RESPONSE_MESSAGES.ERROR_400 = 'Error processing request'
 route.RESPONSE_MESSAGES.ERROR_404 = 'Resource not found'
